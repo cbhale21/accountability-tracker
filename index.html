@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chris's Accountability Dashboard</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --ink: #2b2620;
+    --muted: #8a8175;
+    --ok: #2f7d4f;
+    --ok-bg: #e5f4ea;
+    --bad: #b3432c;
+    --bad-bg: #fbe8e3;
+    --pending: #a5761f;
+    --pending-bg: #fbf1de;
+    --border: #ece6dc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    padding: 32px 16px;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 28px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+  }
+  .card h2 { font-size: 15px; margin: 0 0 14px 0; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 8px 4px; font-size: 14px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  td:nth-child(2) { color: var(--muted); font-size: 13px; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge.ok { background: var(--ok-bg); color: var(--ok); }
+  .badge.bad { background: var(--bad-bg); color: var(--bad); }
+  .badge.pending { background: var(--pending-bg); color: var(--pending); }
+  .badge.muted { background: #f1ede6; color: var(--muted); }
+  .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
+  .nut-date { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+  .nut-day ul { margin: 0 0 6px 0; padding-left: 18px; }
+  .nut-day li { font-size: 13px; margin-bottom: 4px; }
+  .assessment { color: var(--muted); font-size: 12px; }
+  .water { font-size: 12px; color: var(--muted); }
+  .muted { color: var(--muted); }
+  .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
+  .avg-water { font-size: 13px; color: var(--muted); margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Chris's Accountability Dashboard</h1>
+  <div class="subtitle">Generated 2026-07-21 14:26 &middot; Today is Tuesday, July 21, 2026</div>
+
+  <div class="card">
+    <h2>Daily &amp; Weekday Goals</h2>
+    <table><tr>
+              <td>30 push-ups</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>30 squats</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>Wake up by 6:00 AM</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>Asleep by 11:00 PM</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>Read 20 minutes</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>5,000 steps</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>Morning prayer (personal)</td>
+              <td>0-day streak</td>
+              <td><span class="badge ok">done</span></td>
+            </tr><tr>
+              <td>Evening prayer (personal)</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>Couple prayer with Andrea</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>Book of Mormon reading</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>Phone games</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr><tr>
+              <td>Social media</td>
+              <td>0-day streak</td>
+              <td><span class="badge pending">not yet logged</span></td>
+            </tr></table>
+  </div>
+
+  <div class="card">
+    <h2>Weekly Goals</h2>
+    <table><tr>
+              <td>Gym attendance</td>
+              <td><span class="badge bad">0/2 this week</span></td>
+            </tr><tr>
+              <td>Temple attendance</td>
+              <td><span class="badge bad">0/1 this week</span></td>
+            </tr></table>
+  </div>
+
+  <div class="card">
+    <h2>Nutrition &amp; Water (last 7 days)</h2>
+    
+            <div class="nut-day">
+              <div class="nut-date">2026-07-21 (today)</div>
+              <ul><li><strong>morning</strong> - Chocolate/peanut butter/banana protein shake (45g protein)<div class='assessment'>Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start.</div></li><li><strong>morning</strong> - Acai Berry Energy Mio, 1 serving in water<div class='assessment'>Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal.</div></li></ul>
+              <div class="water">Water: 24 oz</div>
+            </div>
+    <div class="avg-water">7-day avg water: 24.0 oz</div>
+  </div>
+
+  <div class="footer">This file regenerates each time you log something new. Reopen it any time to see your latest progress.</div>
+</div>
+</body>
+</html>
