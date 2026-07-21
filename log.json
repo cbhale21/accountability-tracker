@@ -1,0 +1,22 @@
+{
+  "start_date": "2026-07-21",
+  "daily": {
+    "2026-07-21": {
+      "goals": {
+        "morning_prayer": {"done": true},
+        "pushups_30": {"value": 30},
+        "squats_30": {"value": 30},
+        "bom_reading": {"done": true}
+      },
+      "nutrition": {
+        "meals": [
+          {"time": "morning", "description": "Chocolate/peanut butter/banana protein shake (45g protein)", "assessment": "Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start."},
+          {"time": "morning", "description": "Acai Berry Energy Mio, 1 serving in water", "assessment": "Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal."},
+          {"time": "lunch", "description": "Cafe Rio handheld burrito: white rice, black beans, sweet pork, cheese, pico de gallo, tomatillo ranch; 16 oz Coke Zero", "assessment": "Solid protein from the pork, but this is a calorie-dense meal -- handheld burritos with rice, beans, cheese, and dressing commonly run 700-900+ kcal, plus sodium adds up fast between the meat, cheese, and dressing. Coke Zero adds caffeine but no sugar/calories."},
+          {"time": "afternoon", "description": "Acai Berry Energy Mio again, 1 serving in water", "assessment": "Second caffeinated serving today (~90mg on top of the morning one, ~180mg total) -- still generally fine, but worth watching the clock so it clears well before the 11:00 PM sleep goal."}
+        ],
+        "water_oz": 44
+      }
+    }
+  }
+}
