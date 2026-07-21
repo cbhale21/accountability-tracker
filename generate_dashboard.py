@@ -351,9 +351,9 @@ CSS = '''
     padding: 32px 16px 64px;
   }
   .wrap { max-width: 900px; margin: 0 auto; }
-  h1 { font-size: 22px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
-  h1 img.header-logo { height: 1em; width: 1em; object-fit: contain; vertical-align: middle; }
-  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  h1 { font-size: 22px; margin-bottom: 4px; display: flex; align-items: center; gap: 16px; }
+  h1 img.header-logo { height: 72px; width: 72px; object-fit: contain; flex-shrink: 0; }
+  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 20px; margin-left: 88px; }
   nav.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; position: sticky; top: 0; background: var(--bg); padding: 8px 0; z-index: 10; }
   nav.tabs a {
     text-decoration: none; color: var(--ink); background: var(--card); border: 1px solid var(--border);
