@@ -1,18 +1,18 @@
 {
   "goals": [
+    {"id": "wake_6am", "label": "Wake up by 6:00 AM", "cadence": "weekdays", "type": "boolean", "days": ["Mon","Tue","Wed","Thu","Fri"]},
+    {"id": "morning_prayer", "label": "Morning prayer (personal)", "cadence": "daily", "type": "boolean"},
+    {"id": "bom_reading", "label": "Book of Mormon reading", "cadence": "daily", "type": "boolean"},
     {"id": "pushups_30", "label": "30 push-ups", "cadence": "daily", "type": "minimum", "target": 30, "unit": "reps"},
     {"id": "squats_30", "label": "30 squats", "cadence": "daily", "type": "minimum", "target": 30, "unit": "reps"},
-    {"id": "wake_6am", "label": "Wake up by 6:00 AM", "cadence": "weekdays", "type": "boolean", "days": ["Mon","Tue","Wed","Thu","Fri"]},
-    {"id": "sleep_11pm", "label": "Asleep by 11:00 PM", "cadence": "custom_nights", "type": "boolean", "days": ["Sun","Mon","Tue","Wed","Thu"]},
-    {"id": "read_20min", "label": "Read 20 minutes", "cadence": "daily", "type": "minimum", "target": 20, "unit": "minutes"},
     {"id": "steps_5000", "label": "5,000 steps", "cadence": "daily", "type": "minimum", "target": 5000, "unit": "steps"},
-    {"id": "gym_session", "label": "Gym attendance", "cadence": "weekly_count", "type": "minimum", "target": 2, "unit": "sessions/week"},
-    {"id": "temple_attendance", "label": "Temple attendance", "cadence": "weekly_count", "type": "minimum", "target": 1, "unit": "visits/week"},
-    {"id": "morning_prayer", "label": "Morning prayer (personal)", "cadence": "daily", "type": "boolean"},
-    {"id": "evening_prayer", "label": "Evening prayer (personal)", "cadence": "daily", "type": "boolean"},
-    {"id": "couple_prayer", "label": "Couple prayer with Andrea", "cadence": "daily", "type": "boolean"},
-    {"id": "bom_reading", "label": "Book of Mormon reading", "cadence": "daily", "type": "boolean"},
+    {"id": "read_20min", "label": "Read 20 minutes", "cadence": "daily", "type": "minimum", "target": 20, "unit": "minutes"},
     {"id": "phone_games_cap", "label": "Phone games", "cadence": "daily", "type": "cap", "target": 60, "unit": "minutes"},
-    {"id": "social_media_cap", "label": "Social media", "cadence": "daily", "type": "cap", "target": 60, "unit": "minutes"}
+    {"id": "social_media_cap", "label": "Social media", "cadence": "daily", "type": "cap", "target": 60, "unit": "minutes"},
+    {"id": "couple_prayer", "label": "Couple prayer with Andrea", "cadence": "daily", "type": "boolean"},
+    {"id": "evening_prayer", "label": "Evening prayer (personal)", "cadence": "daily", "type": "boolean"},
+    {"id": "sleep_11pm", "label": "Asleep by 11:00 PM", "cadence": "custom_nights", "type": "boolean", "days": ["Sun","Mon","Tue","Wed","Thu"]},
+    {"id": "gym_session", "label": "Gym attendance", "cadence": "weekly_count", "type": "minimum", "target": 2, "unit": "sessions/week"},
+    {"id": "temple_attendance", "label": "Temple attendance", "cadence": "weekly_count", "type": "minimum", "target": 1, "unit": "visits/week"}
   ]
 }
