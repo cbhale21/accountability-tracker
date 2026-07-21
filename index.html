@@ -90,6 +90,31 @@
   .badge.bad { background: var(--bad-bg); color: var(--bad); }
   .badge.pending { background: var(--pending-bg); color: var(--pending); }
   .badge.muted { background: #f1ede6; color: var(--muted); }
+  .cell-toggle {
+    display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    border: none; cursor: pointer; font-family: inherit; -webkit-tap-highlight-color: transparent;
+    transition: transform 0.1s ease;
+  }
+  .cell-toggle:active { transform: scale(0.94); }
+  .cell-toggle.ok { background: var(--ok-bg); color: var(--ok); }
+  .cell-toggle.bad { background: var(--bad-bg); color: var(--bad); }
+  .cell-toggle.pending { background: var(--pending-bg); color: var(--pending); }
+  .cell-num-wrap { display: inline-flex; align-items: center; gap: 5px; }
+  .cell-input {
+    width: 56px; padding: 3px 6px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    font-family: inherit; text-align: center; border: 1px solid var(--border);
+  }
+  .cell-input.ok { background: var(--ok-bg); color: var(--ok); border-color: var(--ok); }
+  .cell-input.bad { background: var(--bad-bg); color: var(--bad); border-color: var(--bad); }
+  .cell-input.pending { background: var(--pending-bg); color: var(--pending); border-color: var(--pending); }
+  .cell-unit { font-size: 11px; color: var(--muted); }
+  .save-toast {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--crimson); color: #fff; padding: 8px 18px; border-radius: 999px;
+    font-size: 13px; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+  }
+  .save-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
   .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
   .nut-date { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
@@ -122,7 +147,7 @@
 <body>
 <div class="wrap">
   <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
-  <div class="subtitle">Generated 2026-07-21 15:57 &middot; Today is Tuesday, July 21, 2026</div>
+  <div class="subtitle">Generated 2026-07-21 16:13 &middot; Today is Tuesday, July 21, 2026</div>
 
   <nav class="tabs">
     <a href="#today">Today</a>
@@ -148,7 +173,7 @@
   </div>
   <div class="card">
     <h2>Daily &amp; Weekday Goals</h2>
-    <table><tr><th>Goal</th><th>Streak</th><th>Today</th></tr><tr><td>Wake up by 6:00 AM</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Morning prayer (personal)</td><td>0-day streak</td><td><span class="badge ok">done</span></td></tr><tr><td>Book of Mormon reading</td><td>0-day streak</td><td><span class="badge ok">done</span></td></tr><tr><td>30 push-ups</td><td>0-day streak</td><td><span class="badge ok">done</span></td></tr><tr><td>30 squats</td><td>0-day streak</td><td><span class="badge ok">done</span></td></tr><tr><td>5,000 steps</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Read 20 minutes</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Phone games</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Social media</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Couple prayer with Andrea</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Evening prayer (personal)</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Asleep by 11:00 PM</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr></table>
+    <table><tr><th>Goal</th><th>Streak</th><th>Today</th></tr><tr><td>Wake up by 6:00 AM</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="wake_6am" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr><tr><td>Morning prayer (personal)</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="morning_prayer" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>Book of Mormon reading</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="bom_reading" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>30 push-ups</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input ok" data-goal-id="pushups_30" data-goal-type="minimum" data-target="30" value="30" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/30 reps</span></span></td></tr><tr><td>30 squats</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input ok" data-goal-id="squats_30" data-goal-type="minimum" data-target="30" value="30" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/30 reps</span></span></td></tr><tr><td>5,000 steps</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="steps_5000" data-goal-type="minimum" data-target="5000" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/5000 steps</span></span></td></tr><tr><td>Read 20 minutes</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="read_20min" data-goal-type="minimum" data-target="20" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/20 minutes</span></span></td></tr><tr><td>Phone games</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="phone_games_cap" data-goal-type="cap" data-target="60" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/60 minutes</span></span></td></tr><tr><td>Social media</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="social_media_cap" data-goal-type="cap" data-target="60" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/60 minutes</span></span></td></tr><tr><td>Couple prayer with Andrea</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="couple_prayer" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr><tr><td>Evening prayer (personal)</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="evening_prayer" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr><tr><td>Asleep by 11:00 PM</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="sleep_11pm" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr></table>
   </div>
 
   <div class="card">
@@ -198,5 +223,68 @@
 
   <div class="footer">This page regenerates each time you log something new and get a check-in. Reopen it any time to see your latest progress.</div>
 </div>
+<div class="save-toast" id="saveToast">Saved</div>
+<script>
+  var TODAY_DATE = "2026-07-21";
+  var WRITE_URL = "https://script.google.com/macros/s/AKfycbwbXFbys8ogxOptymzY1D9QH52IxDSFpJaGUkhMCkpJhfHlX7j0xbobHEHrdiep4sfJYw/exec";
+
+  function showToast(msg) {
+    var t = document.getElementById('saveToast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._hideTimer);
+    t._hideTimer = setTimeout(function() { t.classList.remove('show'); }, 1600);
+  }
+
+  function saveGoal(goalId, payload) {
+    if (!WRITE_URL) { showToast('Not connected'); return; }
+    payload.goalId = goalId;
+    payload.date = TODAY_DATE;
+    fetch(WRITE_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload)
+    }).catch(function() { /* fire-and-forget */ });
+    showToast('Saved');
+  }
+
+  function cycleGoal(btn) {
+    var goalId = btn.getAttribute('data-goal-id');
+    var state = btn.getAttribute('data-state');
+    var next, cls, text, payload;
+    if (state === 'none') {
+      next = 'done'; cls = 'ok'; text = 'done';
+      payload = {kind: 'boolean', boolValue: true};
+    } else if (state === 'done') {
+      next = 'missed'; cls = 'bad'; text = 'missed';
+      payload = {kind: 'boolean', boolValue: false};
+    } else {
+      next = 'none'; cls = 'pending'; text = 'not yet logged';
+      payload = {kind: 'boolean', clear: true};
+    }
+    btn.setAttribute('data-state', next);
+    btn.className = 'cell-toggle ' + cls;
+    btn.textContent = text;
+    saveGoal(goalId, payload);
+  }
+
+  function updateNumeric(input) {
+    var goalId = input.getAttribute('data-goal-id');
+    var goalType = input.getAttribute('data-goal-type');
+    var target = parseFloat(input.getAttribute('data-target'));
+    var raw = input.value;
+    input.classList.remove('ok', 'bad', 'pending');
+    if (raw === '') {
+      input.classList.add('pending');
+      saveGoal(goalId, {kind: 'value', clear: true});
+      return;
+    }
+    var val = parseFloat(raw);
+    var success = goalType === 'minimum' ? (val >= target) : (val <= target);
+    input.classList.add(success ? 'ok' : 'bad');
+    saveGoal(goalId, {kind: 'value', numValue: val});
+  }
+</script>
 </body>
 </html>

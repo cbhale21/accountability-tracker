@@ -15,6 +15,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 GOALS_PATH = os.path.join(HERE, "goals.json")
 LOG_PATH = os.path.join(HERE, "log.json")
 QUOTE_PATH = os.path.join(HERE, "quote_of_day.json")
+CONFIG_PATH = os.path.join(HERE, "write_backend_config.json")
 OUT_PATH = os.path.join(HERE, "dashboard.html")
 
 DOW_ABBR = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -29,7 +30,11 @@ def load():
     if os.path.exists(QUOTE_PATH):
         with open(QUOTE_PATH) as f:
             quote = json.load(f)
-    return goals, log, quote
+    apps_script_url = ""
+    if os.path.exists(CONFIG_PATH):
+        with open(CONFIG_PATH) as f:
+            apps_script_url = json.load(f).get("apps_script_url", "")
+    return goals, log, quote, apps_script_url
 
 
 def parse_date(s):
@@ -127,6 +132,45 @@ def badge(text, cls):
     return f'<span class="badge {cls}">{esc(text)}</span>'
 
 
+def interactive_cell(goal, g_entry):
+    """Render today's cell as tappable (boolean) or an inline-editable number
+    (minimum/cap), so Chris can log today's result directly on the live site.
+    Only ever used for TODAY -- history stays read-only static HTML."""
+    gid = goal["id"]
+    if goal["type"] == "boolean":
+        if g_entry is None:
+            state, cls, text = "none", "pending", "not yet logged"
+        elif g_entry.get("done"):
+            state, cls, text = "done", "ok", "done"
+        else:
+            state, cls, text = "missed", "bad", "missed"
+        return (
+            f'<button type="button" class="cell-toggle {cls}" '
+            f'data-goal-id="{esc(gid)}" data-state="{state}" '
+            f'onclick="cycleGoal(this)">{esc(text)}</button>'
+        )
+    else:
+        value = g_entry.get("value") if g_entry else None
+        target = goal.get("target", "")
+        unit = goal.get("unit", "")
+        if value is None:
+            cls = "pending"
+        elif goal["type"] == "minimum":
+            cls = "ok" if value >= target else "bad"
+        else:  # cap
+            cls = "ok" if value <= target else "bad"
+        val_attr = "" if value is None else esc(value)
+        return (
+            f'<span class="cell-num-wrap">'
+            f'<input type="number" inputmode="numeric" class="cell-input {cls}" '
+            f'data-goal-id="{esc(gid)}" data-goal-type="{esc(goal["type"])}" '
+            f'data-target="{esc(target)}" value="{val_attr}" placeholder="--" '
+            f'onchange="updateNumeric(this)">'
+            f'<span class="cell-unit">/{esc(target)} {esc(unit)}</span>'
+            f'</span>'
+        )
+
+
 # ---------------------------------------------------------------- Dashboard section
 
 def build_dashboard_section(goals, log, quote, today):
@@ -143,17 +187,22 @@ def build_dashboard_section(goals, log, quote, today):
     daily_goals = [g for g in goals if g["cadence"] in ("daily", "weekdays", "custom_nights")]
     weekly_goals = [g for g in goals if g["cadence"] == "weekly_count"]
 
+    today_str = fmt_date(today)
     rows = []
     for g in daily_goals:
         streak = compute_streak(g, log, today)
         applies_today = applies_on(g, today)
-        status = today_status(g, log, today) if applies_today else "n/a today"
-        cls = {"done": "ok", "missed": "bad", "not yet logged": "pending"}.get(status, "muted")
-        rows.append((g["label"], f"{streak}-day streak", status, cls))
+        if not applies_today:
+            cell_html = badge("n/a today", "muted")
+        else:
+            day_entry = log["daily"].get(today_str, {})
+            g_entry = day_entry.get("goals", {}).get(g["id"])
+            cell_html = interactive_cell(g, g_entry)
+        rows.append((g["label"], f"{streak}-day streak", cell_html))
 
     daily_rows_html = "".join(
-        f'<tr><td>{esc(l)}</td><td>{esc(s)}</td><td>{badge(st, c)}</td></tr>'
-        for l, s, st, c in rows
+        f'<tr><td>{esc(l)}</td><td>{esc(s)}</td><td>{c}</td></tr>'
+        for l, s, c in rows
     )
 
     weekly_rows = []
@@ -469,6 +518,31 @@ CSS = '''
   .badge.bad { background: var(--bad-bg); color: var(--bad); }
   .badge.pending { background: var(--pending-bg); color: var(--pending); }
   .badge.muted { background: #f1ede6; color: var(--muted); }
+  .cell-toggle {
+    display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    border: none; cursor: pointer; font-family: inherit; -webkit-tap-highlight-color: transparent;
+    transition: transform 0.1s ease;
+  }
+  .cell-toggle:active { transform: scale(0.94); }
+  .cell-toggle.ok { background: var(--ok-bg); color: var(--ok); }
+  .cell-toggle.bad { background: var(--bad-bg); color: var(--bad); }
+  .cell-toggle.pending { background: var(--pending-bg); color: var(--pending); }
+  .cell-num-wrap { display: inline-flex; align-items: center; gap: 5px; }
+  .cell-input {
+    width: 56px; padding: 3px 6px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    font-family: inherit; text-align: center; border: 1px solid var(--border);
+  }
+  .cell-input.ok { background: var(--ok-bg); color: var(--ok); border-color: var(--ok); }
+  .cell-input.bad { background: var(--bad-bg); color: var(--bad); border-color: var(--bad); }
+  .cell-input.pending { background: var(--pending-bg); color: var(--pending); border-color: var(--pending); }
+  .cell-unit { font-size: 11px; color: var(--muted); }
+  .save-toast {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--crimson); color: #fff; padding: 8px 18px; border-radius: 999px;
+    font-size: 13px; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
+  }
+  .save-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
   .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
   .nut-date { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
@@ -500,7 +574,7 @@ CSS = '''
 
 
 def main():
-    goals, log, quote = load()
+    goals, log, quote, apps_script_url = load()
     today = datetime.date.today()
 
     generated_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -556,6 +630,69 @@ def main():
 
   <div class="footer">This page regenerates each time you log something new and get a check-in. Reopen it any time to see your latest progress.</div>
 </div>
+<div class="save-toast" id="saveToast">Saved</div>
+<script>
+  var TODAY_DATE = {json.dumps(fmt_date(today))};
+  var WRITE_URL = {json.dumps(apps_script_url)};
+
+  function showToast(msg) {{
+    var t = document.getElementById('saveToast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._hideTimer);
+    t._hideTimer = setTimeout(function() {{ t.classList.remove('show'); }}, 1600);
+  }}
+
+  function saveGoal(goalId, payload) {{
+    if (!WRITE_URL) {{ showToast('Not connected'); return; }}
+    payload.goalId = goalId;
+    payload.date = TODAY_DATE;
+    fetch(WRITE_URL, {{
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {{'Content-Type': 'text/plain;charset=utf-8'}},
+      body: JSON.stringify(payload)
+    }}).catch(function() {{ /* fire-and-forget */ }});
+    showToast('Saved');
+  }}
+
+  function cycleGoal(btn) {{
+    var goalId = btn.getAttribute('data-goal-id');
+    var state = btn.getAttribute('data-state');
+    var next, cls, text, payload;
+    if (state === 'none') {{
+      next = 'done'; cls = 'ok'; text = 'done';
+      payload = {{kind: 'boolean', boolValue: true}};
+    }} else if (state === 'done') {{
+      next = 'missed'; cls = 'bad'; text = 'missed';
+      payload = {{kind: 'boolean', boolValue: false}};
+    }} else {{
+      next = 'none'; cls = 'pending'; text = 'not yet logged';
+      payload = {{kind: 'boolean', clear: true}};
+    }}
+    btn.setAttribute('data-state', next);
+    btn.className = 'cell-toggle ' + cls;
+    btn.textContent = text;
+    saveGoal(goalId, payload);
+  }}
+
+  function updateNumeric(input) {{
+    var goalId = input.getAttribute('data-goal-id');
+    var goalType = input.getAttribute('data-goal-type');
+    var target = parseFloat(input.getAttribute('data-target'));
+    var raw = input.value;
+    input.classList.remove('ok', 'bad', 'pending');
+    if (raw === '') {{
+      input.classList.add('pending');
+      saveGoal(goalId, {{kind: 'value', clear: true}});
+      return;
+    }}
+    var val = parseFloat(raw);
+    var success = goalType === 'minimum' ? (val >= target) : (val <= target);
+    input.classList.add(success ? 'ok' : 'bad');
+    saveGoal(goalId, {{kind: 'value', numValue: val}});
+  }}
+</script>
 </body>
 </html>
 '''
