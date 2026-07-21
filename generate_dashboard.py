@@ -361,17 +361,112 @@ def build_daily_log_section(goals, log):
     if not dates:
         rows_html = f'<tr><td colspan="{len(all_goals)+1}" class="muted">No entries yet.</td></tr>'
 
-    legend = " &middot; ".join(
-        f'{goal_icon(g)} {esc(g["label"])}' for g in all_goals
-    )
-
     return f'''
   <div class="card cal-card">
     <h2>Daily Log (full history)</h2>
-    <div class="cal-legend">{legend}</div>
     <div class="cal-scroll">
     <table class="cal-table log-table"><tr><th>Date</th>{header}</tr>{rows_html}</table>
     </div>
+  </div>'''
+
+
+# ---------------------------------------------------------------- Weight tracker section
+
+def build_weight_chart_svg(entries, goal_weight):
+    """entries: list of (date_str, weight) sorted ascending. Renders an inline SVG
+    line chart -- no chart library, keeps the site fully self-contained/offline."""
+    if len(entries) < 2:
+        return '<p class="muted">Log a few weigh-ins to see your trend line here.</p>'
+
+    W, H = 700, 220
+    margin_l, margin_r, margin_t, margin_b = 8, 8, 20, 24
+    plot_w = W - margin_l - margin_r
+    plot_h = H - margin_t - margin_b
+
+    values = [w for _, w in entries] + [goal_weight]
+    lo = min(values) - 3
+    hi = max(values) + 3
+    if hi == lo:
+        hi = lo + 1
+
+    def x_for(i):
+        if len(entries) == 1:
+            return margin_l
+        return margin_l + plot_w * i / (len(entries) - 1)
+
+    def y_for(v):
+        return margin_t + plot_h * (hi - v) / (hi - lo)
+
+    points = " ".join(f"{x_for(i):.1f},{y_for(w):.1f}" for i, (d, w) in enumerate(entries))
+    circles = "".join(
+        f'<circle cx="{x_for(i):.1f}" cy="{y_for(w):.1f}" r="3.5" fill="var(--crimson)"></circle>'
+        for i, (d, w) in enumerate(entries)
+    )
+    goal_y = y_for(goal_weight)
+    first_date, last_date = entries[0][0], entries[-1][0]
+
+    return f'''
+    <div class="weight-chart-wrap">
+    <svg viewBox="0 0 {W} {H}" class="weight-chart" preserveAspectRatio="none">
+      <line x1="{margin_l}" y1="{goal_y:.1f}" x2="{W - margin_r}" y2="{goal_y:.1f}"
+        stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="5,4"></line>
+      <text x="{W - margin_r}" y="{goal_y - 6:.1f}" text-anchor="end" class="weight-goal-label">Goal {esc(goal_weight)} lbs</text>
+      <polyline points="{points}" fill="none" stroke="var(--crimson)" stroke-width="2.5"></polyline>
+      {circles}
+      <text x="{margin_l}" y="{H - 6}" class="weight-axis-label">{esc(first_date)}</text>
+      <text x="{W - margin_r}" y="{H - 6}" text-anchor="end" class="weight-axis-label">{esc(last_date)}</text>
+    </svg>
+    </div>'''
+
+
+def build_weight_section(log, today):
+    entries = []
+    for date_str, day in sorted(log.get("daily", {}).items()):
+        w = day.get("weight_lbs")
+        if w is not None:
+            entries.append((date_str, w))
+
+    goal_weight = log.get("goal_weight_lbs", 200)
+    today_str = fmt_date(today)
+    today_weight = log["daily"].get(today_str, {}).get("weight_lbs")
+    latest_weight = entries[-1][1] if entries else None
+
+    distance_text = ""
+    if latest_weight is not None:
+        diff = latest_weight - goal_weight
+        if abs(diff) < 0.05:
+            distance_text = f"You've reached your goal weight of {goal_weight} lbs!"
+        elif diff > 0:
+            distance_text = f"{round(diff, 1)} lbs to go to reach your goal of {goal_weight} lbs"
+        else:
+            distance_text = f"{round(-diff, 1)} lbs under your goal of {goal_weight} lbs"
+
+    chart_html = build_weight_chart_svg(entries, goal_weight)
+    weight_val = "" if today_weight is None else esc(today_weight)
+
+    return f'''
+  <div class="card weight-card">
+    <h2>Weight Progress</h2>
+    <div class="weight-controls">
+      <div class="weight-field">
+        <label>Today's weigh-in</label>
+        <span class="weight-input-wrap">
+          <input type="number" step="0.1" inputmode="decimal" class="weight-input"
+            value="{weight_val}" placeholder="--" onchange="logWeight(this)">
+          <span class="cell-unit">lbs</span>
+        </span>
+      </div>
+      <div class="weight-field">
+        <label>Goal weight</label>
+        <span class="weight-input-wrap">
+          <input type="number" step="0.1" inputmode="decimal" class="weight-input goal"
+            value="{esc(goal_weight)}" onchange="updateGoalWeight(this)">
+          <span class="cell-unit">lbs</span>
+        </span>
+      </div>
+    </div>
+    <div class="weight-distance" id="weightDistance">{esc(distance_text)}</div>
+    {chart_html}
   </div>'''
 
 
@@ -542,6 +637,19 @@ CSS = '''
     font-size: 13px; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.25s ease;
     box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
   }
+  .weight-controls { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 10px; }
+  .weight-field label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 4px; }
+  .weight-input-wrap { display: inline-flex; align-items: center; gap: 6px; }
+  .weight-input {
+    width: 72px; padding: 5px 8px; border-radius: 8px; font-size: 15px; font-weight: 700;
+    font-family: inherit; text-align: center; border: 1px solid var(--border); background: var(--gold-bg); color: var(--ink);
+  }
+  .weight-input.goal { background: var(--card); }
+  .weight-distance { font-size: 14px; font-weight: 600; color: var(--crimson); margin-bottom: 12px; }
+  .weight-chart-wrap { width: 100%; }
+  .weight-chart { width: 100%; height: auto; display: block; }
+  .weight-axis-label { font-size: 10px; fill: var(--muted); }
+  .weight-goal-label { font-size: 11px; fill: var(--gold); font-weight: 700; }
   .save-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
   .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
@@ -581,9 +689,16 @@ def main():
 
     vision_board_section = build_vision_board_section()
     dashboard_section = build_dashboard_section(goals, log, quote, today)
+    weight_section = build_weight_section(log, today)
     calendar_section = build_calendar_section(goals, log, today)
     daily_log_section = build_daily_log_section(goals, log)
     nutrition_log_section = build_nutrition_log_section(log)
+
+    goal_weight_for_js = log.get("goal_weight_lbs", 200)
+    weight_entries_for_js = sorted(
+        (d, day.get("weight_lbs")) for d, day in log.get("daily", {}).items() if day.get("weight_lbs") is not None
+    )
+    latest_weight_for_js = weight_entries_for_js[-1][1] if weight_entries_for_js else None
 
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -607,17 +722,21 @@ def main():
 
   <nav class="tabs">
     <a href="#today">Today</a>
+    <a href="#weight">Weight</a>
     <a href="#vision">Vision Board</a>
     <a href="#calendar">Calendar</a>
     <a href="#daily-log">Daily Log</a>
     <a href="#nutrition-log">Nutrition Log</a>
   </nav>
 
-  <div id="vision"></div>
-  {vision_board_section}
-
   <div id="today"></div>
   {dashboard_section}
+
+  <div id="weight"></div>
+  {weight_section}
+
+  <div id="vision"></div>
+  {vision_board_section}
 
   <div id="calendar"></div>
   {calendar_section}
@@ -634,6 +753,8 @@ def main():
 <script>
   var TODAY_DATE = {json.dumps(fmt_date(today))};
   var WRITE_URL = {json.dumps(apps_script_url)};
+  var GOAL_WEIGHT = {json.dumps(goal_weight_for_js)};
+  var LATEST_WEIGHT = {json.dumps(latest_weight_for_js)};
 
   function showToast(msg) {{
     var t = document.getElementById('saveToast');
@@ -691,6 +812,42 @@ def main():
     var success = goalType === 'minimum' ? (val >= target) : (val <= target);
     input.classList.add(success ? 'ok' : 'bad');
     saveGoal(goalId, {{kind: 'value', numValue: val}});
+  }}
+
+  function updateDistanceText(latest) {{
+    var el = document.getElementById('weightDistance');
+    if (!el) return;
+    if (latest === null || latest === undefined || isNaN(latest)) {{ el.textContent = ''; return; }}
+    var diff = Math.round((latest - GOAL_WEIGHT) * 10) / 10;
+    if (Math.abs(diff) < 0.05) {{
+      el.textContent = "You've reached your goal weight of " + GOAL_WEIGHT + " lbs!";
+    }} else if (diff > 0) {{
+      el.textContent = diff + " lbs to go to reach your goal of " + GOAL_WEIGHT + " lbs";
+    }} else {{
+      el.textContent = (-diff) + " lbs under your goal of " + GOAL_WEIGHT + " lbs";
+    }}
+  }}
+
+  function logWeight(input) {{
+    var raw = input.value;
+    if (raw === '') {{
+      LATEST_WEIGHT = null;
+      saveGoal(null, {{kind: 'weight', clear: true}});
+      updateDistanceText(null);
+      return;
+    }}
+    var val = parseFloat(raw);
+    LATEST_WEIGHT = val;
+    saveGoal(null, {{kind: 'weight', numValue: val}});
+    updateDistanceText(val);
+  }}
+
+  function updateGoalWeight(input) {{
+    var val = parseFloat(input.value);
+    if (isNaN(val)) return;
+    GOAL_WEIGHT = val;
+    saveGoal(null, {{kind: 'goal_weight', numValue: val}});
+    updateDistanceText(LATEST_WEIGHT);
   }}
 </script>
 </body>

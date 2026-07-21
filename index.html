@@ -114,6 +114,19 @@
     font-size: 13px; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.25s ease;
     box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100;
   }
+  .weight-controls { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 10px; }
+  .weight-field label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 4px; }
+  .weight-input-wrap { display: inline-flex; align-items: center; gap: 6px; }
+  .weight-input {
+    width: 72px; padding: 5px 8px; border-radius: 8px; font-size: 15px; font-weight: 700;
+    font-family: inherit; text-align: center; border: 1px solid var(--border); background: var(--gold-bg); color: var(--ink);
+  }
+  .weight-input.goal { background: var(--card); }
+  .weight-distance { font-size: 14px; font-weight: 600; color: var(--crimson); margin-bottom: 12px; }
+  .weight-chart-wrap { width: 100%; }
+  .weight-chart { width: 100%; height: auto; display: block; }
+  .weight-axis-label { font-size: 10px; fill: var(--muted); }
+  .weight-goal-label { font-size: 11px; fill: var(--gold); font-weight: 700; }
   .save-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
   .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
@@ -147,30 +160,19 @@
 <body>
 <div class="wrap">
   <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
-  <div class="subtitle">Generated 2026-07-21 16:13 &middot; Today is Tuesday, July 21, 2026</div>
+  <div class="subtitle">Generated 2026-07-21 16:29 &middot; Today is Tuesday, July 21, 2026</div>
 
   <nav class="tabs">
     <a href="#today">Today</a>
+    <a href="#weight">Weight</a>
     <a href="#vision">Vision Board</a>
     <a href="#calendar">Calendar</a>
     <a href="#daily-log">Daily Log</a>
     <a href="#nutrition-log">Nutrition Log</a>
   </nav>
 
-  <div id="vision"></div>
-  
-  <div class="card vision-card">
-    <h2>My Why &mdash; Vision Board</h2>
-    <p class="vision-intro">True, Faithful, and Valiant in every responsibility and stewardship &mdash; this is the life these daily habits are building toward.</p>
-    <div class="vision-rows"><div class="vision-row vision-row-hero"><img src="visionboard/vb01.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb06.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb03.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb04.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb05.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb10.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb12.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb08.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb09.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb11.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb02.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb13.jpg" alt="Vision board image" loading="lazy"></div></div>
-  </div>
-
   <div id="today"></div>
   
-  <div class="card quote-card">
-    <h2>Today's Health Tip</h2>
-    <p class="quote-text">Caffeine has a 5-6 hour half-life, so a serving in the morning is fully clear of your system well before an 11:00 PM bedtime -- no need to worry about it hurting your sleep goal today. Just keep afternoon caffeine light so the same is true year-round.</p>
-  </div>
   <div class="card">
     <h2>Daily &amp; Weekday Goals</h2>
     <table><tr><th>Goal</th><th>Streak</th><th>Today</th></tr><tr><td>Wake up by 6:00 AM</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="wake_6am" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr><tr><td>Morning prayer (personal)</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="morning_prayer" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>Book of Mormon reading</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="bom_reading" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>30 push-ups</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input ok" data-goal-id="pushups_30" data-goal-type="minimum" data-target="30" value="30" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/30 reps</span></span></td></tr><tr><td>30 squats</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input ok" data-goal-id="squats_30" data-goal-type="minimum" data-target="30" value="30" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/30 reps</span></span></td></tr><tr><td>5,000 steps</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="steps_5000" data-goal-type="minimum" data-target="5000" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/5000 steps</span></span></td></tr><tr><td>Read 20 minutes</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="read_20min" data-goal-type="minimum" data-target="20" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/20 minutes</span></span></td></tr><tr><td>Phone games</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="phone_games_cap" data-goal-type="cap" data-target="60" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/60 minutes</span></span></td></tr><tr><td>Social media</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="social_media_cap" data-goal-type="cap" data-target="60" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/60 minutes</span></span></td></tr><tr><td>Couple prayer with Andrea</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="couple_prayer" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr><tr><td>Evening prayer (personal)</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="evening_prayer" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr><tr><td>Asleep by 11:00 PM</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="sleep_11pm" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr></table>
@@ -192,6 +194,40 @@
     <div class="avg-water">7-day avg water: 44.0 oz</div>
   </div>
 
+  <div id="weight"></div>
+  
+  <div class="card weight-card">
+    <h2>Weight Progress</h2>
+    <div class="weight-controls">
+      <div class="weight-field">
+        <label>Today's weigh-in</label>
+        <span class="weight-input-wrap">
+          <input type="number" step="0.1" inputmode="decimal" class="weight-input"
+            value="" placeholder="--" onchange="logWeight(this)">
+          <span class="cell-unit">lbs</span>
+        </span>
+      </div>
+      <div class="weight-field">
+        <label>Goal weight</label>
+        <span class="weight-input-wrap">
+          <input type="number" step="0.1" inputmode="decimal" class="weight-input goal"
+            value="200" onchange="updateGoalWeight(this)">
+          <span class="cell-unit">lbs</span>
+        </span>
+      </div>
+    </div>
+    <div class="weight-distance" id="weightDistance"></div>
+    <p class="muted">Log a few weigh-ins to see your trend line here.</p>
+  </div>
+
+  <div id="vision"></div>
+  
+  <div class="card vision-card">
+    <h2>My Why &mdash; Vision Board</h2>
+    <p class="vision-intro">True, Faithful, and Valiant in every responsibility and stewardship &mdash; this is the life these daily habits are building toward.</p>
+    <div class="vision-rows"><div class="vision-row vision-row-hero"><img src="visionboard/vb01.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb06.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb03.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb04.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb05.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb10.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb12.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb08.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb09.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb11.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb02.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb13.jpg" alt="Vision board image" loading="lazy"></div></div>
+  </div>
+
   <div id="calendar"></div>
   
   <div class="card cal-card">
@@ -206,7 +242,6 @@
   
   <div class="card cal-card">
     <h2>Daily Log (full history)</h2>
-    <div class="cal-legend">⏰ Wake up by 6:00 AM &middot; 🙏 Morning prayer (personal) &middot; 📖 Book of Mormon reading &middot; 💪 30 push-ups &middot; 🦵 30 squats &middot; 👟 5,000 steps &middot; 📚 Read 20 minutes &middot; 🎮 Phone games &middot; 📱 Social media &middot; 💞 Couple prayer with Andrea &middot; 🌙 Evening prayer (personal) &middot; 😴 Asleep by 11:00 PM &middot; 🏋️ Gym attendance &middot; ⛪ Temple attendance</div>
     <div class="cal-scroll">
     <table class="cal-table log-table"><tr><th>Date</th><th title="Wake up by 6:00 AM">⏰</th><th title="Morning prayer (personal)">🙏</th><th title="Book of Mormon reading">📖</th><th title="30 push-ups">💪</th><th title="30 squats">🦵</th><th title="5,000 steps">👟</th><th title="Read 20 minutes">📚</th><th title="Phone games">🎮</th><th title="Social media">📱</th><th title="Couple prayer with Andrea">💞</th><th title="Evening prayer (personal)">🌙</th><th title="Asleep by 11:00 PM">😴</th><th title="Gym attendance">🏋️</th><th title="Temple attendance">⛪</th></tr><tr><td class="cal-label">2026-07-21</td><td class="cal-blank"></td><td class="cal-ok">&#10003;</td><td class="cal-ok">&#10003;</td><td class="cal-ok">30</td><td class="cal-ok">30</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr></table>
     </div>
@@ -227,6 +262,8 @@
 <script>
   var TODAY_DATE = "2026-07-21";
   var WRITE_URL = "https://script.google.com/macros/s/AKfycbwbXFbys8ogxOptymzY1D9QH52IxDSFpJaGUkhMCkpJhfHlX7j0xbobHEHrdiep4sfJYw/exec";
+  var GOAL_WEIGHT = 200;
+  var LATEST_WEIGHT = null;
 
   function showToast(msg) {
     var t = document.getElementById('saveToast');
@@ -284,6 +321,42 @@
     var success = goalType === 'minimum' ? (val >= target) : (val <= target);
     input.classList.add(success ? 'ok' : 'bad');
     saveGoal(goalId, {kind: 'value', numValue: val});
+  }
+
+  function updateDistanceText(latest) {
+    var el = document.getElementById('weightDistance');
+    if (!el) return;
+    if (latest === null || latest === undefined || isNaN(latest)) { el.textContent = ''; return; }
+    var diff = Math.round((latest - GOAL_WEIGHT) * 10) / 10;
+    if (Math.abs(diff) < 0.05) {
+      el.textContent = "You've reached your goal weight of " + GOAL_WEIGHT + " lbs!";
+    } else if (diff > 0) {
+      el.textContent = diff + " lbs to go to reach your goal of " + GOAL_WEIGHT + " lbs";
+    } else {
+      el.textContent = (-diff) + " lbs under your goal of " + GOAL_WEIGHT + " lbs";
+    }
+  }
+
+  function logWeight(input) {
+    var raw = input.value;
+    if (raw === '') {
+      LATEST_WEIGHT = null;
+      saveGoal(null, {kind: 'weight', clear: true});
+      updateDistanceText(null);
+      return;
+    }
+    var val = parseFloat(raw);
+    LATEST_WEIGHT = val;
+    saveGoal(null, {kind: 'weight', numValue: val});
+    updateDistanceText(val);
+  }
+
+  function updateGoalWeight(input) {
+    var val = parseFloat(input.value);
+    if (isNaN(val)) return;
+    GOAL_WEIGHT = val;
+    saveGoal(null, {kind: 'goal_weight', numValue: val});
+    updateDistanceText(LATEST_WEIGHT);
   }
 </script>
 </body>
