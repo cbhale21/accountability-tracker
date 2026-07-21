@@ -112,13 +112,17 @@
   td.cal-pending { background: var(--pending-bg); color: var(--pending); font-weight: 700; }
   td.cal-blank { background: transparent; }
   td.nut-cell { text-align: left; font-size: 12px; white-space: normal; min-width: 260px; }
+  table.log-table { table-layout: fixed; }
+  table.log-table th, table.log-table td { width: 30px; padding: 4px 2px; font-size: 15px; }
+  table.log-table th { font-size: 15px; cursor: help; }
+  table.log-table td.cal-label, table.log-table th:first-child { width: 84px; font-size: 12px; min-width: 0; }
   .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
-  <div class="subtitle">Generated 2026-07-21 15:54 &middot; Today is Tuesday, July 21, 2026</div>
+  <div class="subtitle">Generated 2026-07-21 15:57 &middot; Today is Tuesday, July 21, 2026</div>
 
   <nav class="tabs">
     <a href="#today">Today</a>
@@ -177,8 +181,9 @@
   
   <div class="card cal-card">
     <h2>Daily Log (full history)</h2>
+    <div class="cal-legend">⏰ Wake up by 6:00 AM &middot; 🙏 Morning prayer (personal) &middot; 📖 Book of Mormon reading &middot; 💪 30 push-ups &middot; 🦵 30 squats &middot; 👟 5,000 steps &middot; 📚 Read 20 minutes &middot; 🎮 Phone games &middot; 📱 Social media &middot; 💞 Couple prayer with Andrea &middot; 🌙 Evening prayer (personal) &middot; 😴 Asleep by 11:00 PM &middot; 🏋️ Gym attendance &middot; ⛪ Temple attendance</div>
     <div class="cal-scroll">
-    <table class="cal-table"><tr><th>Date</th><th>Wake up by 6:00 AM</th><th>Morning prayer (personal)</th><th>Book of Mormon reading</th><th>30 push-ups</th><th>30 squats</th><th>5,000 steps</th><th>Read 20 minutes</th><th>Phone games</th><th>Social media</th><th>Couple prayer with Andrea</th><th>Evening prayer (personal)</th><th>Asleep by 11:00 PM</th><th>Gym attendance</th><th>Temple attendance</th></tr><tr><td class="cal-label">2026-07-21</td><td class="cal-blank"></td><td class="cal-ok">Yes</td><td class="cal-ok">Yes</td><td class="cal-ok">30</td><td class="cal-ok">30</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr></table>
+    <table class="cal-table log-table"><tr><th>Date</th><th title="Wake up by 6:00 AM">⏰</th><th title="Morning prayer (personal)">🙏</th><th title="Book of Mormon reading">📖</th><th title="30 push-ups">💪</th><th title="30 squats">🦵</th><th title="5,000 steps">👟</th><th title="Read 20 minutes">📚</th><th title="Phone games">🎮</th><th title="Social media">📱</th><th title="Couple prayer with Andrea">💞</th><th title="Evening prayer (personal)">🌙</th><th title="Asleep by 11:00 PM">😴</th><th title="Gym attendance">🏋️</th><th title="Temple attendance">⛪</th></tr><tr><td class="cal-label">2026-07-21</td><td class="cal-blank"></td><td class="cal-ok">&#10003;</td><td class="cal-ok">&#10003;</td><td class="cal-ok">30</td><td class="cal-ok">30</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr></table>
     </div>
   </div>
 

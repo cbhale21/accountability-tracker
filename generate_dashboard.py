@@ -258,12 +258,39 @@ def build_calendar_section(goals, log, today):
 
 # ---------------------------------------------------------------- Daily Log section
 
+# One compact glyph per goal so the Daily Log table can show every column without
+# horizontal scrolling. Full name is still available on hover (<th title="...">) and
+# in the legend printed above the table.
+GOAL_ICONS = {
+    "wake_6am": "⏰",           # alarm clock
+    "morning_prayer": "\U0001F64F",  # praying hands
+    "bom_reading": "\U0001F4D6",     # open book
+    "pushups_30": "\U0001F4AA",      # flexed bicep
+    "squats_30": "\U0001F9B5",       # leg
+    "steps_5000": "\U0001F45F",      # running shoe
+    "read_20min": "\U0001F4DA",      # books
+    "phone_games_cap": "\U0001F3AE", # game controller
+    "social_media_cap": "\U0001F4F1",# mobile phone
+    "couple_prayer": "\U0001F49E",   # revolving hearts
+    "evening_prayer": "\U0001F319",  # crescent moon
+    "sleep_11pm": "\U0001F634",      # sleeping face
+    "gym_session": "\U0001F3CB️", # weight lifter
+    "temple_attendance": "⛪",   # church
+}
+
+
+def goal_icon(goal):
+    return GOAL_ICONS.get(goal["id"], goal["label"][:1].upper())
+
+
 def build_daily_log_section(goals, log):
     all_goals = [g for g in goals if g["cadence"] != "weekly_count"] + \
                 [g for g in goals if g["cadence"] == "weekly_count"]
     dates = sorted(log["daily"].keys(), reverse=True)
 
-    header = "".join(f"<th>{esc(g['label'])}</th>" for g in all_goals)
+    header = "".join(
+        f'<th title="{esc(g["label"])}">{goal_icon(g)}</th>' for g in all_goals
+    )
     rows_html = ""
     for date_str in dates:
         day_entry = log["daily"][date_str]
@@ -276,20 +303,25 @@ def build_daily_log_section(goals, log):
             success = goal_success(g, g_entry)
             cls = "cal-ok" if success else "cal-bad"
             if g["type"] == "boolean":
-                val = "Yes" if g_entry.get("done") else "No"
+                val = "&#10003;" if g_entry.get("done") else "&#10007;"
             else:
-                val = g_entry.get("value", "")
-            cells += f'<td class="{cls}">{esc(val)}</td>'
+                val = esc(g_entry.get("value", ""))
+            cells += f'<td class="{cls}">{val}</td>'
         rows_html += f'<tr><td class="cal-label">{esc(date_str)}</td>{cells}</tr>'
 
     if not dates:
         rows_html = f'<tr><td colspan="{len(all_goals)+1}" class="muted">No entries yet.</td></tr>'
 
+    legend = " &middot; ".join(
+        f'{goal_icon(g)} {esc(g["label"])}' for g in all_goals
+    )
+
     return f'''
   <div class="card cal-card">
     <h2>Daily Log (full history)</h2>
+    <div class="cal-legend">{legend}</div>
     <div class="cal-scroll">
-    <table class="cal-table"><tr><th>Date</th>{header}</tr>{rows_html}</table>
+    <table class="cal-table log-table"><tr><th>Date</th>{header}</tr>{rows_html}</table>
     </div>
   </div>'''
 
@@ -459,6 +491,10 @@ CSS = '''
   td.cal-pending { background: var(--pending-bg); color: var(--pending); font-weight: 700; }
   td.cal-blank { background: transparent; }
   td.nut-cell { text-align: left; font-size: 12px; white-space: normal; min-width: 260px; }
+  table.log-table { table-layout: fixed; }
+  table.log-table th, table.log-table td { width: 30px; padding: 4px 2px; font-size: 15px; }
+  table.log-table th { font-size: 15px; cursor: help; }
+  table.log-table td.cal-label, table.log-table th:first-child { width: 84px; font-size: 12px; min-width: 0; }
   .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
 '''
 
