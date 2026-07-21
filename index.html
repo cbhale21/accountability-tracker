@@ -2,162 +2,53 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chris's Accountability Dashboard</title>
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
 <style>
-  :root {
-    --bg: #faf8f5;
-    --card: #ffffff;
-    --ink: #2b2620;
-    --muted: #8a8175;
-    --ok: #2f7d4f;
-    --ok-bg: #e5f4ea;
-    --bad: #b3432c;
-    --bad-bg: #fbe8e3;
-    --pending: #a5761f;
-    --pending-bg: #fbf1de;
-    --border: #ece6dc;
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    margin: 0;
-    padding: 32px 16px 64px;
-  }
-  .wrap { max-width: 900px; margin: 0 auto; }
-  h1 { font-size: 22px; margin-bottom: 4px; display: flex; align-items: center; gap: 16px; }
-  h1 img.header-logo { height: 72px; width: 72px; object-fit: contain; flex-shrink: 0; }
-  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 20px; margin-left: 88px; }
-  nav.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; position: sticky; top: 0; background: var(--bg); padding: 8px 0; z-index: 10; }
-  nav.tabs a {
-    text-decoration: none; color: var(--ink); background: var(--card); border: 1px solid var(--border);
-    padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
-  }
-  nav.tabs a:hover { background: var(--pending-bg); }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 22px;
-    margin-bottom: 20px;
-    scroll-margin-top: 60px;
-  }
-  .card h2 { font-size: 15px; margin: 0 0 14px 0; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
-  .quote-card { background: linear-gradient(135deg, #fbf1de, #faf8f5); }
-  .quote-text { font-style: italic; font-size: 15px; margin: 0; line-height: 1.5; }
-  table { width: 100%; border-collapse: collapse; }
-  th { text-align: left; font-size: 11px; text-transform: uppercase; color: var(--muted); padding: 6px 4px; border-bottom: 2px solid var(--border); }
-  td { padding: 8px 4px; font-size: 14px; border-bottom: 1px solid var(--border); }
-  tr:last-child td { border-bottom: none; }
-  .badge {
-    display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
-  }
-  .badge.ok { background: var(--ok-bg); color: var(--ok); }
-  .badge.bad { background: var(--bad-bg); color: var(--bad); }
-  .badge.pending { background: var(--pending-bg); color: var(--pending); }
-  .badge.muted { background: #f1ede6; color: var(--muted); }
-  .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-  .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
-  .nut-date { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
-  .nut-day ul { margin: 0 0 6px 0; padding-left: 18px; }
-  .nut-day li { font-size: 13px; margin-bottom: 4px; }
-  .assessment { color: var(--muted); font-size: 12px; }
-  .water { font-size: 12px; color: var(--muted); }
-  .muted { color: var(--muted); }
-  .avg-water { font-size: 13px; color: var(--muted); margin-top: 4px; }
-  .cal-card { overflow: hidden; }
-  .cal-legend { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
-  .cal-scroll { overflow-x: auto; }
-  table.cal-table { border-collapse: collapse; white-space: nowrap; }
-  table.cal-table th, table.cal-table td { text-align: center; padding: 4px 6px; font-size: 12px; border: 1px solid var(--border); }
-  table.cal-table th .dow { font-weight: 400; font-size: 9px; color: var(--muted); }
-  td.cal-label { text-align: left; font-size: 12px; white-space: normal; min-width: 140px; }
-  td.cal-ok { background: var(--ok-bg); color: var(--ok); font-weight: 700; }
-  td.cal-bad { background: var(--bad-bg); color: var(--bad); font-weight: 700; }
-  td.cal-na { background: #f1ede6; color: var(--muted); }
-  td.cal-pending { background: var(--pending-bg); color: var(--pending); font-weight: 700; }
-  td.cal-blank { background: transparent; }
-  td.nut-cell { text-align: left; font-size: 12px; white-space: normal; min-width: 260px; }
-  .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
+body { font-family: -apple-system, Arial, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+h1 { font-size: 1.4rem; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+td { padding: 0.4rem 0.5rem; border-bottom: 1px solid #eee; }
+.note { color: #666; font-size: 0.85rem; }
+li { margin-bottom: 0.8rem; }
+.updated { color: #888; font-size: 0.85rem; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
-  <div class="subtitle">Generated 2026-07-21 15:07 &middot; Today is Tuesday, July 21, 2026</div>
+<h1>Chris's Accountability Dashboard</h1>
+<p class="updated">Updated 2026-07-21 22:09 UTC · Today is Tuesday, July 21, 2026</p>
 
-  <nav class="tabs">
-    <a href="#today">Today</a>
-    <a href="#calendar">Calendar</a>
-    <a href="#daily-log">Daily Log</a>
-    <a href="#nutrition-log">Nutrition Log</a>
-  </nav>
+<h2>Today's Goals</h2>
+<table>
+<tr><td>30 push-ups</td><td style='color:#2e7d32;font-weight:600'>30 (hit)</td></tr>
+<tr><td>30 squats</td><td style='color:#2e7d32;font-weight:600'>30 (hit)</td></tr>
+<tr><td>Wake up by 6:00 AM</td><td style='color:#999;font-weight:600'>not yet logged</td></tr>
+<tr><td>Asleep by 11:00 PM</td><td style='color:#999;font-weight:600'>not yet logged</td></tr>
+<tr><td>Read 20 minutes</td><td style='color:#999;font-weight:600'>not yet logged</td></tr>
+<tr><td>5,000 steps</td><td style='color:#999;font-weight:600'>not yet logged</td></tr>
+<tr><td>Morning prayer (personal)</td><td style='color:#2e7d32;font-weight:600'>Done</td></tr>
+<tr><td>Evening prayer (personal)</td><td style='color:#999;font-weight:600'>not yet logged</td></tr>
+<tr><td>Couple prayer with Andrea</td><td style='color:#999;font-weight:600'>not yet logged</td></tr>
+<tr><td>Book of Mormon reading</td><td style='color:#2e7d32;font-weight:600'>Done</td></tr>
+<tr><td>Phone games</td><td style='color:#999;font-weight:600'>not yet logged</td></tr>
+<tr><td>Social media</td><td style='color:#999;font-weight:600'>not yet logged</td></tr>
 
-  <div id="today"></div>
-  
-  <div class="card quote-card">
-    <h2>Today's Health Tip</h2>
-    <p class="quote-text">Caffeine has a 5-6 hour half-life, so a serving in the morning is fully clear of your system well before an 11:00 PM bedtime -- no need to worry about it hurting your sleep goal today. Just keep afternoon caffeine light so the same is true year-round.</p>
-  </div>
-  <div class="card">
-    <h2>Daily &amp; Weekday Goals</h2>
-    <table><tr><th>Goal</th><th>Streak</th><th>Today</th></tr><tr><td>30 push-ups</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>30 squats</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Wake up by 6:00 AM</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Asleep by 11:00 PM</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Read 20 minutes</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>5,000 steps</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Morning prayer (personal)</td><td>0-day streak</td><td><span class="badge ok">done</span></td></tr><tr><td>Evening prayer (personal)</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Couple prayer with Andrea</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Book of Mormon reading</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Phone games</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr><tr><td>Social media</td><td>0-day streak</td><td><span class="badge pending">not yet logged</span></td></tr></table>
-  </div>
+</table>
 
-  <div class="card">
-    <h2>Weekly Goals</h2>
-    <table><tr><th>Goal</th><th>This Week</th></tr><tr><td>Gym attendance</td><td><span class="badge bad">0/2 this week</span></td></tr><tr><td>Temple attendance</td><td><span class="badge bad">0/1 this week</span></td></tr></table>
-  </div>
+<h2>Nutrition — 2026-07-21</h2>
+<ul>
+<li><strong>Morning:</strong> Chocolate/peanut butter/banana protein shake (45g protein)<br><span class='note'>Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start.</span></li>
+<li><strong>Morning:</strong> Acai Berry Energy Mio, 1 serving in water<br><span class='note'>Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal.</span></li>
+<li><strong>Lunch:</strong> Cafe Rio handheld burrito: white rice, black beans, sweet pork, cheese, pico, tomatillo ranch; 16 oz Coke Zero<br><span class='note'>Solid protein from the pork, but this is a calorie-dense meal -- handheld burritos with rice, beans, cheese, and dressing commonly run 700-900+ kcal, plus sodium adds up fast between the meat, cheese, and dressing. Coke Zero adds caffeine (keep the afternoon cutoff in mind) but no sugar/calories. Fine as an occasional lunch, just something to balance against dinner.</span></li>
+<li><strong>Afternoon:</strong> Acai Berry Energy Mio again, 1 serving in water<br><span class='note'>Second caffeinated serving today (~90mg on top of the morning one, ~180mg total) -- still generally fine, but worth watching the clock so it clears well before the 11:00 PM sleep goal.</span></li>
 
-  <div class="card">
-    <h2>Nutrition &amp; Water (last 7 days)</h2>
-    
-            <div class="nut-day">
-              <div class="nut-date">2026-07-21 (today)</div>
-              <ul><li><strong>morning</strong> - Chocolate/peanut butter/banana protein shake (45g protein)<div class='assessment'>Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start.</div></li><li><strong>morning</strong> - Acai Berry Energy Mio, 1 serving in water<div class='assessment'>Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal.</div></li></ul>
-              <div class="water">Water: 24 oz</div>
-            </div>
-    <div class="avg-water">7-day avg water: 24.0 oz</div>
-  </div>
+</ul>
+<p><strong>Water:</strong> 44 oz</p>
 
-  <div id="calendar"></div>
-  
-  <div class="card cal-card">
-    <h2>Habit Calendar &mdash; July 2026</h2>
-    <div class="cal-legend">Green = hit &middot; Red = missed &middot; Gray = not applicable &middot; Yellow = today, pending</div>
-    <div class="cal-scroll">
-    <table class="cal-table"><tr><th>Goal</th><th>1<div class="dow">Wed</div></th><th>2<div class="dow">Thu</div></th><th>3<div class="dow">Fri</div></th><th>4<div class="dow">Sat</div></th><th>5<div class="dow">Sun</div></th><th>6<div class="dow">Mon</div></th><th>7<div class="dow">Tue</div></th><th>8<div class="dow">Wed</div></th><th>9<div class="dow">Thu</div></th><th>10<div class="dow">Fri</div></th><th>11<div class="dow">Sat</div></th><th>12<div class="dow">Sun</div></th><th>13<div class="dow">Mon</div></th><th>14<div class="dow">Tue</div></th><th>15<div class="dow">Wed</div></th><th>16<div class="dow">Thu</div></th><th>17<div class="dow">Fri</div></th><th>18<div class="dow">Sat</div></th><th>19<div class="dow">Sun</div></th><th>20<div class="dow">Mon</div></th><th>21<div class="dow">Tue</div></th><th>22<div class="dow">Wed</div></th><th>23<div class="dow">Thu</div></th><th>24<div class="dow">Fri</div></th><th>25<div class="dow">Sat</div></th><th>26<div class="dow">Sun</div></th><th>27<div class="dow">Mon</div></th><th>28<div class="dow">Tue</div></th><th>29<div class="dow">Wed</div></th><th>30<div class="dow">Thu</div></th><th>31<div class="dow">Fri</div></th></tr><tr><td class="cal-label">30 push-ups</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">30 squats</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Wake up by 6:00 AM</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Asleep by 11:00 PM</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Read 20 minutes</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">5,000 steps</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Morning prayer (personal)</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-ok">&#10003;</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Evening prayer (personal)</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Couple prayer with Andrea</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Book of Mormon reading</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Phone games</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr><tr><td class="cal-label">Social media</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-pending">?</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr></table>
-    </div>
-  </div>
+<h2>Weekly Goals</h2>
+<table>
+<tr><td>Gym attendance</td><td>0/2 this week</td></tr>
+<tr><td>Temple attendance</td><td>0/1 this week</td></tr>
+</table>
 
-  <div id="daily-log"></div>
-  
-  <div class="card cal-card">
-    <h2>Daily Log (full history)</h2>
-    <div class="cal-scroll">
-    <table class="cal-table"><tr><th>Date</th><th>30 push-ups</th><th>30 squats</th><th>Wake up by 6:00 AM</th><th>Asleep by 11:00 PM</th><th>Read 20 minutes</th><th>5,000 steps</th><th>Morning prayer (personal)</th><th>Evening prayer (personal)</th><th>Couple prayer with Andrea</th><th>Book of Mormon reading</th><th>Phone games</th><th>Social media</th><th>Gym attendance</th><th>Temple attendance</th></tr><tr><td class="cal-label">2026-07-21</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-ok">Yes</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr></table>
-    </div>
-  </div>
-
-  <div id="nutrition-log"></div>
-  
-  <div class="card">
-    <h2>Nutrition Log (full history)</h2>
-    <div class="cal-scroll">
-    <table class="cal-table"><tr><th>Date</th><th>Meals</th><th>Water (oz)</th></tr><tr><td class="cal-label">2026-07-21</td><td class="nut-cell"><strong>morning</strong>: Chocolate/peanut butter/banana protein shake (45g protein) <span class='assessment'>(Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start.)</span><br><strong>morning</strong>: Acai Berry Energy Mio, 1 serving in water <span class='assessment'>(Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal.)</span></td><td>24</td></tr></table>
-    </div>
-  </div>
-
-  <div class="footer">This page regenerates each time you log something new and get a check-in. Reopen it any time to see your latest progress.</div>
-</div>
 </body>
 </html>
