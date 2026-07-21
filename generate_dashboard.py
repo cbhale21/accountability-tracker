@@ -328,19 +328,31 @@ def build_nutrition_log_section(log):
 
 # ---------------------------------------------------------------- Vision board section
 
-VISION_BOARD_IMAGES = [f"visionboard/vb{i:02d}.jpg" for i in range(1, 14)]
+# Chris's chosen layout: each inner list is one row, in the order he wants them to appear.
+# Row 1 (largest, top) = the core "why" -- family and faith. Rows below = identity/fitness/
+# recreation, then material/lifestyle goals.
+VISION_BOARD_ROWS = [
+    [1, 6],
+    [3, 4, 5, 10, 12],
+    [8, 9, 11, 2, 13],
+]
 
 
 def build_vision_board_section():
-    tiles = "".join(
-        f'<img src="{esc(src)}" alt="Vision board image" loading="lazy">'
-        for src in VISION_BOARD_IMAGES
-    )
+    rows_html = ""
+    for row_idx, row in enumerate(VISION_BOARD_ROWS):
+        row_class = "vision-row vision-row-hero" if row_idx == 0 else "vision-row"
+        imgs = "".join(
+            f'<img src="visionboard/vb{i:02d}.jpg" alt="Vision board image" loading="lazy">'
+            for i in row
+        )
+        rows_html += f'<div class="{row_class}">{imgs}</div>'
+
     return f'''
   <div class="card vision-card">
     <h2>My Why &mdash; Vision Board</h2>
     <p class="vision-intro">True, Faithful, and Valiant in every responsibility and stewardship &mdash; this is the life these daily habits are building toward.</p>
-    <div class="vision-grid">{tiles}</div>
+    <div class="vision-rows">{rows_html}</div>
   </div>'''
 
 
@@ -402,10 +414,17 @@ CSS = '''
   .quote-text { font-style: italic; font-size: 15px; margin: 0; line-height: 1.5; }
   .vision-card { background: linear-gradient(160deg, var(--card), var(--gold-bg)); }
   .vision-intro { font-size: 13px; color: var(--muted); margin: 0 0 16px 0; line-height: 1.5; }
-  .vision-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
-  .vision-grid img {
-    width: 100%; height: 100px; object-fit: cover; border-radius: 10px;
+  .vision-rows { display: flex; flex-direction: column; gap: 10px; }
+  .vision-row { display: flex; gap: 10px; }
+  .vision-row img {
+    flex: 1 1 0; width: 0; min-width: 0; height: 120px; object-fit: cover; border-radius: 10px;
     border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(43,32,20,0.12);
+  }
+  .vision-row-hero img { height: 190px; }
+  @media (max-width: 640px) {
+    .vision-row { flex-wrap: wrap; }
+    .vision-row img { flex: 1 1 calc(33% - 8px); height: 90px; }
+    .vision-row-hero img { flex: 1 1 calc(50% - 6px); height: 130px; }
   }
   table { width: 100%; border-collapse: collapse; }
   th { text-align: left; font-size: 11px; text-transform: uppercase; color: var(--muted); padding: 6px 4px; border-bottom: 2px solid var(--border); }

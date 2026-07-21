@@ -67,10 +67,17 @@
   .quote-text { font-style: italic; font-size: 15px; margin: 0; line-height: 1.5; }
   .vision-card { background: linear-gradient(160deg, var(--card), var(--gold-bg)); }
   .vision-intro { font-size: 13px; color: var(--muted); margin: 0 0 16px 0; line-height: 1.5; }
-  .vision-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
-  .vision-grid img {
-    width: 100%; height: 100px; object-fit: cover; border-radius: 10px;
+  .vision-rows { display: flex; flex-direction: column; gap: 10px; }
+  .vision-row { display: flex; gap: 10px; }
+  .vision-row img {
+    flex: 1 1 0; width: 0; min-width: 0; height: 120px; object-fit: cover; border-radius: 10px;
     border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(43,32,20,0.12);
+  }
+  .vision-row-hero img { height: 190px; }
+  @media (max-width: 640px) {
+    .vision-row { flex-wrap: wrap; }
+    .vision-row img { flex: 1 1 calc(33% - 8px); height: 90px; }
+    .vision-row-hero img { flex: 1 1 calc(50% - 6px); height: 130px; }
   }
   table { width: 100%; border-collapse: collapse; }
   th { text-align: left; font-size: 11px; text-transform: uppercase; color: var(--muted); padding: 6px 4px; border-bottom: 2px solid var(--border); }
@@ -111,7 +118,7 @@
 <body>
 <div class="wrap">
   <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
-  <div class="subtitle">Generated 2026-07-21 15:38 &middot; Today is Tuesday, July 21, 2026</div>
+  <div class="subtitle">Generated 2026-07-21 15:47 &middot; Today is Tuesday, July 21, 2026</div>
 
   <nav class="tabs">
     <a href="#today">Today</a>
@@ -126,7 +133,7 @@
   <div class="card vision-card">
     <h2>My Why &mdash; Vision Board</h2>
     <p class="vision-intro">True, Faithful, and Valiant in every responsibility and stewardship &mdash; this is the life these daily habits are building toward.</p>
-    <div class="vision-grid"><img src="visionboard/vb01.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb02.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb03.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb04.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb05.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb06.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb07.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb08.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb09.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb10.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb11.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb12.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb13.jpg" alt="Vision board image" loading="lazy"></div>
+    <div class="vision-rows"><div class="vision-row vision-row-hero"><img src="visionboard/vb01.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb06.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb03.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb04.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb05.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb10.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb12.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb08.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb09.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb11.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb02.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb13.jpg" alt="Vision board image" loading="lazy"></div></div>
   </div>
 
   <div id="today"></div>
