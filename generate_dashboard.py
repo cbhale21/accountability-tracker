@@ -326,51 +326,87 @@ def build_nutrition_log_section(log):
   </div>'''
 
 
+# ---------------------------------------------------------------- Vision board section
+
+VISION_BOARD_IMAGES = [f"visionboard/vb{i:02d}.jpg" for i in range(1, 14)]
+
+
+def build_vision_board_section():
+    tiles = "".join(
+        f'<img src="{esc(src)}" alt="Vision board image" loading="lazy">'
+        for src in VISION_BOARD_IMAGES
+    )
+    return f'''
+  <div class="card vision-card">
+    <h2>My Why &mdash; Vision Board</h2>
+    <p class="vision-intro">True, Faithful, and Valiant in every responsibility and stewardship &mdash; this is the life these daily habits are building toward.</p>
+    <div class="vision-grid">{tiles}</div>
+  </div>'''
+
+
 # ---------------------------------------------------------------- Page assembly
 
 CSS = '''
   :root {
-    --bg: #faf8f5;
-    --card: #ffffff;
-    --ink: #2b2620;
-    --muted: #8a8175;
+    --bg-start: #f8ecd9;
+    --bg-end: #f1e0bf;
+    --card: #fffdf8;
+    --ink: #2b2014;
+    --muted: #8a7a63;
     --ok: #2f7d4f;
     --ok-bg: #e5f4ea;
     --bad: #b3432c;
     --bad-bg: #fbe8e3;
     --pending: #a5761f;
     --pending-bg: #fbf1de;
-    --border: #ece6dc;
+    --border: #e8d9b8;
+    --crimson: #8a1207;
+    --gold: #a9720f;
+    --gold-bg: #fbeed2;
   }
   * { box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: var(--bg);
+    background: linear-gradient(160deg, var(--bg-start) 0%, var(--bg-end) 100%);
+    background-attachment: fixed;
     color: var(--ink);
     margin: 0;
     padding: 32px 16px 64px;
   }
   .wrap { max-width: 900px; margin: 0 auto; }
-  h1 { font-size: 22px; margin-bottom: 4px; display: flex; align-items: center; gap: 16px; }
-  h1 img.header-logo { height: 72px; width: 72px; object-fit: contain; flex-shrink: 0; }
+  h1 { font-size: 24px; margin-bottom: 4px; display: flex; align-items: center; gap: 16px; color: var(--crimson); }
+  h1 img.header-logo {
+    height: 72px; width: 72px; object-fit: contain; flex-shrink: 0; border-radius: 14px;
+    background: var(--gold-bg);
+    box-shadow: 0 0 0 3px var(--gold-bg), 0 0 0 4px var(--gold), 0 3px 8px rgba(43,32,20,0.25);
+    padding: 4px;
+  }
   .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 20px; margin-left: 88px; }
-  nav.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; position: sticky; top: 0; background: var(--bg); padding: 8px 0; z-index: 10; }
+  nav.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; position: sticky; top: 0; background: #f4e3c6; padding: 8px 0; z-index: 10; border-bottom: 1px solid var(--border); }
   nav.tabs a {
     text-decoration: none; color: var(--ink); background: var(--card); border: 1px solid var(--border);
     padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
   }
-  nav.tabs a:hover { background: var(--pending-bg); }
+  nav.tabs a:hover { background: var(--gold-bg); border-color: var(--gold); }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 14px;
     padding: 20px 22px;
     margin-bottom: 20px;
     scroll-margin-top: 60px;
+    box-shadow: 0 2px 10px rgba(138,18,7,0.06);
   }
-  .card h2 { font-size: 15px; margin: 0 0 14px 0; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
-  .quote-card { background: linear-gradient(135deg, #fbf1de, #faf8f5); }
+  .card h2 { font-size: 15px; margin: 0 0 14px 0; text-transform: uppercase; letter-spacing: 0.04em; color: var(--crimson); }
+  .quote-card { background: linear-gradient(135deg, var(--gold-bg), var(--card)); }
   .quote-text { font-style: italic; font-size: 15px; margin: 0; line-height: 1.5; }
+  .vision-card { background: linear-gradient(160deg, var(--card), var(--gold-bg)); }
+  .vision-intro { font-size: 13px; color: var(--muted); margin: 0 0 16px 0; line-height: 1.5; }
+  .vision-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .vision-grid img {
+    width: 100%; height: 100px; object-fit: cover; border-radius: 10px;
+    border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(43,32,20,0.12);
+  }
   table { width: 100%; border-collapse: collapse; }
   th { text-align: left; font-size: 11px; text-transform: uppercase; color: var(--muted); padding: 6px 4px; border-bottom: 2px solid var(--border); }
   td { padding: 8px 4px; font-size: 14px; border-bottom: 1px solid var(--border); }
@@ -414,6 +450,7 @@ def main():
 
     generated_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
+    vision_board_section = build_vision_board_section()
     dashboard_section = build_dashboard_section(goals, log, quote, today)
     calendar_section = build_calendar_section(goals, log, today)
     daily_log_section = build_daily_log_section(goals, log)
@@ -441,10 +478,14 @@ def main():
 
   <nav class="tabs">
     <a href="#today">Today</a>
+    <a href="#vision">Vision Board</a>
     <a href="#calendar">Calendar</a>
     <a href="#daily-log">Daily Log</a>
     <a href="#nutrition-log">Nutrition Log</a>
   </nav>
+
+  <div id="vision"></div>
+  {vision_board_section}
 
   <div id="today"></div>
   {dashboard_section}
