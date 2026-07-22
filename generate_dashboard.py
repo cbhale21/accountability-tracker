@@ -772,6 +772,18 @@ def main():
   var GOAL_WEIGHT = {json.dumps(goal_weight_for_js)};
   var LATEST_WEIGHT = {json.dumps(latest_weight_for_js)};
 
+  // The page is a static snapshot rebuilt once a day (or on-demand), so TODAY_DATE
+  // above can go stale if you open/tap the page before the next rebuild (e.g. early
+  // morning before the 7am check-in has run). Any WRITE to the backend or to the
+  // local cache must use the device's real live date instead, so entries always
+  // land on the actual day they were made, and naturally "reset" at midnight since
+  // a new day means a new date string with no cached entries.
+  function realTodayStr() {{
+    var d = new Date();
+    var pad = function(n) {{ return n < 10 ? '0' + n : '' + n; }};
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }}
+
   function showToast(msg) {{
     var t = document.getElementById('saveToast');
     t.textContent = msg;
@@ -783,7 +795,7 @@ def main():
   function saveGoal(goalId, payload) {{
     if (!WRITE_URL) {{ showToast('Not connected'); return; }}
     payload.goalId = goalId;
-    payload.date = TODAY_DATE;
+    payload.date = realTodayStr();
     fetch(WRITE_URL, {{
       method: 'POST',
       mode: 'no-cors',
@@ -798,20 +810,22 @@ def main():
   var CACHE_KEY = 'accountability_cache_v1';
 
   function loadCache() {{
+    var rt = realTodayStr();
     try {{
       var raw = localStorage.getItem(CACHE_KEY);
-      if (!raw) return {{date: TODAY_DATE, entries: {{}}}};
+      if (!raw) return {{date: rt, entries: {{}}}};
       var parsed = JSON.parse(raw);
-      if (parsed.date !== TODAY_DATE) return {{date: TODAY_DATE, entries: {{}}}};
+      if (parsed.date !== rt) return {{date: rt, entries: {{}}}};
       return parsed;
     }} catch (e) {{
-      return {{date: TODAY_DATE, entries: {{}}}};
+      return {{date: rt, entries: {{}}}};
     }}
   }}
 
   function cacheSet(key, value) {{
     try {{
       var cache = loadCache();
+      cache.date = realTodayStr();
       cache.entries[key] = value;
       localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
     }} catch (e) {{ /* ignore, e.g. private browsing */ }}
