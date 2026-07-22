@@ -213,21 +213,35 @@ def build_daily_weekday_goals_section(goals, log, today):
 
 def build_weekly_goals_section(goals, log, today):
     weekly_goals = [g for g in goals if g["cadence"] == "weekly_count"]
+    today_str = fmt_date(today)
     weekly_rows = []
     for g in weekly_goals:
         count = weekly_count(g, log, today)
         target = g["target"]
         cls = "ok" if count >= target else ("pending" if count > 0 else "bad")
-        weekly_rows.append((g["label"], f"{count}/{target} this week", cls))
+        count_html = (
+            f'<span class="badge {cls}" id="weekly-count-{esc(g["id"])}" '
+            f'data-count="{count}">{count}/{target} this week</span>'
+        )
+        today_entry = log["daily"].get(today_str, {}).get("goals", {}).get(g["id"])
+        logged_today = bool(today_entry and today_entry.get("done"))
+        toggle_html = (
+            f'<button type="button" class="cell-toggle {"ok" if logged_today else "pending"}" '
+            f'data-goal-id="{esc(g["id"])}" data-target="{target}" data-weekly="1" '
+            f'data-state="{"done" if logged_today else "none"}" '
+            f'onclick="cycleWeeklyGoal(this)">{"logged today" if logged_today else "log today"}</button>'
+        )
+        weekly_rows.append((g["label"], count_html, toggle_html))
 
     weekly_rows_html = "".join(
-        f'<tr><td>{esc(l)}</td><td>{badge(t, c)}</td></tr>' for l, t, c in weekly_rows
+        f'<tr><td>{esc(l)}</td><td>{c}</td><td>{tgl}</td></tr>' for l, c, tgl in weekly_rows
     )
 
     return f'''
   <div class="card">
     <h2>Weekly Goals</h2>
-    <table><tr><th>Goal</th><th>This Week</th></tr>{weekly_rows_html}</table>
+    <table><tr><th>Goal</th><th>This Week</th><th>Today</th></tr>{weekly_rows_html}</table>
+    <p class="muted weekly-hint">Tap "log today" the day you go -- it counts toward this week's total right away.</p>
   </div>'''
 
 
@@ -870,6 +884,40 @@ def main():
     setBooleanCell(btn, next, true);
   }}
 
+  // Weekly-count goals (gym, temple, etc.) only ever have two states for
+  // "today": logged or not -- there's no per-day "missed" concept for a
+  // weekly target. Tapping updates the week's running count immediately.
+  function setWeeklyCell(btn, nextState, save) {{
+    var goalId = btn.getAttribute('data-goal-id');
+    var target = parseInt(btn.getAttribute('data-target'), 10);
+    var prevState = btn.getAttribute('data-state');
+    if (prevState === nextState) {{ return; }}
+    btn.setAttribute('data-state', nextState);
+    var willLog = nextState === 'done';
+    btn.className = 'cell-toggle ' + (willLog ? 'ok' : 'pending');
+    btn.textContent = willLog ? 'logged today' : 'log today';
+
+    var countEl = document.getElementById('weekly-count-' + goalId);
+    if (countEl) {{
+      var current = parseInt(countEl.getAttribute('data-count'), 10) || 0;
+      var nextCount = Math.max(0, current + (willLog ? 1 : -1));
+      countEl.setAttribute('data-count', nextCount);
+      countEl.className = 'badge ' + (nextCount >= target ? 'ok' : (nextCount > 0 ? 'pending' : 'bad'));
+      countEl.textContent = nextCount + '/' + target + ' this week';
+    }}
+
+    if (save) {{
+      saveGoal(goalId, willLog ? {{kind: 'boolean', boolValue: true}} : {{kind: 'boolean', clear: true}});
+      cacheSet('goal_' + goalId, {{type: 'weekly_boolean', state: nextState}});
+    }}
+  }}
+
+  function cycleWeeklyGoal(btn) {{
+    var state = btn.getAttribute('data-state');
+    var next = state === 'done' ? 'none' : 'done';
+    setWeeklyCell(btn, next, true);
+  }}
+
   function setNumericCell(input, rawVal, save) {{
     var goalId = input.getAttribute('data-goal-id');
     var goalType = input.getAttribute('data-goal-type');
@@ -957,6 +1005,9 @@ def main():
         }} else if (entry.type === 'value') {{
           var inp = document.querySelector('.cell-input[data-goal-id="' + goalId + '"]');
           if (inp) setNumericCell(inp, entry.cleared ? '' : entry.value, false);
+        }} else if (entry.type === 'weekly_boolean') {{
+          var wbtn = document.querySelector('.cell-toggle[data-weekly="1"][data-goal-id="' + goalId + '"]');
+          if (wbtn) setWeeklyCell(wbtn, entry.state, false);
         }}
       }}
     }});
