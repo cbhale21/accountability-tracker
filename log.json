@@ -19,7 +19,16 @@
           "done": true
         },
         "wake_6am": {
-          "done": false
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 39
+        },
+        "social_media_cap": {
+          "value": 25
+        },
+        "steps_5000": {
+          "value": 4454
         }
       },
       "nutrition": {
@@ -43,10 +52,16 @@
             "time": "afternoon",
             "description": "Acai Berry Energy Mio again, 1 serving in water",
             "assessment": "Second caffeinated serving today (~90mg on top of the morning one, ~180mg total) -- still generally fine, but worth watching the clock so it clears well before the 11:00 PM sleep goal."
+          },
+          {
+            "time": "dinner",
+            "description": "Grilled chicken, broccoli, potatoes",
+            "assessment": "Great balanced dinner -- lean protein from the grilled chicken, fiber and micronutrients from the broccoli, and complex carbs from the potatoes. Clean way to close out the day's eating."
           }
         ],
-        "water_oz": 44
-      }
+        "water_oz": 68
+      },
+      "weight_lbs": 242.2
     }
   },
   "goal_weight_lbs": 200
