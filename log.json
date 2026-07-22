@@ -29,6 +29,15 @@
         },
         "steps_5000": {
           "value": 4454
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 20
         }
       },
       "nutrition": {
