@@ -19,7 +19,7 @@
           "done": true
         },
         "wake_6am": {
-          "done": true
+          "done": false
         },
         "phone_games_cap": {
           "value": 39
@@ -62,6 +62,13 @@
         "water_oz": 68
       },
       "weight_lbs": 242.2
+    },
+    "2026-07-22": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        }
+      }
     }
   },
   "goal_weight_lbs": 200
