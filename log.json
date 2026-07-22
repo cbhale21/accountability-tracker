@@ -67,9 +67,6 @@
       "goals": {
         "wake_6am": {
           "done": true
-        },
-        "gym_session": {
-          "done": true
         }
       },
       "nutrition": {
@@ -81,6 +78,13 @@
           }
         ],
         "water_oz": 24
+      }
+    },
+    "2026-07-20": {
+      "goals": {
+        "gym_session": {
+          "done": true
+        }
       }
     }
   },
