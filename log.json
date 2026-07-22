@@ -89,9 +89,14 @@
             "time": "morning",
             "description": "Acai Berry Energy Mio, 1 serving in water",
             "assessment": "Adds ~90mg caffeine. Same as yesterday's pattern -- fine for a morning boost, just worth keeping an eye on total caffeine and cutting it off well before your 11:00 PM wind-down."
+          },
+          {
+            "time": "lunch",
+            "description": "Wendy's Biggie Bag (Double Stack, small) with 12 oz Coke Zero",
+            "assessment": "The Biggie Bag bundle (Double Stack, small fries, 4pc nuggets) typically runs 900-1100 kcal -- decent protein from the double burger and nuggets, but high sodium and saturated fat between the two patties, cheese, and fries. Coke Zero keeps it from adding sugar/calories on the drink side."
           }
         ],
-        "water_oz": 48
+        "water_oz": 72
       }
     },
     "2026-07-20": {
