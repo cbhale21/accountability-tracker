@@ -171,22 +171,21 @@ def interactive_cell(goal, g_entry):
         )
 
 
-# ---------------------------------------------------------------- Dashboard section
+# ---------------------------------------------------------------- Dashboard section (split into independently placeable cards)
 
-def build_dashboard_section(goals, log, quote, today):
-    parts = []
-
-    if quote:
-        label = "Today's Health Tip" if quote.get("type") == "tip" else "Today's Quote"
-        parts.append(f'''
+def build_quote_section(quote):
+    if not quote:
+        return ""
+    label = "Today's Health Tip" if quote.get("type") == "tip" else "Today's Quote"
+    return f'''
   <div class="card quote-card">
     <h2>{esc(label)}</h2>
     <p class="quote-text">{esc(quote.get("text", ""))}</p>
-  </div>''')
+  </div>'''
 
+
+def build_daily_weekday_goals_section(goals, log, today):
     daily_goals = [g for g in goals if g["cadence"] in ("daily", "weekdays", "custom_nights")]
-    weekly_goals = [g for g in goals if g["cadence"] == "weekly_count"]
-
     today_str = fmt_date(today)
     rows = []
     for g in daily_goals:
@@ -205,6 +204,15 @@ def build_dashboard_section(goals, log, quote, today):
         for l, s, c in rows
     )
 
+    return f'''
+  <div class="card">
+    <h2>Daily &amp; Weekday Goals</h2>
+    <table><tr><th>Goal</th><th>Streak</th><th>Today</th></tr>{daily_rows_html}</table>
+  </div>'''
+
+
+def build_weekly_goals_section(goals, log, today):
+    weekly_goals = [g for g in goals if g["cadence"] == "weekly_count"]
     weekly_rows = []
     for g in weekly_goals:
         count = weekly_count(g, log, today)
@@ -216,6 +224,14 @@ def build_dashboard_section(goals, log, quote, today):
         f'<tr><td>{esc(l)}</td><td>{badge(t, c)}</td></tr>' for l, t, c in weekly_rows
     )
 
+    return f'''
+  <div class="card">
+    <h2>Weekly Goals</h2>
+    <table><tr><th>Goal</th><th>This Week</th></tr>{weekly_rows_html}</table>
+  </div>'''
+
+
+def build_nutrition_water_section(log, today):
     nutrition_days = nutrition_last_days(log, today, 7)
     water_values = [n.get("water_oz") for _, n in nutrition_days if n.get("water_oz") is not None]
     avg_water = round(sum(water_values) / len(water_values), 1) if water_values else None
@@ -241,24 +257,12 @@ def build_dashboard_section(goals, log, quote, today):
 
     avg_html = f'<div class="avg-water">7-day avg water: {avg_water} oz</div>' if avg_water is not None else ""
 
-    parts.append(f'''
-  <div class="card">
-    <h2>Daily &amp; Weekday Goals</h2>
-    <table><tr><th>Goal</th><th>Streak</th><th>Today</th></tr>{daily_rows_html}</table>
-  </div>
-
-  <div class="card">
-    <h2>Weekly Goals</h2>
-    <table><tr><th>Goal</th><th>This Week</th></tr>{weekly_rows_html}</table>
-  </div>
-
+    return f'''
   <div class="card">
     <h2>Nutrition &amp; Water (last 7 days)</h2>
     {nutrition_html}
     {avg_html}
-  </div>''')
-
-    return "".join(parts)
+  </div>'''
 
 
 # ---------------------------------------------------------------- Calendar section
@@ -332,10 +336,15 @@ def goal_icon(goal):
     return GOAL_ICONS.get(goal["id"], goal["label"][:1].upper())
 
 
-def build_daily_log_section(goals, log):
+def build_daily_log_section(goals, log, today=None):
     all_goals = [g for g in goals if g["cadence"] != "weekly_count"] + \
                 [g for g in goals if g["cadence"] == "weekly_count"]
     dates = sorted(log["daily"].keys(), reverse=True)
+
+    today_str = fmt_date(today) if today else None
+    if today_str and today_str not in dates:
+        dates = [today_str] + dates
+        log = {**log, "daily": {**log["daily"], today_str: {}}}
 
     header = "".join(
         f'<th title="{esc(g["label"])}">{goal_icon(g)}</th>' for g in all_goals
@@ -346,8 +355,9 @@ def build_daily_log_section(goals, log):
         cells = ""
         for g in all_goals:
             g_entry = day_entry.get("goals", {}).get(g["id"])
+            attrs = f'data-date="{esc(date_str)}" data-log-goal-id="{esc(g["id"])}"'
             if g_entry is None:
-                cells += '<td class="cal-blank"></td>'
+                cells += f'<td class="cal-blank" {attrs}></td>'
                 continue
             success = goal_success(g, g_entry)
             cls = "cal-ok" if success else "cal-bad"
@@ -355,7 +365,7 @@ def build_daily_log_section(goals, log):
                 val = "&#10003;" if g_entry.get("done") else "&#10007;"
             else:
                 val = esc(g_entry.get("value", ""))
-            cells += f'<td class="{cls}">{val}</td>'
+            cells += f'<td class="{cls}" {attrs}>{val}</td>'
         rows_html += f'<tr><td class="cal-label">{esc(date_str)}</td>{cells}</tr>'
 
     if not dates:
@@ -688,10 +698,13 @@ def main():
     generated_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
     vision_board_section = build_vision_board_section()
-    dashboard_section = build_dashboard_section(goals, log, quote, today)
+    quote_section = build_quote_section(quote)
+    daily_weekday_goals_section = build_daily_weekday_goals_section(goals, log, today)
+    weekly_goals_section = build_weekly_goals_section(goals, log, today)
+    nutrition_water_section = build_nutrition_water_section(log, today)
     weight_section = build_weight_section(log, today)
     calendar_section = build_calendar_section(goals, log, today)
-    daily_log_section = build_daily_log_section(goals, log)
+    daily_log_section = build_daily_log_section(goals, log, today)
     nutrition_log_section = build_nutrition_log_section(log)
 
     goal_weight_for_js = log.get("goal_weight_lbs", 200)
@@ -721,31 +734,34 @@ def main():
   <div class="subtitle">Generated {esc(generated_at)} &middot; Today is {esc(today.strftime('%A, %B %d, %Y'))}</div>
 
   <nav class="tabs">
-    <a href="#today">Today</a>
-    <a href="#weight">Weight</a>
     <a href="#vision">Vision Board</a>
-    <a href="#calendar">Calendar</a>
+    <a href="#weight">Weight</a>
+    <a href="#today">Today</a>
     <a href="#daily-log">Daily Log</a>
+    <a href="#calendar">Calendar</a>
     <a href="#nutrition-log">Nutrition Log</a>
   </nav>
-
-  <div id="today"></div>
-  {dashboard_section}
-
-  <div id="weight"></div>
-  {weight_section}
 
   <div id="vision"></div>
   {vision_board_section}
 
-  <div id="calendar"></div>
-  {calendar_section}
+  <div id="weight"></div>
+  {weight_section}
+
+  <div id="today"></div>
+  {quote_section}
+  {daily_weekday_goals_section}
+  {weekly_goals_section}
 
   <div id="daily-log"></div>
   {daily_log_section}
 
+  <div id="calendar"></div>
+  {calendar_section}
+
   <div id="nutrition-log"></div>
   {nutrition_log_section}
+  {nutrition_water_section}
 
   <div class="footer">This page regenerates each time you log something new and get a check-in. Reopen it any time to see your latest progress.</div>
 </div>
@@ -777,41 +793,100 @@ def main():
     showToast('Saved');
   }}
 
-  function cycleGoal(btn) {{
-    var goalId = btn.getAttribute('data-goal-id');
-    var state = btn.getAttribute('data-state');
-    var next, cls, text, payload;
-    if (state === 'none') {{
-      next = 'done'; cls = 'ok'; text = 'done';
-      payload = {{kind: 'boolean', boolValue: true}};
-    }} else if (state === 'done') {{
-      next = 'missed'; cls = 'bad'; text = 'missed';
-      payload = {{kind: 'boolean', boolValue: false}};
-    }} else {{
-      next = 'none'; cls = 'pending'; text = 'not yet logged';
-      payload = {{kind: 'boolean', clear: true}};
+  // ---- local cache: remembers today's taps on this device so a refresh
+  // before the next scheduled site rebuild still shows what you just did ----
+  var CACHE_KEY = 'accountability_cache_v1';
+
+  function loadCache() {{
+    try {{
+      var raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return {{date: TODAY_DATE, entries: {{}}}};
+      var parsed = JSON.parse(raw);
+      if (parsed.date !== TODAY_DATE) return {{date: TODAY_DATE, entries: {{}}}};
+      return parsed;
+    }} catch (e) {{
+      return {{date: TODAY_DATE, entries: {{}}}};
     }}
-    btn.setAttribute('data-state', next);
-    btn.className = 'cell-toggle ' + cls;
-    btn.textContent = text;
-    saveGoal(goalId, payload);
   }}
 
-  function updateNumeric(input) {{
+  function cacheSet(key, value) {{
+    try {{
+      var cache = loadCache();
+      cache.entries[key] = value;
+      localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+    }} catch (e) {{ /* ignore, e.g. private browsing */ }}
+  }}
+
+  // ---- shared cell-update helpers (used by real taps AND cache restore) ----
+
+  function syncDailyLogCell(goalId, cls, text) {{
+    var td = document.querySelector('td[data-date="' + TODAY_DATE + '"][data-log-goal-id="' + goalId + '"]');
+    if (!td) return;
+    td.classList.remove('cal-ok', 'cal-bad', 'cal-blank');
+    td.classList.add(cls);
+    td.innerHTML = text;
+  }}
+
+  function setBooleanCell(btn, state, save) {{
+    var goalId = btn.getAttribute('data-goal-id');
+    var cls, text, logCls, logText, payload;
+    if (state === 'done') {{
+      cls = 'ok'; text = 'done'; logCls = 'cal-ok'; logText = '&#10003;';
+      payload = {{kind: 'boolean', boolValue: true}};
+    }} else if (state === 'missed') {{
+      cls = 'bad'; text = 'missed'; logCls = 'cal-bad'; logText = '&#10007;';
+      payload = {{kind: 'boolean', boolValue: false}};
+    }} else {{
+      cls = 'pending'; text = 'not yet logged'; logCls = 'cal-blank'; logText = '';
+      payload = {{kind: 'boolean', clear: true}};
+    }}
+    btn.setAttribute('data-state', state);
+    btn.className = 'cell-toggle ' + cls;
+    btn.textContent = text;
+    syncDailyLogCell(goalId, logCls, logText);
+    if (save) {{
+      saveGoal(goalId, payload);
+      cacheSet('goal_' + goalId, {{type: 'boolean', state: state}});
+    }}
+  }}
+
+  function cycleGoal(btn) {{
+    var state = btn.getAttribute('data-state');
+    var next = state === 'none' ? 'done' : (state === 'done' ? 'missed' : 'none');
+    setBooleanCell(btn, next, true);
+  }}
+
+  function setNumericCell(input, rawVal, save) {{
     var goalId = input.getAttribute('data-goal-id');
     var goalType = input.getAttribute('data-goal-type');
     var target = parseFloat(input.getAttribute('data-target'));
-    var raw = input.value;
     input.classList.remove('ok', 'bad', 'pending');
-    if (raw === '') {{
+    var logCls, logText, payload, cacheEntry;
+    if (rawVal === '' || rawVal === null || rawVal === undefined) {{
+      input.value = '';
       input.classList.add('pending');
-      saveGoal(goalId, {{kind: 'value', clear: true}});
-      return;
+      logCls = 'cal-blank'; logText = '';
+      payload = {{kind: 'value', clear: true}};
+      cacheEntry = {{type: 'value', cleared: true}};
+    }} else {{
+      var val = parseFloat(rawVal);
+      var success = goalType === 'minimum' ? (val >= target) : (val <= target);
+      input.value = val;
+      input.classList.add(success ? 'ok' : 'bad');
+      logCls = success ? 'cal-ok' : 'cal-bad';
+      logText = String(val);
+      payload = {{kind: 'value', numValue: val}};
+      cacheEntry = {{type: 'value', value: val}};
     }}
-    var val = parseFloat(raw);
-    var success = goalType === 'minimum' ? (val >= target) : (val <= target);
-    input.classList.add(success ? 'ok' : 'bad');
-    saveGoal(goalId, {{kind: 'value', numValue: val}});
+    syncDailyLogCell(goalId, logCls, logText);
+    if (save) {{
+      saveGoal(goalId, payload);
+      cacheSet('goal_' + goalId, cacheEntry);
+    }}
+  }}
+
+  function updateNumeric(input) {{
+    setNumericCell(input, input.value, true);
   }}
 
   function updateDistanceText(latest) {{
@@ -830,16 +905,10 @@ def main():
 
   function logWeight(input) {{
     var raw = input.value;
-    if (raw === '') {{
-      LATEST_WEIGHT = null;
-      saveGoal(null, {{kind: 'weight', clear: true}});
-      updateDistanceText(null);
-      return;
-    }}
-    var val = parseFloat(raw);
-    LATEST_WEIGHT = val;
-    saveGoal(null, {{kind: 'weight', numValue: val}});
-    updateDistanceText(val);
+    LATEST_WEIGHT = raw === '' ? null : parseFloat(raw);
+    saveGoal(null, raw === '' ? {{kind: 'weight', clear: true}} : {{kind: 'weight', numValue: LATEST_WEIGHT}});
+    updateDistanceText(LATEST_WEIGHT);
+    cacheSet('weight', raw === '' ? {{cleared: true}} : {{value: LATEST_WEIGHT}});
   }}
 
   function updateGoalWeight(input) {{
@@ -848,7 +917,38 @@ def main():
     GOAL_WEIGHT = val;
     saveGoal(null, {{kind: 'goal_weight', numValue: val}});
     updateDistanceText(LATEST_WEIGHT);
+    cacheSet('goalWeight', {{value: val}});
   }}
+
+  function restoreFromCache() {{
+    var cache = loadCache();
+    var entries = cache.entries || {{}};
+    Object.keys(entries).forEach(function(key) {{
+      var entry = entries[key];
+      if (key === 'weight') {{
+        var wInput = document.querySelector('.weight-input:not(.goal)');
+        if (wInput) wInput.value = entry.cleared ? '' : entry.value;
+        LATEST_WEIGHT = entry.cleared ? null : entry.value;
+        updateDistanceText(LATEST_WEIGHT);
+      }} else if (key === 'goalWeight') {{
+        var gInput = document.querySelector('.weight-input.goal');
+        if (gInput) gInput.value = entry.value;
+        GOAL_WEIGHT = entry.value;
+        updateDistanceText(LATEST_WEIGHT);
+      }} else if (key.indexOf('goal_') === 0) {{
+        var goalId = key.slice(5);
+        if (entry.type === 'boolean') {{
+          var btn = document.querySelector('.cell-toggle[data-goal-id="' + goalId + '"]');
+          if (btn) setBooleanCell(btn, entry.state, false);
+        }} else if (entry.type === 'value') {{
+          var inp = document.querySelector('.cell-input[data-goal-id="' + goalId + '"]');
+          if (inp) setNumericCell(inp, entry.cleared ? '' : entry.value, false);
+        }}
+      }}
+    }});
+  }}
+
+  restoreFromCache();
 </script>
 </body>
 </html>

@@ -160,38 +160,23 @@
 <body>
 <div class="wrap">
   <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
-  <div class="subtitle">Generated 2026-07-21 16:37 &middot; Today is Tuesday, July 21, 2026</div>
+  <div class="subtitle">Generated 2026-07-21 17:06 &middot; Today is Tuesday, July 21, 2026</div>
 
   <nav class="tabs">
-    <a href="#today">Today</a>
-    <a href="#weight">Weight</a>
     <a href="#vision">Vision Board</a>
-    <a href="#calendar">Calendar</a>
+    <a href="#weight">Weight</a>
+    <a href="#today">Today</a>
     <a href="#daily-log">Daily Log</a>
+    <a href="#calendar">Calendar</a>
     <a href="#nutrition-log">Nutrition Log</a>
   </nav>
 
-  <div id="today"></div>
+  <div id="vision"></div>
   
-  <div class="card">
-    <h2>Daily &amp; Weekday Goals</h2>
-    <table><tr><th>Goal</th><th>Streak</th><th>Today</th></tr><tr><td>Wake up by 6:00 AM</td><td>0-day streak</td><td><button type="button" class="cell-toggle bad" data-goal-id="wake_6am" data-state="missed" onclick="cycleGoal(this)">missed</button></td></tr><tr><td>Morning prayer (personal)</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="morning_prayer" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>Book of Mormon reading</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="bom_reading" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>30 push-ups</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input ok" data-goal-id="pushups_30" data-goal-type="minimum" data-target="30" value="30" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/30 reps</span></span></td></tr><tr><td>30 squats</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input ok" data-goal-id="squats_30" data-goal-type="minimum" data-target="30" value="30" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/30 reps</span></span></td></tr><tr><td>5,000 steps</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="steps_5000" data-goal-type="minimum" data-target="5000" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/5000 steps</span></span></td></tr><tr><td>Read 20 minutes</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="read_20min" data-goal-type="minimum" data-target="20" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/20 minutes</span></span></td></tr><tr><td>Phone games</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="phone_games_cap" data-goal-type="cap" data-target="60" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/60 minutes</span></span></td></tr><tr><td>Social media</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="social_media_cap" data-goal-type="cap" data-target="60" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/60 minutes</span></span></td></tr><tr><td>Couple prayer with Andrea</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="couple_prayer" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>Evening prayer (personal)</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="evening_prayer" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr><tr><td>Asleep by 11:00 PM</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="sleep_11pm" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr></table>
-  </div>
-
-  <div class="card">
-    <h2>Weekly Goals</h2>
-    <table><tr><th>Goal</th><th>This Week</th></tr><tr><td>Gym attendance</td><td><span class="badge bad">0/2 this week</span></td></tr><tr><td>Temple attendance</td><td><span class="badge bad">0/1 this week</span></td></tr></table>
-  </div>
-
-  <div class="card">
-    <h2>Nutrition &amp; Water (last 7 days)</h2>
-    
-            <div class="nut-day">
-              <div class="nut-date">2026-07-21 (today)</div>
-              <ul><li><strong>morning</strong> - Chocolate/peanut butter/banana protein shake (45g protein)<div class='assessment'>Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start.</div></li><li><strong>morning</strong> - Acai Berry Energy Mio, 1 serving in water<div class='assessment'>Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal.</div></li><li><strong>lunch</strong> - Cafe Rio handheld burrito: white rice, black beans, sweet pork, cheese, pico de gallo, tomatillo ranch; 16 oz Coke Zero<div class='assessment'>Solid protein from the pork, but this is a calorie-dense meal -- handheld burritos with rice, beans, cheese, and dressing commonly run 700-900+ kcal, plus sodium adds up fast between the meat, cheese, and dressing. Coke Zero adds caffeine but no sugar/calories.</div></li><li><strong>afternoon</strong> - Acai Berry Energy Mio again, 1 serving in water<div class='assessment'>Second caffeinated serving today (~90mg on top of the morning one, ~180mg total) -- still generally fine, but worth watching the clock so it clears well before the 11:00 PM sleep goal.</div></li></ul>
-              <div class="water">Water: 44 oz</div>
-            </div>
-    <div class="avg-water">7-day avg water: 44.0 oz</div>
+  <div class="card vision-card">
+    <h2>My Why &mdash; Vision Board</h2>
+    <p class="vision-intro">True, Faithful, and Valiant in every responsibility and stewardship &mdash; this is the life these daily habits are building toward.</p>
+    <div class="vision-rows"><div class="vision-row vision-row-hero"><img src="visionboard/vb01.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb06.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb03.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb04.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb05.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb10.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb12.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb08.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb09.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb11.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb02.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb13.jpg" alt="Vision board image" loading="lazy"></div></div>
   </div>
 
   <div id="weight"></div>
@@ -220,12 +205,26 @@
     <p class="muted">Log a few weigh-ins to see your trend line here.</p>
   </div>
 
-  <div id="vision"></div>
+  <div id="today"></div>
   
-  <div class="card vision-card">
-    <h2>My Why &mdash; Vision Board</h2>
-    <p class="vision-intro">True, Faithful, and Valiant in every responsibility and stewardship &mdash; this is the life these daily habits are building toward.</p>
-    <div class="vision-rows"><div class="vision-row vision-row-hero"><img src="visionboard/vb01.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb06.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb03.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb04.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb05.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb10.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb12.jpg" alt="Vision board image" loading="lazy"></div><div class="vision-row"><img src="visionboard/vb08.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb09.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb11.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb02.jpg" alt="Vision board image" loading="lazy"><img src="visionboard/vb13.jpg" alt="Vision board image" loading="lazy"></div></div>
+  
+  <div class="card">
+    <h2>Daily &amp; Weekday Goals</h2>
+    <table><tr><th>Goal</th><th>Streak</th><th>Today</th></tr><tr><td>Wake up by 6:00 AM</td><td>0-day streak</td><td><button type="button" class="cell-toggle bad" data-goal-id="wake_6am" data-state="missed" onclick="cycleGoal(this)">missed</button></td></tr><tr><td>Morning prayer (personal)</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="morning_prayer" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>Book of Mormon reading</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="bom_reading" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>30 push-ups</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input ok" data-goal-id="pushups_30" data-goal-type="minimum" data-target="30" value="30" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/30 reps</span></span></td></tr><tr><td>30 squats</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input ok" data-goal-id="squats_30" data-goal-type="minimum" data-target="30" value="30" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/30 reps</span></span></td></tr><tr><td>5,000 steps</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="steps_5000" data-goal-type="minimum" data-target="5000" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/5000 steps</span></span></td></tr><tr><td>Read 20 minutes</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="read_20min" data-goal-type="minimum" data-target="20" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/20 minutes</span></span></td></tr><tr><td>Phone games</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="phone_games_cap" data-goal-type="cap" data-target="60" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/60 minutes</span></span></td></tr><tr><td>Social media</td><td>0-day streak</td><td><span class="cell-num-wrap"><input type="number" inputmode="numeric" class="cell-input pending" data-goal-id="social_media_cap" data-goal-type="cap" data-target="60" value="" placeholder="--" onchange="updateNumeric(this)"><span class="cell-unit">/60 minutes</span></span></td></tr><tr><td>Couple prayer with Andrea</td><td>0-day streak</td><td><button type="button" class="cell-toggle ok" data-goal-id="couple_prayer" data-state="done" onclick="cycleGoal(this)">done</button></td></tr><tr><td>Evening prayer (personal)</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="evening_prayer" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr><tr><td>Asleep by 11:00 PM</td><td>0-day streak</td><td><button type="button" class="cell-toggle pending" data-goal-id="sleep_11pm" data-state="none" onclick="cycleGoal(this)">not yet logged</button></td></tr></table>
+  </div>
+  
+  <div class="card">
+    <h2>Weekly Goals</h2>
+    <table><tr><th>Goal</th><th>This Week</th></tr><tr><td>Gym attendance</td><td><span class="badge bad">0/2 this week</span></td></tr><tr><td>Temple attendance</td><td><span class="badge bad">0/1 this week</span></td></tr></table>
+  </div>
+
+  <div id="daily-log"></div>
+  
+  <div class="card cal-card">
+    <h2>Daily Log (full history)</h2>
+    <div class="cal-scroll">
+    <table class="cal-table log-table"><tr><th>Date</th><th title="Wake up by 6:00 AM">⏰</th><th title="Morning prayer (personal)">🙏</th><th title="Book of Mormon reading">📖</th><th title="30 push-ups">💪</th><th title="30 squats">🦵</th><th title="5,000 steps">👟</th><th title="Read 20 minutes">📚</th><th title="Phone games">🎮</th><th title="Social media">📱</th><th title="Couple prayer with Andrea">💞</th><th title="Evening prayer (personal)">🌙</th><th title="Asleep by 11:00 PM">😴</th><th title="Gym attendance">🏋️</th><th title="Temple attendance">⛪</th></tr><tr><td class="cal-label">2026-07-21</td><td class="cal-bad" data-date="2026-07-21" data-log-goal-id="wake_6am">&#10007;</td><td class="cal-ok" data-date="2026-07-21" data-log-goal-id="morning_prayer">&#10003;</td><td class="cal-ok" data-date="2026-07-21" data-log-goal-id="bom_reading">&#10003;</td><td class="cal-ok" data-date="2026-07-21" data-log-goal-id="pushups_30">30</td><td class="cal-ok" data-date="2026-07-21" data-log-goal-id="squats_30">30</td><td class="cal-blank" data-date="2026-07-21" data-log-goal-id="steps_5000"></td><td class="cal-blank" data-date="2026-07-21" data-log-goal-id="read_20min"></td><td class="cal-blank" data-date="2026-07-21" data-log-goal-id="phone_games_cap"></td><td class="cal-blank" data-date="2026-07-21" data-log-goal-id="social_media_cap"></td><td class="cal-ok" data-date="2026-07-21" data-log-goal-id="couple_prayer">&#10003;</td><td class="cal-blank" data-date="2026-07-21" data-log-goal-id="evening_prayer"></td><td class="cal-blank" data-date="2026-07-21" data-log-goal-id="sleep_11pm"></td><td class="cal-blank" data-date="2026-07-21" data-log-goal-id="gym_session"></td><td class="cal-blank" data-date="2026-07-21" data-log-goal-id="temple_attendance"></td></tr></table>
+    </div>
   </div>
 
   <div id="calendar"></div>
@@ -238,15 +237,6 @@
     </div>
   </div>
 
-  <div id="daily-log"></div>
-  
-  <div class="card cal-card">
-    <h2>Daily Log (full history)</h2>
-    <div class="cal-scroll">
-    <table class="cal-table log-table"><tr><th>Date</th><th title="Wake up by 6:00 AM">⏰</th><th title="Morning prayer (personal)">🙏</th><th title="Book of Mormon reading">📖</th><th title="30 push-ups">💪</th><th title="30 squats">🦵</th><th title="5,000 steps">👟</th><th title="Read 20 minutes">📚</th><th title="Phone games">🎮</th><th title="Social media">📱</th><th title="Couple prayer with Andrea">💞</th><th title="Evening prayer (personal)">🌙</th><th title="Asleep by 11:00 PM">😴</th><th title="Gym attendance">🏋️</th><th title="Temple attendance">⛪</th></tr><tr><td class="cal-label">2026-07-21</td><td class="cal-bad">&#10007;</td><td class="cal-ok">&#10003;</td><td class="cal-ok">&#10003;</td><td class="cal-ok">30</td><td class="cal-ok">30</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-ok">&#10003;</td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td><td class="cal-blank"></td></tr></table>
-    </div>
-  </div>
-
   <div id="nutrition-log"></div>
   
   <div class="card">
@@ -254,6 +244,17 @@
     <div class="cal-scroll">
     <table class="cal-table"><tr><th>Date</th><th>Meals</th><th>Water (oz)</th></tr><tr><td class="cal-label">2026-07-21</td><td class="nut-cell"><strong>morning</strong>: Chocolate/peanut butter/banana protein shake (45g protein) <span class='assessment'>(Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start.)</span><br><strong>morning</strong>: Acai Berry Energy Mio, 1 serving in water <span class='assessment'>(Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal.)</span><br><strong>lunch</strong>: Cafe Rio handheld burrito: white rice, black beans, sweet pork, cheese, pico de gallo, tomatillo ranch; 16 oz Coke Zero <span class='assessment'>(Solid protein from the pork, but this is a calorie-dense meal -- handheld burritos with rice, beans, cheese, and dressing commonly run 700-900+ kcal, plus sodium adds up fast between the meat, cheese, and dressing. Coke Zero adds caffeine but no sugar/calories.)</span><br><strong>afternoon</strong>: Acai Berry Energy Mio again, 1 serving in water <span class='assessment'>(Second caffeinated serving today (~90mg on top of the morning one, ~180mg total) -- still generally fine, but worth watching the clock so it clears well before the 11:00 PM sleep goal.)</span></td><td>44</td></tr></table>
     </div>
+  </div>
+  
+  <div class="card">
+    <h2>Nutrition &amp; Water (last 7 days)</h2>
+    
+            <div class="nut-day">
+              <div class="nut-date">2026-07-21 (today)</div>
+              <ul><li><strong>morning</strong> - Chocolate/peanut butter/banana protein shake (45g protein)<div class='assessment'>Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start.</div></li><li><strong>morning</strong> - Acai Berry Energy Mio, 1 serving in water<div class='assessment'>Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal.</div></li><li><strong>lunch</strong> - Cafe Rio handheld burrito: white rice, black beans, sweet pork, cheese, pico de gallo, tomatillo ranch; 16 oz Coke Zero<div class='assessment'>Solid protein from the pork, but this is a calorie-dense meal -- handheld burritos with rice, beans, cheese, and dressing commonly run 700-900+ kcal, plus sodium adds up fast between the meat, cheese, and dressing. Coke Zero adds caffeine but no sugar/calories.</div></li><li><strong>afternoon</strong> - Acai Berry Energy Mio again, 1 serving in water<div class='assessment'>Second caffeinated serving today (~90mg on top of the morning one, ~180mg total) -- still generally fine, but worth watching the clock so it clears well before the 11:00 PM sleep goal.</div></li></ul>
+              <div class="water">Water: 44 oz</div>
+            </div>
+    <div class="avg-water">7-day avg water: 44.0 oz</div>
   </div>
 
   <div class="footer">This page regenerates each time you log something new and get a check-in. Reopen it any time to see your latest progress.</div>
@@ -286,41 +287,100 @@
     showToast('Saved');
   }
 
-  function cycleGoal(btn) {
-    var goalId = btn.getAttribute('data-goal-id');
-    var state = btn.getAttribute('data-state');
-    var next, cls, text, payload;
-    if (state === 'none') {
-      next = 'done'; cls = 'ok'; text = 'done';
-      payload = {kind: 'boolean', boolValue: true};
-    } else if (state === 'done') {
-      next = 'missed'; cls = 'bad'; text = 'missed';
-      payload = {kind: 'boolean', boolValue: false};
-    } else {
-      next = 'none'; cls = 'pending'; text = 'not yet logged';
-      payload = {kind: 'boolean', clear: true};
+  // ---- local cache: remembers today's taps on this device so a refresh
+  // before the next scheduled site rebuild still shows what you just did ----
+  var CACHE_KEY = 'accountability_cache_v1';
+
+  function loadCache() {
+    try {
+      var raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return {date: TODAY_DATE, entries: {}};
+      var parsed = JSON.parse(raw);
+      if (parsed.date !== TODAY_DATE) return {date: TODAY_DATE, entries: {}};
+      return parsed;
+    } catch (e) {
+      return {date: TODAY_DATE, entries: {}};
     }
-    btn.setAttribute('data-state', next);
-    btn.className = 'cell-toggle ' + cls;
-    btn.textContent = text;
-    saveGoal(goalId, payload);
   }
 
-  function updateNumeric(input) {
+  function cacheSet(key, value) {
+    try {
+      var cache = loadCache();
+      cache.entries[key] = value;
+      localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+    } catch (e) { /* ignore, e.g. private browsing */ }
+  }
+
+  // ---- shared cell-update helpers (used by real taps AND cache restore) ----
+
+  function syncDailyLogCell(goalId, cls, text) {
+    var td = document.querySelector('td[data-date="' + TODAY_DATE + '"][data-log-goal-id="' + goalId + '"]');
+    if (!td) return;
+    td.classList.remove('cal-ok', 'cal-bad', 'cal-blank');
+    td.classList.add(cls);
+    td.innerHTML = text;
+  }
+
+  function setBooleanCell(btn, state, save) {
+    var goalId = btn.getAttribute('data-goal-id');
+    var cls, text, logCls, logText, payload;
+    if (state === 'done') {
+      cls = 'ok'; text = 'done'; logCls = 'cal-ok'; logText = '&#10003;';
+      payload = {kind: 'boolean', boolValue: true};
+    } else if (state === 'missed') {
+      cls = 'bad'; text = 'missed'; logCls = 'cal-bad'; logText = '&#10007;';
+      payload = {kind: 'boolean', boolValue: false};
+    } else {
+      cls = 'pending'; text = 'not yet logged'; logCls = 'cal-blank'; logText = '';
+      payload = {kind: 'boolean', clear: true};
+    }
+    btn.setAttribute('data-state', state);
+    btn.className = 'cell-toggle ' + cls;
+    btn.textContent = text;
+    syncDailyLogCell(goalId, logCls, logText);
+    if (save) {
+      saveGoal(goalId, payload);
+      cacheSet('goal_' + goalId, {type: 'boolean', state: state});
+    }
+  }
+
+  function cycleGoal(btn) {
+    var state = btn.getAttribute('data-state');
+    var next = state === 'none' ? 'done' : (state === 'done' ? 'missed' : 'none');
+    setBooleanCell(btn, next, true);
+  }
+
+  function setNumericCell(input, rawVal, save) {
     var goalId = input.getAttribute('data-goal-id');
     var goalType = input.getAttribute('data-goal-type');
     var target = parseFloat(input.getAttribute('data-target'));
-    var raw = input.value;
     input.classList.remove('ok', 'bad', 'pending');
-    if (raw === '') {
+    var logCls, logText, payload, cacheEntry;
+    if (rawVal === '' || rawVal === null || rawVal === undefined) {
+      input.value = '';
       input.classList.add('pending');
-      saveGoal(goalId, {kind: 'value', clear: true});
-      return;
+      logCls = 'cal-blank'; logText = '';
+      payload = {kind: 'value', clear: true};
+      cacheEntry = {type: 'value', cleared: true};
+    } else {
+      var val = parseFloat(rawVal);
+      var success = goalType === 'minimum' ? (val >= target) : (val <= target);
+      input.value = val;
+      input.classList.add(success ? 'ok' : 'bad');
+      logCls = success ? 'cal-ok' : 'cal-bad';
+      logText = String(val);
+      payload = {kind: 'value', numValue: val};
+      cacheEntry = {type: 'value', value: val};
     }
-    var val = parseFloat(raw);
-    var success = goalType === 'minimum' ? (val >= target) : (val <= target);
-    input.classList.add(success ? 'ok' : 'bad');
-    saveGoal(goalId, {kind: 'value', numValue: val});
+    syncDailyLogCell(goalId, logCls, logText);
+    if (save) {
+      saveGoal(goalId, payload);
+      cacheSet('goal_' + goalId, cacheEntry);
+    }
+  }
+
+  function updateNumeric(input) {
+    setNumericCell(input, input.value, true);
   }
 
   function updateDistanceText(latest) {
@@ -339,16 +399,10 @@
 
   function logWeight(input) {
     var raw = input.value;
-    if (raw === '') {
-      LATEST_WEIGHT = null;
-      saveGoal(null, {kind: 'weight', clear: true});
-      updateDistanceText(null);
-      return;
-    }
-    var val = parseFloat(raw);
-    LATEST_WEIGHT = val;
-    saveGoal(null, {kind: 'weight', numValue: val});
-    updateDistanceText(val);
+    LATEST_WEIGHT = raw === '' ? null : parseFloat(raw);
+    saveGoal(null, raw === '' ? {kind: 'weight', clear: true} : {kind: 'weight', numValue: LATEST_WEIGHT});
+    updateDistanceText(LATEST_WEIGHT);
+    cacheSet('weight', raw === '' ? {cleared: true} : {value: LATEST_WEIGHT});
   }
 
   function updateGoalWeight(input) {
@@ -357,7 +411,38 @@
     GOAL_WEIGHT = val;
     saveGoal(null, {kind: 'goal_weight', numValue: val});
     updateDistanceText(LATEST_WEIGHT);
+    cacheSet('goalWeight', {value: val});
   }
+
+  function restoreFromCache() {
+    var cache = loadCache();
+    var entries = cache.entries || {};
+    Object.keys(entries).forEach(function(key) {
+      var entry = entries[key];
+      if (key === 'weight') {
+        var wInput = document.querySelector('.weight-input:not(.goal)');
+        if (wInput) wInput.value = entry.cleared ? '' : entry.value;
+        LATEST_WEIGHT = entry.cleared ? null : entry.value;
+        updateDistanceText(LATEST_WEIGHT);
+      } else if (key === 'goalWeight') {
+        var gInput = document.querySelector('.weight-input.goal');
+        if (gInput) gInput.value = entry.value;
+        GOAL_WEIGHT = entry.value;
+        updateDistanceText(LATEST_WEIGHT);
+      } else if (key.indexOf('goal_') === 0) {
+        var goalId = key.slice(5);
+        if (entry.type === 'boolean') {
+          var btn = document.querySelector('.cell-toggle[data-goal-id="' + goalId + '"]');
+          if (btn) setBooleanCell(btn, entry.state, false);
+        } else if (entry.type === 'value') {
+          var inp = document.querySelector('.cell-input[data-goal-id="' + goalId + '"]');
+          if (inp) setNumericCell(inp, entry.cleared ? '' : entry.value, false);
+        }
+      }
+    });
+  }
+
+  restoreFromCache();
 </script>
 </body>
 </html>
