@@ -75,9 +75,14 @@
             "time": "morning",
             "description": "Protein shake: strawberries and cream, creatine, chia seeds, 1 cup frozen strawberries",
             "assessment": "Another strong protein start (~45g) -- chia seeds add fiber and omega-3s, and the creatine pairs well with your pushups/squats for strength support."
+          },
+          {
+            "time": "morning",
+            "description": "Acai Berry Energy Mio, 1 serving in water",
+            "assessment": "Adds ~90mg caffeine. Same as yesterday's pattern -- fine for a morning boost, just worth keeping an eye on total caffeine and cutting it off well before your 11:00 PM wind-down."
           }
         ],
-        "water_oz": 24
+        "water_oz": 48
       }
     },
     "2026-07-20": {
