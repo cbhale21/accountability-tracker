@@ -103,6 +103,12 @@
         },
         "sleep_11pm": {
           "done": true
+        },
+        "social_media_cap": {
+          "value": 59
+        },
+        "phone_games_cap": {
+          "value": 21
         }
       },
       "nutrition": {
