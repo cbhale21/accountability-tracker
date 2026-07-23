@@ -770,6 +770,8 @@ def main():
     <a href="#nutrition-log">Nutrition Log</a>
   </nav>
 
+  {quote_section}
+
   <div id="vision"></div>
   {vision_board_section}
 
@@ -777,7 +779,6 @@ def main():
   {weight_section}
 
   <div id="today"></div>
-  {quote_section}
   {daily_weekday_goals_section}
   {weekly_goals_section}
 
