@@ -138,6 +138,20 @@
           "done": true
         }
       }
+    },
+    "2026-07-23": {
+      "goals": {
+        "bom_reading": {
+          "done": true
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 3418
+        }
+      },
+      "weight_lbs": 238.8
     }
   },
   "goal_weight_lbs": 200
