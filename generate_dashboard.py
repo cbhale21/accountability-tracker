@@ -305,12 +305,16 @@ def build_calendar_section(goals, log, today):
                 continue
             day_entry = log["daily"].get(fmt_date(d), {})
             g_entry = day_entry.get("goals", {}).get(g["id"])
+            # Only today's cell can change live via taps on this page (past days are
+            # fixed history), so only it needs data attrs for the JS to find and
+            # update it in place as goals get checked off during the day.
+            today_attrs = f' data-date="{esc(fmt_date(d))}" data-cal-goal-id="{esc(g["id"])}"' if d == today else ""
             if d == today and g_entry is None:
-                cells += '<td class="cal-pending">?</td>'
+                cells += f'<td class="cal-pending"{today_attrs}>?</td>'
             elif goal_success(g, g_entry):
-                cells += '<td class="cal-ok">&#10003;</td>'
+                cells += f'<td class="cal-ok"{today_attrs}>&#10003;</td>'
             else:
-                cells += '<td class="cal-bad">&#10007;</td>'
+                cells += f'<td class="cal-bad"{today_attrs}>&#10007;</td>'
         body_rows += f'<tr><td class="cal-label">{esc(g["label"])}</td>{cells}</tr>'
 
     return f'''
@@ -865,23 +869,39 @@ def main():
     td.innerHTML = text;
   }}
 
+  // Habit Calendar heatmap only ever has a data-cal-goal-id cell for TODAY
+  // (past days are fixed history baked in at generation time) -- this keeps
+  // today's column live as goals get checked off, instead of staying stuck
+  // on "?" until the next scheduled rebuild.
+  function syncCalendarCell(goalId, cls, text) {{
+    var td = document.querySelector('td[data-date="' + TODAY_DATE + '"][data-cal-goal-id="' + goalId + '"]');
+    if (!td) return;
+    td.classList.remove('cal-ok', 'cal-bad', 'cal-pending', 'cal-na', 'cal-blank');
+    td.classList.add(cls);
+    td.innerHTML = text;
+  }}
+
   function setBooleanCell(btn, state, save) {{
     var goalId = btn.getAttribute('data-goal-id');
-    var cls, text, logCls, logText, payload;
+    var cls, text, logCls, logText, calCls, calText, payload;
     if (state === 'done') {{
       cls = 'ok'; text = 'done'; logCls = 'cal-ok'; logText = '&#10003;';
+      calCls = 'cal-ok'; calText = '&#10003;';
       payload = {{kind: 'boolean', boolValue: true}};
     }} else if (state === 'missed') {{
       cls = 'bad'; text = 'missed'; logCls = 'cal-bad'; logText = '&#10007;';
+      calCls = 'cal-bad'; calText = '&#10007;';
       payload = {{kind: 'boolean', boolValue: false}};
     }} else {{
       cls = 'pending'; text = 'not yet logged'; logCls = 'cal-blank'; logText = '';
+      calCls = 'cal-pending'; calText = '?';
       payload = {{kind: 'boolean', clear: true}};
     }}
     btn.setAttribute('data-state', state);
     btn.className = 'cell-toggle ' + cls;
     btn.textContent = text;
     syncDailyLogCell(goalId, logCls, logText);
+    syncCalendarCell(goalId, calCls, calText);
     if (save) {{
       saveGoal(goalId, payload);
       cacheSet('goal_' + goalId, {{type: 'boolean', state: state}});
@@ -937,11 +957,12 @@ def main():
     var goalType = input.getAttribute('data-goal-type');
     var target = parseFloat(input.getAttribute('data-target'));
     input.classList.remove('ok', 'bad', 'pending');
-    var logCls, logText, payload, cacheEntry;
+    var logCls, logText, calCls, calText, payload, cacheEntry;
     if (rawVal === '' || rawVal === null || rawVal === undefined) {{
       input.value = '';
       input.classList.add('pending');
       logCls = 'cal-blank'; logText = '';
+      calCls = 'cal-pending'; calText = '?';
       payload = {{kind: 'value', clear: true}};
       cacheEntry = {{type: 'value', cleared: true}};
     }} else {{
@@ -951,10 +972,13 @@ def main():
       input.classList.add(success ? 'ok' : 'bad');
       logCls = success ? 'cal-ok' : 'cal-bad';
       logText = String(val);
+      calCls = success ? 'cal-ok' : 'cal-bad';
+      calText = success ? '&#10003;' : '&#10007;';
       payload = {{kind: 'value', numValue: val}};
       cacheEntry = {{type: 'value', value: val}};
     }}
     syncDailyLogCell(goalId, logCls, logText);
+    syncCalendarCell(goalId, calCls, calText);
     if (save) {{
       saveGoal(goalId, payload);
       cacheSet('goal_' + goalId, cacheEntry);
