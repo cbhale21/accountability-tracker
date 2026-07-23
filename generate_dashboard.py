@@ -370,6 +370,16 @@ def build_daily_log_section(goals, log, today=None):
         for g in all_goals:
             g_entry = day_entry.get("goals", {}).get(g["id"])
             attrs = f'data-date="{esc(date_str)}" data-log-goal-id="{esc(g["id"])}"'
+            if g["cadence"] == "weekly_count":
+                # Weekly-count goals (gym, temple, etc.) only ever have two states
+                # for a given day: logged, or not logged. There's no per-day
+                # "missed" concept, so never render red -- just green-check when
+                # logged, otherwise a blank cell.
+                if g_entry and g_entry.get("done"):
+                    cells += f'<td class="cal-ok" {attrs}>&#10003;</td>'
+                else:
+                    cells += f'<td class="cal-blank" {attrs}></td>'
+                continue
             if g_entry is None:
                 cells += f'<td class="cal-blank" {attrs}></td>'
                 continue
@@ -905,6 +915,10 @@ def main():
       countEl.className = 'badge ' + (nextCount >= target ? 'ok' : (nextCount > 0 ? 'pending' : 'bad'));
       countEl.textContent = nextCount + '/' + target + ' this week';
     }}
+
+    // Weekly-count goals never show red in the Daily Log -- green check when
+    // logged today, otherwise blank (matches the server-rendered logic).
+    syncDailyLogCell(goalId, willLog ? 'cal-ok' : 'cal-blank', willLog ? '&#10003;' : '');
 
     if (save) {{
       saveGoal(goalId, willLog ? {{kind: 'boolean', boolValue: true}} : {{kind: 'boolean', clear: true}});
