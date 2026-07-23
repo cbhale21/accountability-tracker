@@ -149,6 +149,15 @@
         },
         "steps_5000": {
           "value": 3418
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 30
         }
       },
       "weight_lbs": 238.8
