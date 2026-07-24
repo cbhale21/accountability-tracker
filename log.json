@@ -113,6 +113,9 @@
         },
         "sleep_11pm": {
           "done": true
+        },
+        "bom_reading": {
+          "done": true
         }
       },
       "nutrition": {
@@ -164,6 +167,12 @@
         },
         "read_20min": {
           "value": 20
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 30
         }
       },
       "weight_lbs": 238.8,
