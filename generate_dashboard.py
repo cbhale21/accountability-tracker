@@ -537,7 +537,7 @@ def build_weight_section(log, today):
       </div>
     </div>
     <div class="weight-distance" id="weightDistance">{esc(distance_text)}</div>
-    {chart_html}
+    <div id="weightChartWrap">{chart_html}</div>
   </div>'''
 
 
@@ -851,6 +851,7 @@ def main():
   var WRITE_URL = {json.dumps(apps_script_url)};
   var GOAL_WEIGHT = {json.dumps(goal_weight_for_js)};
   var LATEST_WEIGHT = {json.dumps(latest_weight_for_js)};
+  var WEIGHT_ENTRIES = {json.dumps(weight_entries_for_js)};
 
   // The page is a static snapshot rebuilt once a day (or on-demand), so TODAY_DATE
   // above can go stale if you open/tap the page before the next rebuild (e.g. early
@@ -1134,11 +1135,81 @@ def main():
     }}
   }}
 
+  // ---- client-side weight chart redraw: mirrors build_weight_chart_svg() in
+  // generate_dashboard.py exactly, so the trend line updates the instant a
+  // weigh-in is saved instead of waiting for the next scheduled rebuild ----
+
+  function computeWeightChartSVG(entries, goalWeight) {{
+    if (entries.length < 2) {{
+      return '<p class="muted">Log a few weigh-ins to see your trend line here.</p>';
+    }}
+    var W = 700, H = 220;
+    var marginL = 8, marginR = 8, marginT = 20, marginB = 24;
+    var plotW = W - marginL - marginR;
+    var plotH = H - marginT - marginB;
+    var values = entries.map(function(e) {{ return e[1]; }});
+    values.push(goalWeight);
+    var lo = Math.min.apply(null, values) - 3;
+    var hi = Math.max.apply(null, values) + 3;
+    if (hi === lo) hi = lo + 1;
+    function xFor(i) {{
+      if (entries.length === 1) return marginL;
+      return marginL + plotW * i / (entries.length - 1);
+    }}
+    function yFor(v) {{
+      return marginT + plotH * (hi - v) / (hi - lo);
+    }}
+    var points = entries.map(function(e, i) {{
+      return xFor(i).toFixed(1) + ',' + yFor(e[1]).toFixed(1);
+    }}).join(' ');
+    var circles = entries.map(function(e, i) {{
+      return '<circle cx="' + xFor(i).toFixed(1) + '" cy="' + yFor(e[1]).toFixed(1) +
+        '" r="3.5" fill="var(--crimson)"></circle>';
+    }}).join('');
+    var goalY = yFor(goalWeight);
+    var firstDate = entries[0][0], lastDate = entries[entries.length - 1][0];
+    return '<div class="weight-chart-wrap">' +
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" class="weight-chart" preserveAspectRatio="none">' +
+        '<line x1="' + marginL + '" y1="' + goalY.toFixed(1) + '" x2="' + (W - marginR) +
+          '" y2="' + goalY.toFixed(1) + '" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="5,4"></line>' +
+        '<text x="' + (W - marginR) + '" y="' + (goalY - 6).toFixed(1) +
+          '" text-anchor="end" class="weight-goal-label">Goal ' + escapeHtml(goalWeight) + ' lbs</text>' +
+        '<polyline points="' + points + '" fill="none" stroke="var(--crimson)" stroke-width="2.5"></polyline>' +
+        circles +
+        '<text x="' + marginL + '" y="' + (H - 6) + '" class="weight-axis-label">' + escapeHtml(firstDate) + '</text>' +
+        '<text x="' + (W - marginR) + '" y="' + (H - 6) +
+          '" text-anchor="end" class="weight-axis-label">' + escapeHtml(lastDate) + '</text>' +
+      '</svg></div>';
+  }}
+
+  function renderWeightChart() {{
+    var wrap = document.getElementById('weightChartWrap');
+    if (!wrap) return;
+    wrap.innerHTML = computeWeightChartSVG(WEIGHT_ENTRIES.slice(), GOAL_WEIGHT);
+  }}
+
+  function upsertWeightEntry(dateStr, weight) {{
+    var idx = -1;
+    for (var i = 0; i < WEIGHT_ENTRIES.length; i++) {{
+      if (WEIGHT_ENTRIES[i][0] === dateStr) {{ idx = i; break; }}
+    }}
+    if (weight === null || weight === undefined || isNaN(weight)) {{
+      if (idx !== -1) WEIGHT_ENTRIES.splice(idx, 1);
+    }} else if (idx !== -1) {{
+      WEIGHT_ENTRIES[idx][1] = weight;
+    }} else {{
+      WEIGHT_ENTRIES.push([dateStr, weight]);
+      WEIGHT_ENTRIES.sort(function(a, b) {{ return a[0] < b[0] ? -1 : (a[0] > b[0] ? 1 : 0); }});
+    }}
+  }}
+
   function logWeight(input) {{
     var raw = input.value;
     LATEST_WEIGHT = raw === '' ? null : parseFloat(raw);
     saveGoal(null, raw === '' ? {{kind: 'weight', clear: true}} : {{kind: 'weight', numValue: LATEST_WEIGHT}});
     updateDistanceText(LATEST_WEIGHT);
+    upsertWeightEntry(realTodayStr(), LATEST_WEIGHT);
+    renderWeightChart();
     cacheSet('weight', raw === '' ? {{cleared: true}} : {{value: LATEST_WEIGHT}});
   }}
 
@@ -1148,6 +1219,7 @@ def main():
     GOAL_WEIGHT = val;
     saveGoal(null, {{kind: 'goal_weight', numValue: val}});
     updateDistanceText(LATEST_WEIGHT);
+    renderWeightChart();
     cacheSet('goalWeight', {{value: val}});
   }}
 
@@ -1161,11 +1233,14 @@ def main():
         if (wInput) wInput.value = entry.cleared ? '' : entry.value;
         LATEST_WEIGHT = entry.cleared ? null : entry.value;
         updateDistanceText(LATEST_WEIGHT);
+        upsertWeightEntry(realTodayStr(), LATEST_WEIGHT);
+        renderWeightChart();
       }} else if (key === 'goalWeight') {{
         var gInput = document.querySelector('.weight-input.goal');
         if (gInput) gInput.value = entry.value;
         GOAL_WEIGHT = entry.value;
         updateDistanceText(LATEST_WEIGHT);
+        renderWeightChart();
       }} else if (key.indexOf('goal_') === 0) {{
         var goalId = key.slice(5);
         if (entry.type === 'boolean') {{
