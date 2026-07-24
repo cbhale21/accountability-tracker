@@ -87,9 +87,6 @@
         "morning_prayer": {
           "done": true
         },
-        "gym_session": {
-          "done": true
-        },
         "read_20min": {
           "value": 60
         },
@@ -164,6 +161,9 @@
         },
         "couple_prayer": {
           "done": false
+        },
+        "read_20min": {
+          "value": 20
         }
       },
       "weight_lbs": 238.8,
