@@ -173,6 +173,9 @@
         },
         "pushups_30": {
           "value": 30
+        },
+        "morning_prayer": {
+          "done": true
         }
       },
       "weight_lbs": 238.8,
