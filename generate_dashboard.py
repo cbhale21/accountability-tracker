@@ -418,7 +418,10 @@ def build_daily_log_section(goals, log, today=None):
                     cells += f'<td class="cal-blank" {attrs}></td>'
                 continue
             if g_entry is None:
-                cells += f'<td class="cal-blank" {attrs}></td>'
+                if not applies_on(g, parse_date(date_str)):
+                    cells += f'<td class="cal-na" {attrs}>-</td>'
+                else:
+                    cells += f'<td class="cal-blank" {attrs}></td>'
                 continue
             success = goal_success(g, g_entry)
             cls = "cal-ok" if success else "cal-bad"

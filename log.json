@@ -217,6 +217,12 @@
         },
         "social_media_cap": {
           "value": 66
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
         }
       },
       "weight_lbs": 240,
