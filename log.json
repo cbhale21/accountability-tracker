@@ -84,9 +84,6 @@
         "wake_6am": {
           "done": true
         },
-        "morning_prayer": {
-          "done": true
-        },
         "read_20min": {
           "value": 60
         },
@@ -98,24 +95,6 @@
         },
         "steps_5000": {
           "value": 6140
-        },
-        "social_media_cap": {
-          "value": 56
-        },
-        "phone_games_cap": {
-          "value": 21
-        },
-        "couple_prayer": {
-          "done": true
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
         }
       },
       "nutrition": {
@@ -149,33 +128,6 @@
         },
         "steps_5000": {
           "value": 5000
-        },
-        "social_media_cap": {
-          "value": 29
-        },
-        "phone_games_cap": {
-          "value": 53
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "read_20min": {
-          "value": 20
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "morning_prayer": {
-          "done": true
         }
       },
       "weight_lbs": 238.8,
@@ -199,9 +151,40 @@
         },
         "bom_reading": {
           "done": true
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "read_20min": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 2824
+        },
+        "phone_games_cap": {
+          "value": 59
+        },
+        "social_media_cap": {
+          "value": 66
         }
       },
-      "weight_lbs": 240
+      "weight_lbs": 240,
+      "nutrition": {
+        "meals": [
+          {
+            "time": "lunch",
+            "description": "Office bbq - pulled pork, beans, mashed potatoes, green beans, cornbread"
+          },
+          {
+            "time": "dinner",
+            "description": "Fleming's - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
+          }
+        ],
+        "water_oz": 24
+      }
     }
   },
   "goal_weight_lbs": 200
