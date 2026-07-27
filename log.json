@@ -298,7 +298,41 @@
         },
         "read_20min": {
           "value": 0
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 2001
+        },
+        "phone_games_cap": {
+          "value": 36
+        },
+        "social_media_cap": {
+          "value": 58
         }
+      }
+    },
+    "2026-07-27": {
+      "goals": {
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        }
+      },
+      "nutrition": {
+        "water_oz": 20
       }
     }
   },
