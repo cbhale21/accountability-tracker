@@ -104,15 +104,20 @@ def today_status(goal, log, today):
 
 
 def week_bounds(d):
-    monday = d - datetime.timedelta(days=d.weekday())
-    sunday = monday + datetime.timedelta(days=6)
-    return monday, sunday
+    """Chris's week runs Sunday through Saturday (Sunday is day 1), not the
+    Python/ISO Monday-start week -- so weekly_count goals (gym, temple) reset
+    to 0 first thing Sunday morning rather than carrying the outgoing week's
+    tally through to Sunday night."""
+    days_since_sunday = (d.weekday() + 1) % 7  # Mon=1, Tue=2, ... Sat=6, Sun=0
+    sunday = d - datetime.timedelta(days=days_since_sunday)
+    saturday = sunday + datetime.timedelta(days=6)
+    return sunday, saturday
 
 
 def weekly_count(goal, log, today):
-    monday, _ = week_bounds(today)
+    week_start, _ = week_bounds(today)
     count = 0
-    d = monday
+    d = week_start
     while d <= today:
         day_entry = log["daily"].get(fmt_date(d), {})
         g_entry = day_entry.get("goals", {}).get(goal["id"])

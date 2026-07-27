@@ -182,7 +182,7 @@
     <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
     <button type="button" class="refresh-btn" onclick="hardRefresh()">&#8635; Refresh</button>
   </div>
-  <div class="subtitle">Generated 2026-07-26 20:28 &middot; Today is Sunday, July 26, 2026</div>
+  <div class="subtitle">Generated 2026-07-26 20:42 &middot; Today is Sunday, July 26, 2026</div>
 
   <nav class="tabs">
     <a href="#vision">Vision Board</a>
@@ -253,7 +253,7 @@
   
   <div class="card">
     <h2>Weekly Goals</h2>
-    <table><tr><th>Goal</th><th>This Week</th><th>Today</th></tr><tr><td>Gym attendance</td><td><span class="badge ok" id="weekly-count-gym_session" data-count="2">2/2 this week</span></td><td><button type="button" class="cell-toggle pending" data-goal-id="gym_session" data-target="2" data-weekly="1" data-state="none" onclick="cycleWeeklyGoal(this)">log today</button></td></tr><tr><td>Temple attendance</td><td><span class="badge ok" id="weekly-count-temple_attendance" data-count="1">1/1 this week</span></td><td><button type="button" class="cell-toggle pending" data-goal-id="temple_attendance" data-target="1" data-weekly="1" data-state="none" onclick="cycleWeeklyGoal(this)">log today</button></td></tr></table>
+    <table><tr><th>Goal</th><th>This Week</th><th>Today</th></tr><tr><td>Gym attendance</td><td><span class="badge bad" id="weekly-count-gym_session" data-count="0">0/2 this week</span></td><td><button type="button" class="cell-toggle pending" data-goal-id="gym_session" data-target="2" data-weekly="1" data-state="none" onclick="cycleWeeklyGoal(this)">log today</button></td></tr><tr><td>Temple attendance</td><td><span class="badge bad" id="weekly-count-temple_attendance" data-count="0">0/1 this week</span></td><td><button type="button" class="cell-toggle pending" data-goal-id="temple_attendance" data-target="1" data-weekly="1" data-state="none" onclick="cycleWeeklyGoal(this)">log today</button></td></tr></table>
     <p class="muted weekly-hint">Tap "log today" the day you go -- it counts toward this week's total right away.</p>
   </div>
 
