@@ -265,6 +265,18 @@
         },
         "temple_attendance": {
           "done": true
+        },
+        "phone_games_cap": {
+          "value": 102
+        },
+        "social_media_cap": {
+          "value": 94
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
         }
       },
       "nutrition": {
@@ -274,6 +286,19 @@
             "description": "Chocolate chip pancakes and milk"
           }
         ]
+      }
+    },
+    "2026-07-26": {
+      "goals": {
+        "morning_prayer": {
+          "done": false
+        },
+        "bom_reading": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 0
+        }
       }
     }
   },

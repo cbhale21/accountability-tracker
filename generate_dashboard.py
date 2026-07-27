@@ -55,17 +55,27 @@ def applies_on(goal, d):
     return False  # weekly_count goals aren't per-day
 
 
-def goal_success(goal, entry):
+def effective_target(goal, d=None):
+    """Some cap goals (phone games, social media) allow a looser cap on
+    weekends via an optional "weekend_target" in goals.json. Falls back to
+    the normal "target" on weekdays or if no override is defined."""
+    if d is not None and goal.get("weekend_target") is not None and d.weekday() >= 5:
+        return goal["weekend_target"]
+    return goal.get("target")
+
+
+def goal_success(goal, entry, d=None):
     if entry is None:
         return False
     if goal["type"] == "boolean":
         return bool(entry.get("done"))
+    target = effective_target(goal, d)
     if goal["type"] == "minimum":
         val = entry.get("value")
-        return val is not None and val >= goal["target"]
+        return val is not None and val >= target
     if goal["type"] == "cap":
         val = entry.get("value")
-        return val is not None and val <= goal["target"]
+        return val is not None and val <= target
     return False
 
 
@@ -77,7 +87,7 @@ def compute_streak(goal, log, today):
         if applies_on(goal, d):
             day_entry = log["daily"].get(fmt_date(d), {})
             g_entry = day_entry.get("goals", {}).get(goal["id"])
-            if goal_success(goal, g_entry):
+            if goal_success(goal, g_entry, d):
                 streak += 1
             else:
                 break
@@ -90,7 +100,7 @@ def today_status(goal, log, today):
     g_entry = day_entry.get("goals", {}).get(goal["id"])
     if g_entry is None:
         return "not yet logged"
-    return "done" if goal_success(goal, g_entry) else "missed"
+    return "done" if goal_success(goal, g_entry, today) else "missed"
 
 
 def week_bounds(d):
@@ -135,7 +145,7 @@ def badge(text, cls):
     return f'<span class="badge {cls}">{esc(text)}</span>'
 
 
-def interactive_cell(goal, g_entry):
+def interactive_cell(goal, g_entry, d=None):
     """Render today's cell as tappable (boolean) or an inline-editable number
     (minimum/cap), so Chris can log today's result directly on the live site.
     Only ever used for TODAY -- history stays read-only static HTML."""
@@ -154,7 +164,9 @@ def interactive_cell(goal, g_entry):
         )
     else:
         value = g_entry.get("value") if g_entry else None
-        target = goal.get("target", "")
+        target = effective_target(goal, d)
+        if target is None:
+            target = goal.get("target", "")
         unit = goal.get("unit", "")
         if value is None:
             cls = "pending"
@@ -199,7 +211,7 @@ def build_daily_weekday_goals_section(goals, log, today):
         else:
             day_entry = log["daily"].get(today_str, {})
             g_entry = day_entry.get("goals", {}).get(g["id"])
-            cell_html = interactive_cell(g, g_entry)
+            cell_html = interactive_cell(g, g_entry, today)
         rows.append((g["label"], f"{streak}-day streak", cell_html))
 
     daily_rows_html = "".join(
@@ -344,7 +356,7 @@ def build_calendar_section(goals, log, today):
             today_attrs = f' data-date="{esc(fmt_date(d))}" data-cal-goal-id="{esc(g["id"])}"' if d == today else ""
             if d == today and g_entry is None:
                 cells += f'<td class="cal-pending"{today_attrs}>?</td>'
-            elif goal_success(g, g_entry):
+            elif goal_success(g, g_entry, d):
                 cells += f'<td class="cal-ok"{today_attrs}>&#10003;</td>'
             else:
                 cells += f'<td class="cal-bad"{today_attrs}>&#10007;</td>'
@@ -423,7 +435,7 @@ def build_daily_log_section(goals, log, today=None):
                 else:
                     cells += f'<td class="cal-blank" {attrs}></td>'
                 continue
-            success = goal_success(g, g_entry)
+            success = goal_success(g, g_entry, parse_date(date_str))
             cls = "cal-ok" if success else "cal-bad"
             if g["type"] == "boolean":
                 val = "&#10003;" if g_entry.get("done") else "&#10007;"
@@ -651,6 +663,15 @@ CSS = '''
     box-shadow: 0 0 0 3px var(--gold-bg), 0 0 0 4px var(--gold), 0 3px 8px rgba(43,32,20,0.25);
     padding: 4px;
   }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .refresh-btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 999px;
+    font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer;
+    background: var(--card); color: var(--crimson); border: 1px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(138,18,7,0.08); -webkit-tap-highlight-color: transparent;
+    transition: transform 0.1s ease;
+  }
+  .refresh-btn:active { transform: scale(0.95); }
   .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 20px; margin-left: 88px; }
   nav.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; position: sticky; top: 0; background: #f4e3c6; padding: 8px 0; z-index: 10; border-bottom: 1px solid var(--border); }
   nav.tabs a {
@@ -812,7 +833,10 @@ def main():
 </head>
 <body>
 <div class="wrap">
-  <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
+  <div class="topbar">
+    <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
+    <button type="button" class="refresh-btn" onclick="hardRefresh()">&#8635; Refresh</button>
+  </div>
   <div class="subtitle">Generated {esc(generated_at)} &middot; Today is {esc(today.strftime('%A, %B %d, %Y'))}</div>
 
   <nav class="tabs">
@@ -855,6 +879,16 @@ def main():
   var GOAL_WEIGHT = {json.dumps(goal_weight_for_js)};
   var LATEST_WEIGHT = {json.dumps(latest_weight_for_js)};
   var WEIGHT_ENTRIES = {json.dumps(weight_entries_for_js)};
+
+  // GitHub Pages sits behind a CDN that can serve a stale cached copy of this
+  // page for a few minutes after a new version is pushed, and standalone
+  // "Add to Home Screen" launches on iOS don't always force a fresh network
+  // fetch on their own. This button forces one: a brand-new query string has
+  // never been cached anywhere, so it guarantees the latest deployed version.
+  function hardRefresh() {{
+    var url = location.origin + location.pathname + '?r=' + Date.now();
+    window.location.href = url;
+  }}
 
   // The page is a static snapshot rebuilt once a day (or on-demand), so TODAY_DATE
   // above can go stale if you open/tap the page before the next rebuild (e.g. early
