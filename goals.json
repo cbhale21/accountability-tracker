@@ -28,26 +28,50 @@
     {
       "id": "pushups_30",
       "label": "30 push-ups",
-      "cadence": "daily",
+      "cadence": "custom_days",
       "type": "minimum",
       "target": 30,
-      "unit": "reps"
+      "unit": "reps",
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ]
     },
     {
       "id": "squats_30",
       "label": "30 squats",
-      "cadence": "daily",
+      "cadence": "custom_days",
       "type": "minimum",
       "target": 30,
-      "unit": "reps"
+      "unit": "reps",
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ]
     },
     {
       "id": "steps_5000",
       "label": "5,000 steps",
-      "cadence": "daily",
+      "cadence": "custom_days",
       "type": "minimum",
       "target": 5000,
-      "unit": "steps"
+      "unit": "steps",
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ]
     },
     {
       "id": "read_20min",

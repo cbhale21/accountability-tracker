@@ -50,7 +50,7 @@ def applies_on(goal, d):
     dow = DOW_ABBR[d.weekday()]
     if cadence == "daily":
         return True
-    if cadence in ("weekdays", "custom_nights"):
+    if cadence in ("weekdays", "custom_nights", "custom_days"):
         return dow in goal.get("days", [])
     return False  # weekly_count goals aren't per-day
 
@@ -205,7 +205,7 @@ def build_quote_section(quote):
 
 
 def build_daily_weekday_goals_section(goals, log, today):
-    daily_goals = [g for g in goals if g["cadence"] in ("daily", "weekdays", "custom_nights")]
+    daily_goals = [g for g in goals if g["cadence"] in ("daily", "weekdays", "custom_nights", "custom_days")]
     today_str = fmt_date(today)
     rows = []
     for g in daily_goals:
@@ -332,7 +332,7 @@ def build_nutrition_water_section(log, today):
 # ---------------------------------------------------------------- Calendar section
 
 def build_calendar_section(goals, log, today):
-    daily_goals = [g for g in goals if g["cadence"] in ("daily", "weekdays", "custom_nights")]
+    daily_goals = [g for g in goals if g["cadence"] in ("daily", "weekdays", "custom_nights", "custom_days")]
     year, month = today.year, today.month
     days_in_month = cal.monthrange(year, month)[1]
     start_date = parse_date(log.get("start_date", fmt_date(today)))
