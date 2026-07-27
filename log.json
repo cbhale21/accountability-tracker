@@ -239,6 +239,42 @@
         ],
         "water_oz": 24
       }
+    },
+    "2026-07-25": {
+      "goals": {
+        "morning_prayer": {
+          "done": true
+        },
+        "gym_session": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 50
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 5000
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 30
+        },
+        "temple_attendance": {
+          "done": true
+        }
+      },
+      "nutrition": {
+        "meals": [
+          {
+            "time": "morning",
+            "description": "Chocolate chip pancakes and milk"
+          }
+        ]
+      }
     }
   },
   "goal_weight_lbs": 200
