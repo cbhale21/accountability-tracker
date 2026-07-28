@@ -353,6 +353,12 @@
         },
         "squats_30": {
           "value": 30
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "sleep_11pm": {
+          "done": false
         }
       },
       "nutrition": {
