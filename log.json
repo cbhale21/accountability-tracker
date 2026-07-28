@@ -359,6 +359,9 @@
         },
         "sleep_11pm": {
           "done": false
+        },
+        "evening_prayer": {
+          "done": false
         }
       },
       "nutrition": {
