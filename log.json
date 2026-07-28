@@ -332,11 +332,43 @@
         },
         "bom_reading": {
           "done": true
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "steps_5000": {
+          "value": 7294
+        },
+        "phone_games_cap": {
+          "value": 31
+        },
+        "social_media_cap": {
+          "value": 24
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "squats_30": {
+          "value": 30
         }
       },
       "nutrition": {
-        "water_oz": 20
-      }
+        "water_oz": 20,
+        "meals": [
+          {
+            "time": "lunch",
+            "description": "Chocolate peanut butter protein shake"
+          },
+          {
+            "time": "morning",
+            "description": "Two eggs, potatoes, three slices of bacon"
+          }
+        ]
+      },
+      "weight_lbs": 238.8
     }
   },
   "goal_weight_lbs": 200
