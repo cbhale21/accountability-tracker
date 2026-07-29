@@ -1,11 +1,250 @@
 {
   "start_date": "2026-07-21",
   "daily": {
-    "2026-07-20": {
+    "2026-07-26": {
       "goals": {
-        "gym_session": {
+        "morning_prayer": {
+          "done": false
+        },
+        "bom_reading": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 2001
+        },
+        "phone_games_cap": {
+          "value": 36
+        },
+        "social_media_cap": {
+          "value": 58
+        },
+        "couple_prayer": {
+          "done": false
+        }
+      }
+    },
+    "2026-07-24": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "read_20min": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 2824
+        },
+        "phone_games_cap": {
+          "value": 59
+        },
+        "social_media_cap": {
+          "value": 66
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        }
+      },
+      "weight_lbs": 240,
+      "nutrition": {
+        "meals": [
+          {
+            "time": "lunch",
+            "description": "Office bbq - pulled pork, beans, mashed potatoes, green beans, cornbread"
+          },
+          {
+            "time": "dinner",
+            "description": "Fleming's - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
+          }
+        ],
+        "water_oz": 24
+      }
+    },
+    "2026-07-23": {
+      "goals": {
+        "bom_reading": {
+          "done": true
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 5000
+        },
+        "social_media_cap": {
+          "value": 29
+        },
+        "phone_games_cap": {
+          "value": 53
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "morning_prayer": {
           "done": true
         }
+      },
+      "weight_lbs": 238.8,
+      "nutrition": {
+        "water_oz": 48,
+        "meals": [
+          {
+            "time": "lunch",
+            "description": "Two slices of mega meat pizza from Barros and small order of mozzarella sticks with a Pepsi Zero"
+          }
+        ]
+      }
+    },
+    "2026-07-22": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 60
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 6140
+        },
+        "social_media_cap": {
+          "value": 56
+        },
+        "phone_games_cap": {
+          "value": 21
+        },
+        "couple_prayer": {
+          "done": true
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        }
+      },
+      "nutrition": {
+        "meals": [
+          {
+            "time": "morning",
+            "description": "Protein shake: strawberries and cream, creatine, chia seeds, 1 cup frozen strawberries",
+            "assessment": "Another strong protein start (~45g) -- chia seeds add fiber and omega-3s, and the creatine pairs well with your pushups/squats for strength support."
+          },
+          {
+            "time": "morning",
+            "description": "Acai Berry Energy Mio, 1 serving in water",
+            "assessment": "Adds ~90mg caffeine. Same as yesterday's pattern -- fine for a morning boost, just worth keeping an eye on total caffeine and cutting it off well before your 11:00 PM wind-down."
+          },
+          {
+            "time": "lunch",
+            "description": "Wendy's Biggie Bag (Double Stack, small) with 12 oz Coke Zero",
+            "assessment": "The Biggie Bag bundle (Double Stack, small fries, 4pc nuggets) typically runs 900-1100 kcal -- decent protein from the double burger and nuggets, but high sodium and saturated fat between the two patties, cheese, and fries. Coke Zero keeps it from adding sugar/calories on the drink side."
+          }
+        ],
+        "water_oz": 72
+      }
+    },
+    "2026-07-25": {
+      "goals": {
+        "morning_prayer": {
+          "done": true
+        },
+        "gym_session": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 50
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 5000
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 30
+        },
+        "temple_attendance": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 102
+        },
+        "social_media_cap": {
+          "value": 94
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        }
+      },
+      "nutrition": {
+        "meals": [
+          {
+            "time": "morning",
+            "description": "Chocolate chip pancakes and milk"
+          }
+        ]
       }
     },
     "2026-07-21": {
@@ -79,173 +318,12 @@
       },
       "weight_lbs": 242.2
     },
-    "2026-07-22": {
+    "2026-07-28": {
       "goals": {
         "wake_6am": {
-          "done": true
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 60
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 6140
-        },
-        "social_media_cap": {
-          "value": 56
-        },
-        "phone_games_cap": {
-          "value": 21
-        },
-        "couple_prayer": {
-          "done": true
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        }
-      },
-      "nutrition": {
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Protein shake: strawberries and cream, creatine, chia seeds, 1 cup frozen strawberries",
-            "assessment": "Another strong protein start (~45g) -- chia seeds add fiber and omega-3s, and the creatine pairs well with your pushups/squats for strength support."
-          },
-          {
-            "time": "morning",
-            "description": "Acai Berry Energy Mio, 1 serving in water",
-            "assessment": "Adds ~90mg caffeine. Same as yesterday's pattern -- fine for a morning boost, just worth keeping an eye on total caffeine and cutting it off well before your 11:00 PM wind-down."
-          },
-          {
-            "time": "lunch",
-            "description": "Wendy's Biggie Bag (Double Stack, small) with 12 oz Coke Zero",
-            "assessment": "The Biggie Bag bundle (Double Stack, small fries, 4pc nuggets) typically runs 900-1100 kcal -- decent protein from the double burger and nuggets, but high sodium and saturated fat between the two patties, cheese, and fries. Coke Zero keeps it from adding sugar/calories on the drink side."
-          }
-        ],
-        "water_oz": 72
-      }
-    },
-    "2026-07-23": {
-      "goals": {
-        "bom_reading": {
-          "done": true
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 5000
-        },
-        "social_media_cap": {
-          "value": 29
-        },
-        "phone_games_cap": {
-          "value": 53
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "couple_prayer": {
           "done": false
         },
-        "read_20min": {
-          "value": 20
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 30
-        },
         "morning_prayer": {
-          "done": true
-        }
-      },
-      "weight_lbs": 238.8,
-      "nutrition": {
-        "water_oz": 48,
-        "meals": [
-          {
-            "time": "lunch",
-            "description": "Two slices of mega meat pizza from Barros and small order of mozzarella sticks with a Pepsi Zero"
-          }
-        ]
-      }
-    },
-    "2026-07-24": {
-      "goals": {
-        "wake_6am": {
-          "done": true
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "read_20min": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 2824
-        },
-        "phone_games_cap": {
-          "value": 59
-        },
-        "social_media_cap": {
-          "value": 66
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
-        }
-      },
-      "weight_lbs": 240,
-      "nutrition": {
-        "meals": [
-          {
-            "time": "lunch",
-            "description": "Office bbq - pulled pork, beans, mashed potatoes, green beans, cornbread"
-          },
-          {
-            "time": "dinner",
-            "description": "Fleming's - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
-          }
-        ],
-        "water_oz": 24
-      }
-    },
-    "2026-07-25": {
-      "goals": {
-        "morning_prayer": {
-          "done": true
-        },
-        "gym_session": {
           "done": true
         },
         "pushups_30": {
@@ -255,74 +333,43 @@
           "value": 30
         },
         "steps_5000": {
-          "value": 5000
+          "value": 6000
         },
-        "bom_reading": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 30
-        },
-        "temple_attendance": {
+        "gym_session": {
           "done": true
         },
         "phone_games_cap": {
-          "value": 102
+          "value": 48
         },
         "social_media_cap": {
-          "value": 94
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
+          "value": 61
         }
       },
+      "weight_lbs": 239,
       "nutrition": {
+        "water_oz": 96,
         "meals": [
           {
             "time": "morning",
-            "description": "Chocolate chip pancakes and milk"
+            "description": "Shakey special breakfast sandwich (two english muffins, egg, ham and cheese with some tapatio hot sauce) and a Diet Mtn Dew - 12 oz"
+          },
+          {
+            "time": "morning",
+            "description": "My water intake was an Energy infused Mio cup of water"
+          },
+          {
+            "time": "morning",
+            "description": "Shakey special breakfast sandwich (two English muffins, 1 fried egg, 1 slice cheddar cheese, 2 slices Black Forest ham)"
+          },
+          {
+            "time": "lunch",
+            "description": "Toasted ultimate Italian sandwich from Jimmy John\u2019s, BBQ chips and 16 oz blue powerade"
+          },
+          {
+            "time": "dinner",
+            "description": "Mini chicken chimi and 1 chicken taquito from Boca with a few chips and queso and a few bites of beans"
           }
         ]
-      }
-    },
-    "2026-07-26": {
-      "goals": {
-        "morning_prayer": {
-          "done": false
-        },
-        "bom_reading": {
-          "done": false
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 0
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "steps_5000": {
-          "value": 2001
-        },
-        "phone_games_cap": {
-          "value": 36
-        },
-        "social_media_cap": {
-          "value": 58
-        },
-        "couple_prayer": {
-          "done": false
-        }
       }
     },
     "2026-07-27": {
@@ -378,6 +425,13 @@
         ]
       },
       "weight_lbs": 238.8
+    },
+    "2026-07-20": {
+      "goals": {
+        "gym_session": {
+          "done": true
+        }
+      }
     }
   },
   "goal_weight_lbs": 200
