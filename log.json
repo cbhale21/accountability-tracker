@@ -343,6 +343,21 @@
         },
         "social_media_cap": {
           "value": 61
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
         }
       },
       "weight_lbs": 239,
@@ -430,25 +445,6 @@
       "goals": {
         "gym_session": {
           "done": true
-        }
-      }
-    },
-    "2026-07-29": {
-      "goals": {
-        "bom_reading": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 20
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
         }
       }
     }
