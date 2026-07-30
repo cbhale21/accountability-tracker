@@ -507,6 +507,17 @@
           }
         ]
       }
+    },
+    "2026-07-30": {
+      "nutrition": {
+        "meals": [
+          {
+            "time": "morning",
+            "description": "Two breakfast burritos (scrambled eggs, bacon, cheddar cheese in a standard tortilla) and 8 oz orange juice",
+            "assessment": "Good protein and fat from the eggs, bacon, and cheese to start the day, though two burritos with bacon and cheese add up in saturated fat and sodium. The OJ brings vitamin C but also a good amount of sugar for a morning drink -- tasty homemade start either way."
+          }
+        ]
+      }
     }
   },
   "goal_weight_lbs": 200
