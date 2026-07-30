@@ -482,6 +482,9 @@
         },
         "steps_5000": {
           "value": 2243
+        },
+        "read_20min": {
+          "value": 0
         }
       },
       "nutrition": {
