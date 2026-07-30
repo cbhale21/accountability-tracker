@@ -447,6 +447,22 @@
           "done": true
         }
       }
+    },
+    "2026-07-29": {
+      "goals": {
+        "couple_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": false
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        }
+      }
     }
   },
   "goal_weight_lbs": 200
