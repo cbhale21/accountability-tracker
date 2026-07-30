@@ -461,7 +461,48 @@
         },
         "bom_reading": {
           "done": true
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "social_media_cap": {
+          "value": 42
+        },
+        "phone_games_cap": {
+          "value": 5
+        },
+        "steps_5000": {
+          "value": 2243
         }
+      },
+      "nutrition": {
+        "water_oz": 40,
+        "meals": [
+          {
+            "time": "morning",
+            "description": "Chocolate/peanut butter/banana protein shake",
+            "assessment": "Reliable high-protein start again -- good satiety base for the day, low effort to prep."
+          },
+          {
+            "time": "lunch",
+            "description": "In-N-Out Double-Double with fries and a Diet Coke",
+            "assessment": "Solid protein from the double patty, but this is a calorie-dense meal -- Double-Double with fries commonly runs 900-1000+ kcal, with a good amount of sodium and saturated fat between the two patties, cheese, and fries. Diet Coke keeps the drink itself calorie-free."
+          },
+          {
+            "time": "dinner",
+            "description": "A couple chicken salad sandwiches with a quarter cup of strawberries",
+            "assessment": "Good balance -- lean protein from the chicken salad, and the strawberries add a light, low-sugar finish. Watch the mayo content in chicken salad since that's where calories/fat tend to stack up."
+          }
+        ]
       }
     }
   },
