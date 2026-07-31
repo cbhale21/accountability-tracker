@@ -72,6 +72,27 @@
       "goals": {
         "wake_6am": {
           "done": false
+        },
+        "social_media_cap": {
+          "value": 131
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 6349
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 0
         }
       },
       "weight_lbs": 238,
