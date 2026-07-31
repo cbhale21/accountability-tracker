@@ -1,184 +1,47 @@
 {
   "start_date": "2026-07-21",
   "daily": {
-    "2026-07-26": {
-      "goals": {
-        "morning_prayer": {
-          "done": false
-        },
-        "bom_reading": {
-          "done": false
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 0
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "steps_5000": {
-          "value": 2001
-        },
-        "phone_games_cap": {
-          "value": 36
-        },
-        "social_media_cap": {
-          "value": 58
-        },
-        "couple_prayer": {
-          "done": false
-        }
-      }
-    },
-    "2026-07-24": {
-      "goals": {
-        "wake_6am": {
-          "done": true
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "read_20min": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 2824
-        },
-        "phone_games_cap": {
-          "value": 59
-        },
-        "social_media_cap": {
-          "value": 66
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
-        }
-      },
-      "weight_lbs": 240,
-      "nutrition": {
-        "meals": [
-          {
-            "time": "lunch",
-            "description": "Office bbq - pulled pork, beans, mashed potatoes, green beans, cornbread"
-          },
-          {
-            "time": "dinner",
-            "description": "Fleming's - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
-          }
-        ],
-        "water_oz": 24
-      }
-    },
-    "2026-07-23": {
-      "goals": {
-        "bom_reading": {
-          "done": true
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 5000
-        },
-        "social_media_cap": {
-          "value": 29
-        },
-        "phone_games_cap": {
-          "value": 53
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "read_20min": {
-          "value": 20
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "morning_prayer": {
-          "done": true
-        }
-      },
-      "weight_lbs": 238.8,
-      "nutrition": {
-        "water_oz": 48,
-        "meals": [
-          {
-            "time": "lunch",
-            "description": "Two slices of mega meat pizza from Barros and small order of mozzarella sticks with a Pepsi Zero"
-          }
-        ]
-      }
-    },
     "2026-07-22": {
       "goals": {
-        "wake_6am": {
+        "sleep_11pm": {
           "done": true
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 60
         },
         "squats_30": {
-          "value": 30
-        },
-        "pushups_30": {
           "value": 30
         },
         "steps_5000": {
           "value": 6140
         },
-        "social_media_cap": {
-          "value": 56
-        },
-        "phone_games_cap": {
-          "value": 21
-        },
-        "couple_prayer": {
+        "bom_reading": {
           "done": true
+        },
+        "read_20min": {
+          "value": 60
         },
         "evening_prayer": {
           "done": true
         },
-        "sleep_11pm": {
+        "wake_6am": {
           "done": true
         },
-        "bom_reading": {
+        "phone_games_cap": {
+          "value": 21
+        },
+        "social_media_cap": {
+          "value": 56
+        },
+        "morning_prayer": {
           "done": true
+        },
+        "couple_prayer": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 30
         }
       },
       "nutrition": {
+        "water_oz": 72,
         "meals": [
           {
             "time": "morning",
@@ -195,35 +58,97 @@
             "description": "Wendy's Biggie Bag (Double Stack, small) with 12 oz Coke Zero",
             "assessment": "The Biggie Bag bundle (Double Stack, small fries, 4pc nuggets) typically runs 900-1100 kcal -- decent protein from the double burger and nuggets, but high sodium and saturated fat between the two patties, cheese, and fries. Coke Zero keeps it from adding sugar/calories on the drink side."
           }
-        ],
-        "water_oz": 72
+        ]
       }
     },
-    "2026-07-25": {
+    "2026-07-20": {
       "goals": {
-        "morning_prayer": {
-          "done": true
-        },
         "gym_session": {
           "done": true
+        }
+      }
+    },
+    "2026-07-30": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        }
+      },
+      "weight_lbs": 238,
+      "nutrition": {
+        "meals": [
+          {
+            "time": "morning",
+            "description": "Two breakfast burritos (scrambled eggs, bacon, cheddar cheese in a standard tortilla) and 8 oz orange juice",
+            "assessment": "Good protein and fat from the eggs, bacon, and cheese to start the day, though two burritos with bacon and cheese add up in saturated fat and sodium. The OJ brings vitamin C but also a good amount of sugar for a morning drink -- tasty homemade start either way."
+          }
+        ]
+      }
+    },
+    "2026-07-27": {
+      "goals": {
+        "sleep_11pm": {
+          "done": false
         },
-        "pushups_30": {
-          "value": 50
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 31
+        },
+        "social_media_cap": {
+          "value": 24
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": true
         },
         "squats_30": {
           "value": 30
         },
         "steps_5000": {
-          "value": 5000
+          "value": 7294
         },
+        "pushups_30": {
+          "value": 30
+        }
+      },
+      "weight_lbs": 238.8,
+      "nutrition": {
+        "water_oz": 20,
+        "meals": [
+          {
+            "time": "lunch",
+            "description": "Chocolate peanut butter protein shake"
+          },
+          {
+            "time": "morning",
+            "description": "Two eggs, potatoes, three slices of bacon"
+          }
+        ]
+      }
+    },
+    "2026-07-25": {
+      "goals": {
         "bom_reading": {
           "done": true
         },
         "read_20min": {
           "value": 30
         },
-        "temple_attendance": {
-          "done": true
+        "evening_prayer": {
+          "done": false
         },
         "phone_games_cap": {
           "value": 102
@@ -234,8 +159,23 @@
         "couple_prayer": {
           "done": false
         },
-        "evening_prayer": {
-          "done": false
+        "morning_prayer": {
+          "done": true
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 5000
+        },
+        "temple_attendance": {
+          "done": true
+        },
+        "gym_session": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 50
         }
       },
       "nutrition": {
@@ -249,19 +189,16 @@
     },
     "2026-07-21": {
       "goals": {
-        "morning_prayer": {
+        "sleep_11pm": {
           "done": true
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "squats_30": {
-          "value": 30
         },
         "bom_reading": {
           "done": true
         },
-        "couple_prayer": {
+        "read_20min": {
+          "value": 20
+        },
+        "evening_prayer": {
           "done": true
         },
         "wake_6am": {
@@ -273,20 +210,25 @@
         "social_media_cap": {
           "value": 25
         },
+        "couple_prayer": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "squats_30": {
+          "value": 30
+        },
         "steps_5000": {
           "value": 4454
         },
-        "sleep_11pm": {
-          "done": true
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 20
+        "pushups_30": {
+          "value": 30
         }
       },
+      "weight_lbs": 242.2,
       "nutrition": {
+        "water_oz": 68,
         "meals": [
           {
             "time": "morning",
@@ -313,21 +255,235 @@
             "description": "Grilled chicken, broccoli, potatoes",
             "assessment": "Great balanced dinner -- lean protein from the grilled chicken, fiber and micronutrients from the broccoli, and complex carbs from the potatoes. Clean way to close out the day's eating."
           }
-        ],
-        "water_oz": 68
-      },
-      "weight_lbs": 242.2
+        ]
+      }
     },
-    "2026-07-28": {
+    "2026-07-24": {
       "goals": {
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 30
+        },
+        "evening_prayer": {
+          "done": false
+        },
         "wake_6am": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 59
+        },
+        "social_media_cap": {
+          "value": 66
+        },
+        "couple_prayer": {
           "done": false
         },
         "morning_prayer": {
           "done": true
         },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 2824
+        },
         "pushups_30": {
-          "value": 50
+          "value": 30
+        }
+      },
+      "weight_lbs": 240,
+      "nutrition": {
+        "water_oz": 24,
+        "meals": [
+          {
+            "time": "lunch",
+            "description": "Office bbq - pulled pork, beans, mashed potatoes, green beans, cornbread"
+          },
+          {
+            "time": "dinner",
+            "description": "Fleming's - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
+          }
+        ]
+      }
+    },
+    "2026-07-26": {
+      "goals": {
+        "sleep_11pm": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 36
+        },
+        "social_media_cap": {
+          "value": 58
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 2001
+        },
+        "pushups_30": {
+          "value": 0
+        }
+      }
+    },
+    "2026-07-29": {
+      "goals": {
+        "sleep_11pm": {
+          "done": false
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "steps_5000": {
+          "value": 2243
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 42
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 5
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "pushups_30": {
+          "value": 0
+        }
+      },
+      "nutrition": {
+        "water_oz": 40,
+        "meals": [
+          {
+            "time": "morning",
+            "description": "Chocolate/peanut butter/banana protein shake",
+            "assessment": "Reliable high-protein start again -- good satiety base for the day, low effort to prep."
+          },
+          {
+            "time": "lunch",
+            "description": "In-N-Out Double-Double with fries and a Diet Coke",
+            "assessment": "Solid protein from the double patty, but this is a calorie-dense meal -- Double-Double with fries commonly runs 900-1000+ kcal, with a good amount of sodium and saturated fat between the two patties, cheese, and fries. Diet Coke keeps the drink itself calorie-free."
+          },
+          {
+            "time": "dinner",
+            "description": "A couple chicken salad sandwiches with a quarter cup of strawberries",
+            "assessment": "Good balance -- lean protein from the chicken salad, and the strawberries add a light, low-sugar finish. Watch the mayo content in chicken salad since that's where calories/fat tend to stack up."
+          }
+        ]
+      }
+    },
+    "2026-07-23": {
+      "goals": {
+        "sleep_11pm": {
+          "done": true
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 5000
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 53
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "social_media_cap": {
+          "value": 29
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "pushups_30": {
+          "value": 30
+        }
+      },
+      "weight_lbs": 238.8,
+      "nutrition": {
+        "water_oz": 48,
+        "meals": [
+          {
+            "time": "lunch",
+            "description": "Two slices of mega meat pizza from Barros and small order of mozzarella sticks with a Pepsi Zero"
+          }
+        ]
+      }
+    },
+    "2026-07-28": {
+      "goals": {
+        "sleep_11pm": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "wake_6am": {
+          "done": false
+        },
+        "phone_games_cap": {
+          "value": 48
+        },
+        "social_media_cap": {
+          "value": 61
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": true
         },
         "squats_30": {
           "value": 30
@@ -338,26 +494,8 @@
         "gym_session": {
           "done": true
         },
-        "phone_games_cap": {
-          "value": 48
-        },
-        "social_media_cap": {
-          "value": 61
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 20
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
+        "pushups_30": {
+          "value": 50
         }
       },
       "weight_lbs": 239,
@@ -383,138 +521,6 @@
           {
             "time": "dinner",
             "description": "Mini chicken chimi and 1 chicken taquito from Boca with a few chips and queso and a few bites of beans"
-          }
-        ]
-      }
-    },
-    "2026-07-27": {
-      "goals": {
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "steps_5000": {
-          "value": 7294
-        },
-        "phone_games_cap": {
-          "value": 31
-        },
-        "social_media_cap": {
-          "value": 24
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "sleep_11pm": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
-        }
-      },
-      "nutrition": {
-        "water_oz": 20,
-        "meals": [
-          {
-            "time": "lunch",
-            "description": "Chocolate peanut butter protein shake"
-          },
-          {
-            "time": "morning",
-            "description": "Two eggs, potatoes, three slices of bacon"
-          }
-        ]
-      },
-      "weight_lbs": 238.8
-    },
-    "2026-07-20": {
-      "goals": {
-        "gym_session": {
-          "done": true
-        }
-      }
-    },
-    "2026-07-29": {
-      "goals": {
-        "couple_prayer": {
-          "done": false
-        },
-        "sleep_11pm": {
-          "done": false
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "morning_prayer": {
-          "done": false
-        },
-        "pushups_30": {
-          "value": 0
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "social_media_cap": {
-          "value": 42
-        },
-        "phone_games_cap": {
-          "value": 5
-        },
-        "steps_5000": {
-          "value": 2243
-        },
-        "read_20min": {
-          "value": 0
-        }
-      },
-      "nutrition": {
-        "water_oz": 40,
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Chocolate/peanut butter/banana protein shake",
-            "assessment": "Reliable high-protein start again -- good satiety base for the day, low effort to prep."
-          },
-          {
-            "time": "lunch",
-            "description": "In-N-Out Double-Double with fries and a Diet Coke",
-            "assessment": "Solid protein from the double patty, but this is a calorie-dense meal -- Double-Double with fries commonly runs 900-1000+ kcal, with a good amount of sodium and saturated fat between the two patties, cheese, and fries. Diet Coke keeps the drink itself calorie-free."
-          },
-          {
-            "time": "dinner",
-            "description": "A couple chicken salad sandwiches with a quarter cup of strawberries",
-            "assessment": "Good balance -- lean protein from the chicken salad, and the strawberries add a light, low-sugar finish. Watch the mayo content in chicken salad since that's where calories/fat tend to stack up."
-          }
-        ]
-      }
-    },
-    "2026-07-30": {
-      "nutrition": {
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Two breakfast burritos (scrambled eggs, bacon, cheddar cheese in a standard tortilla) and 8 oz orange juice",
-            "assessment": "Good protein and fat from the eggs, bacon, and cheese to start the day, though two burritos with bacon and cheese add up in saturated fat and sodium. The OJ brings vitamin C but also a good amount of sugar for a morning drink -- tasty homemade start either way."
           }
         ]
       }
