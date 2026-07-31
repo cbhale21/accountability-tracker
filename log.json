@@ -93,6 +93,15 @@
         },
         "read_20min": {
           "value": 0
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "pushups_30": {
+          "value": 0
         }
       },
       "weight_lbs": 238,
