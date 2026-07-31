@@ -102,6 +102,9 @@
         },
         "pushups_30": {
           "value": 0
+        },
+        "bom_reading": {
+          "done": true
         }
       },
       "weight_lbs": 238,
@@ -111,6 +114,11 @@
             "time": "morning",
             "description": "Two breakfast burritos (scrambled eggs, bacon, cheddar cheese in a standard tortilla) and 8 oz orange juice",
             "assessment": "Good protein and fat from the eggs, bacon, and cheese to start the day, though two burritos with bacon and cheese add up in saturated fat and sodium. The OJ brings vitamin C but also a good amount of sugar for a morning drink -- tasty homemade start either way."
+          },
+          {
+            "time": "dinner",
+            "description": "Texas Roadhouse: mozzarella sticks, fried pickles, three rolls with honey butter, and two boneless BBQ wings with ranch as appetizers, then a bacon cheeseburger with french fries (didn't finish the fries) and a Coke Zero",
+            "assessment": "A lot going on here -- the appetizer spread alone (fried mozzarella, fried pickles, three honey-butter rolls, saucy boneless wings) likely covers a full day of calories and sodium before the burger even arrives. The bacon cheeseburger adds solid protein, but between the bacon, cheese, and bun it stacks more saturated fat and sodium on top. Not finishing the fries and going with Coke Zero were the two best moves on the table. Not an every-night plate, but one dinner out with the appetizers as the day's blowout is very recoverable -- just nothing more to add on top of it tonight."
           }
         ]
       }
