@@ -562,6 +562,37 @@
           }
         ]
       }
+    },
+    "2026-07-31": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 50
+        },
+        "squats_30": {
+          "value": 40
+        },
+        "gym_session": {
+          "done": true
+        }
+      },
+      "nutrition": {
+        "meals": [
+          {
+            "time": "morning",
+            "description": "3/4 of three egg omelette with bacon and cheddar cheese and 4 oz of OJ"
+          }
+        ],
+        "water_oz": 24
+      }
     }
   },
   "goal_weight_lbs": 200
