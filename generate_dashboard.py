@@ -470,7 +470,7 @@ def build_weight_chart_svg(entries, goal_weight):
         return '<p class="muted">Log a few weigh-ins to see your trend line here.</p>'
 
     W, H = 700, 220
-    margin_l, margin_r, margin_t, margin_b = 8, 8, 20, 24
+    margin_l, margin_r, margin_t, margin_b = 8, 8, 30, 24
     plot_w = W - margin_l - margin_r
     plot_h = H - margin_t - margin_b
 
@@ -493,6 +493,18 @@ def build_weight_chart_svg(entries, goal_weight):
         f'<circle cx="{x_for(i):.1f}" cy="{y_for(w):.1f}" r="3.5" fill="var(--crimson)"></circle>'
         for i, (d, w) in enumerate(entries)
     )
+    def anchor_for(i):
+        if i == 0:
+            return "start"
+        if i == len(entries) - 1:
+            return "end"
+        return "middle"
+
+    value_labels = "".join(
+        f'<text x="{x_for(i):.1f}" y="{max(y_for(w) - 9, 10):.1f}" text-anchor="{anchor_for(i)}" '
+        f'class="weight-point-label">{esc(w)}</text>'
+        for i, (d, w) in enumerate(entries)
+    )
     goal_y = y_for(goal_weight)
     first_date, last_date = entries[0][0], entries[-1][0]
 
@@ -504,6 +516,7 @@ def build_weight_chart_svg(entries, goal_weight):
       <text x="{W - margin_r}" y="{goal_y - 6:.1f}" text-anchor="end" class="weight-goal-label">Goal {esc(goal_weight)} lbs</text>
       <polyline points="{points}" fill="none" stroke="var(--crimson)" stroke-width="2.5"></polyline>
       {circles}
+      {value_labels}
       <text x="{margin_l}" y="{H - 6}" class="weight-axis-label">{esc(first_date)}</text>
       <text x="{W - margin_r}" y="{H - 6}" text-anchor="end" class="weight-axis-label">{esc(last_date)}</text>
     </svg>
@@ -758,6 +771,7 @@ CSS = '''
   .weight-chart { width: 100%; height: auto; display: block; }
   .weight-axis-label { font-size: 10px; fill: var(--muted); }
   .weight-goal-label { font-size: 11px; fill: var(--gold); font-weight: 700; }
+  .weight-point-label { font-size: 9px; fill: var(--ink); font-weight: 600; }
   .save-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
   .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
@@ -1186,7 +1200,7 @@ def main():
       return '<p class="muted">Log a few weigh-ins to see your trend line here.</p>';
     }}
     var W = 700, H = 220;
-    var marginL = 8, marginR = 8, marginT = 20, marginB = 24;
+    var marginL = 8, marginR = 8, marginT = 30, marginB = 24;
     var plotW = W - marginL - marginR;
     var plotH = H - marginT - marginB;
     var values = entries.map(function(e) {{ return e[1]; }});
@@ -1208,6 +1222,12 @@ def main():
       return '<circle cx="' + xFor(i).toFixed(1) + '" cy="' + yFor(e[1]).toFixed(1) +
         '" r="3.5" fill="var(--crimson)"></circle>';
     }}).join('');
+    var valueLabels = entries.map(function(e, i) {{
+      var ly = Math.max(yFor(e[1]) - 9, 10);
+      var anchor = i === 0 ? 'start' : (i === entries.length - 1 ? 'end' : 'middle');
+      return '<text x="' + xFor(i).toFixed(1) + '" y="' + ly.toFixed(1) +
+        '" text-anchor="' + anchor + '" class="weight-point-label">' + escapeHtml(e[1]) + '</text>';
+    }}).join('');
     var goalY = yFor(goalWeight);
     var firstDate = entries[0][0], lastDate = entries[entries.length - 1][0];
     return '<div class="weight-chart-wrap">' +
@@ -1218,6 +1238,7 @@ def main():
           '" text-anchor="end" class="weight-goal-label">Goal ' + escapeHtml(goalWeight) + ' lbs</text>' +
         '<polyline points="' + points + '" fill="none" stroke="var(--crimson)" stroke-width="2.5"></polyline>' +
         circles +
+        valueLabels +
         '<text x="' + marginL + '" y="' + (H - 6) + '" class="weight-axis-label">' + escapeHtml(firstDate) + '</text>' +
         '<text x="' + (W - marginR) + '" y="' + (H - 6) +
           '" text-anchor="end" class="weight-axis-label">' + escapeHtml(lastDate) + '</text>' +

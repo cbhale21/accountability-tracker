@@ -136,6 +136,7 @@
   .weight-chart { width: 100%; height: auto; display: block; }
   .weight-axis-label { font-size: 10px; fill: var(--muted); }
   .weight-goal-label { font-size: 11px; fill: var(--gold); font-weight: 700; }
+  .weight-point-label { font-size: 9px; fill: var(--ink); font-weight: 600; }
   .save-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
   .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
@@ -182,7 +183,7 @@
     <h1><img class="header-logo" src="header-logo.png" alt="Crest logo">Chris's Accountability Dashboard</h1>
     <button type="button" class="refresh-btn" onclick="hardRefresh()">&#8635; Refresh</button>
   </div>
-  <div class="subtitle">Generated 2026-08-01 12:28 &middot; Today is Saturday, August 01, 2026</div>
+  <div class="subtitle">Generated 2026-08-01 12:35 &middot; Today is Saturday, August 01, 2026</div>
 
   <nav class="tabs">
     <a href="#vision">Vision Board</a>
@@ -233,11 +234,12 @@
     <div id="weightChartWrap">
     <div class="weight-chart-wrap">
     <svg viewBox="0 0 700 220" class="weight-chart" preserveAspectRatio="none">
-      <line x1="8" y1="185.0" x2="692" y2="185.0"
+      <line x1="8" y1="185.7" x2="692" y2="185.7"
         stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="5,4"></line>
-      <text x="692" y="179.0" text-anchor="end" class="weight-goal-label">Goal 200 lbs</text>
-      <polyline points="8.0,31.0 144.8,43.4 281.6,39.0 418.4,43.4 555.2,42.6 692.0,46.3" fill="none" stroke="var(--crimson)" stroke-width="2.5"></polyline>
-      <circle cx="8.0" cy="31.0" r="3.5" fill="var(--crimson)"></circle><circle cx="144.8" cy="43.4" r="3.5" fill="var(--crimson)"></circle><circle cx="281.6" cy="39.0" r="3.5" fill="var(--crimson)"></circle><circle cx="418.4" cy="43.4" r="3.5" fill="var(--crimson)"></circle><circle cx="555.2" cy="42.6" r="3.5" fill="var(--crimson)"></circle><circle cx="692.0" cy="46.3" r="3.5" fill="var(--crimson)"></circle>
+      <text x="692" y="179.7" text-anchor="end" class="weight-goal-label">Goal 200 lbs</text>
+      <polyline points="8.0,40.3 144.8,52.0 281.6,47.9 418.4,52.0 555.2,51.4 692.0,54.8" fill="none" stroke="var(--crimson)" stroke-width="2.5"></polyline>
+      <circle cx="8.0" cy="40.3" r="3.5" fill="var(--crimson)"></circle><circle cx="144.8" cy="52.0" r="3.5" fill="var(--crimson)"></circle><circle cx="281.6" cy="47.9" r="3.5" fill="var(--crimson)"></circle><circle cx="418.4" cy="52.0" r="3.5" fill="var(--crimson)"></circle><circle cx="555.2" cy="51.4" r="3.5" fill="var(--crimson)"></circle><circle cx="692.0" cy="54.8" r="3.5" fill="var(--crimson)"></circle>
+      <text x="8.0" y="31.3" text-anchor="start" class="weight-point-label">242.2</text><text x="144.8" y="43.0" text-anchor="middle" class="weight-point-label">238.8</text><text x="281.6" y="38.9" text-anchor="middle" class="weight-point-label">240</text><text x="418.4" y="43.0" text-anchor="middle" class="weight-point-label">238.8</text><text x="555.2" y="42.4" text-anchor="middle" class="weight-point-label">239</text><text x="692.0" y="45.8" text-anchor="end" class="weight-point-label">238</text>
       <text x="8" y="214" class="weight-axis-label">2026-07-21</text>
       <text x="692" y="214" text-anchor="end" class="weight-axis-label">2026-07-30</text>
     </svg>
@@ -653,7 +655,7 @@
       return '<p class="muted">Log a few weigh-ins to see your trend line here.</p>';
     }
     var W = 700, H = 220;
-    var marginL = 8, marginR = 8, marginT = 20, marginB = 24;
+    var marginL = 8, marginR = 8, marginT = 30, marginB = 24;
     var plotW = W - marginL - marginR;
     var plotH = H - marginT - marginB;
     var values = entries.map(function(e) { return e[1]; });
@@ -675,6 +677,12 @@
       return '<circle cx="' + xFor(i).toFixed(1) + '" cy="' + yFor(e[1]).toFixed(1) +
         '" r="3.5" fill="var(--crimson)"></circle>';
     }).join('');
+    var valueLabels = entries.map(function(e, i) {
+      var ly = Math.max(yFor(e[1]) - 9, 10);
+      var anchor = i === 0 ? 'start' : (i === entries.length - 1 ? 'end' : 'middle');
+      return '<text x="' + xFor(i).toFixed(1) + '" y="' + ly.toFixed(1) +
+        '" text-anchor="' + anchor + '" class="weight-point-label">' + escapeHtml(e[1]) + '</text>';
+    }).join('');
     var goalY = yFor(goalWeight);
     var firstDate = entries[0][0], lastDate = entries[entries.length - 1][0];
     return '<div class="weight-chart-wrap">' +
@@ -685,6 +693,7 @@
           '" text-anchor="end" class="weight-goal-label">Goal ' + escapeHtml(goalWeight) + ' lbs</text>' +
         '<polyline points="' + points + '" fill="none" stroke="var(--crimson)" stroke-width="2.5"></polyline>' +
         circles +
+        valueLabels +
         '<text x="' + marginL + '" y="' + (H - 6) + '" class="weight-axis-label">' + escapeHtml(firstDate) + '</text>' +
         '<text x="' + (W - marginR) + '" y="' + (H - 6) +
           '" text-anchor="end" class="weight-axis-label">' + escapeHtml(lastDate) + '</text>' +
