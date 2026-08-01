@@ -582,6 +582,24 @@
         },
         "gym_session": {
           "done": true
+        },
+        "steps_5000": {
+          "value": 6286
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 96
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
         }
       },
       "nutrition": {
