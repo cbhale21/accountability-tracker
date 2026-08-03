@@ -341,10 +341,6 @@
           },
           {
             "time": "dinner",
-            "description": "Fleming's - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
-          },
-          {
-            "time": "dinner",
             "description": "Fleming\u2019s - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
           }
         ],
@@ -658,6 +654,51 @@
           {
             "time": "snack",
             "description": "44 oz Beach Babe with Diet Mtn Dew from Swig"
+          }
+        ]
+      }
+    },
+    "2026-08-02": {
+      "goals": {
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 30
+        },
+        "couple_prayer": {
+          "done": true
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 30
+        }
+      },
+      "nutrition": {
+        "water_oz": 24,
+        "meals": [
+          {
+            "time": "morning",
+            "description": "Fasting"
+          },
+          {
+            "time": "lunch",
+            "description": "Fasting"
+          },
+          {
+            "time": "dinner",
+            "description": "Cheeseburger with lays cheddar and sour cream chips, some potato salad, 2 hot dogs and diet Mtn dew to drink at Gerard\u2019s"
           }
         ]
       }
