@@ -619,7 +619,34 @@
     "2026-08-01": {
       "goals": {
         "morning_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "bom_reading": {
           "done": true
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 3494
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 167
+        },
+        "phone_games_cap": {
+          "value": 43
         }
       },
       "nutrition": {
