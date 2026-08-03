@@ -619,7 +619,7 @@
     "2026-08-01": {
       "goals": {
         "morning_prayer": {
-          "done": false
+          "done": true
         },
         "evening_prayer": {
           "done": false
