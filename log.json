@@ -713,6 +713,33 @@
         },
         "bom_reading": {
           "done": true
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "phone_games_cap": {
+          "value": 76
+        },
+        "social_media_cap": {
+          "value": 70
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "steps_5000": {
+          "value": 3714
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": false
         }
       },
       "weight_lbs": 237
