@@ -341,7 +341,7 @@
           },
           {
             "time": "dinner",
-            "description": "Fleming\u2019s - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
+            "description": "Fleming’s - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
           }
         ],
         "water_oz": 24
@@ -553,7 +553,7 @@
           },
           {
             "time": "lunch",
-            "description": "Toasted ultimate Italian sandwich from Jimmy John\u2019s, BBQ chips and 16 oz blue powerade"
+            "description": "Toasted ultimate Italian sandwich from Jimmy John’s, BBQ chips and 16 oz blue powerade"
           },
           {
             "time": "dinner",
@@ -698,10 +698,24 @@
           },
           {
             "time": "dinner",
-            "description": "Cheeseburger with lays cheddar and sour cream chips, some potato salad, 2 hot dogs and diet Mtn dew to drink at Gerard\u2019s"
+            "description": "Cheeseburger with lays cheddar and sour cream chips, some potato salad, 2 hot dogs and diet Mtn dew to drink at Gerard’s"
           }
         ]
       }
+    },
+    "2026-08-03": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        }
+      },
+      "weight_lbs": 237
     }
   },
   "goal_weight_lbs": 200
