@@ -41,6 +41,7 @@
         }
       },
       "nutrition": {
+        "water_oz": 72,
         "meals": [
           {
             "time": "morning",
@@ -57,8 +58,7 @@
             "description": "Wendy's Biggie Bag (Double Stack, small) with 12 oz Coke Zero",
             "assessment": "The Biggie Bag bundle (Double Stack, small fries, 4pc nuggets) typically runs 900-1100 kcal -- decent protein from the double burger and nuggets, but high sodium and saturated fat between the two patties, cheese, and fries. Coke Zero keeps it from adding sugar/calories on the drink side."
           }
-        ],
-        "water_oz": 72
+        ]
       }
     },
     "2026-07-20": {
@@ -164,6 +164,7 @@
       },
       "weight_lbs": 238.8,
       "nutrition": {
+        "water_oz": 20,
         "meals": [
           {
             "time": "lunch",
@@ -173,8 +174,7 @@
             "time": "morning",
             "description": "Two eggs, potatoes, three slices of bacon"
           }
-        ],
-        "water_oz": 20
+        ]
       }
     },
     "2026-07-25": {
@@ -266,6 +266,7 @@
       },
       "weight_lbs": 242.2,
       "nutrition": {
+        "water_oz": 68,
         "meals": [
           {
             "time": "morning",
@@ -292,8 +293,7 @@
             "description": "Grilled chicken, broccoli, potatoes",
             "assessment": "Great balanced dinner -- lean protein from the grilled chicken, fiber and micronutrients from the broccoli, and complex carbs from the potatoes. Clean way to close out the day's eating."
           }
-        ],
-        "water_oz": 68
+        ]
       }
     },
     "2026-07-24": {
@@ -334,6 +334,7 @@
       },
       "weight_lbs": 240,
       "nutrition": {
+        "water_oz": 24,
         "meals": [
           {
             "time": "lunch",
@@ -341,10 +342,9 @@
           },
           {
             "time": "dinner",
-            "description": "Fleming’s - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
+            "description": "Fleming\u2019s - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
           }
-        ],
-        "water_oz": 24
+        ]
       }
     },
     "2026-07-26": {
@@ -424,6 +424,7 @@
         }
       },
       "nutrition": {
+        "water_oz": 40,
         "meals": [
           {
             "time": "morning",
@@ -440,8 +441,7 @@
             "description": "A couple chicken salad sandwiches with a quarter cup of strawberries",
             "assessment": "Good balance -- lean protein from the chicken salad, and the strawberries add a light, low-sugar finish. Watch the mayo content in chicken salad since that's where calories/fat tend to stack up."
           }
-        ],
-        "water_oz": 40
+        ]
       }
     },
     "2026-07-23": {
@@ -485,13 +485,13 @@
       },
       "weight_lbs": 238.8,
       "nutrition": {
+        "water_oz": 48,
         "meals": [
           {
             "time": "lunch",
             "description": "Two slices of mega meat pizza from Barros and small order of mozzarella sticks with a Pepsi Zero"
           }
-        ],
-        "water_oz": 48
+        ]
       }
     },
     "2026-07-28": {
@@ -538,6 +538,7 @@
       },
       "weight_lbs": 239,
       "nutrition": {
+        "water_oz": 96,
         "meals": [
           {
             "time": "morning",
@@ -553,14 +554,13 @@
           },
           {
             "time": "lunch",
-            "description": "Toasted ultimate Italian sandwich from Jimmy John’s, BBQ chips and 16 oz blue powerade"
+            "description": "Toasted ultimate Italian sandwich from Jimmy John\u2019s, BBQ chips and 16 oz blue powerade"
           },
           {
             "time": "dinner",
             "description": "Mini chicken chimi and 1 chicken taquito from Boca with a few chips and queso and a few bites of beans"
           }
-        ],
-        "water_oz": 96
+        ]
       }
     },
     "2026-07-31": {
@@ -603,13 +603,13 @@
         }
       },
       "nutrition": {
+        "water_oz": 24,
         "meals": [
           {
             "time": "morning",
             "description": "3/4 of three egg omelette with bacon and cheddar cheese and 4 oz of OJ"
           }
-        ],
-        "water_oz": 24
+        ]
       }
     },
     "2026-08-01": {
@@ -698,7 +698,7 @@
           },
           {
             "time": "dinner",
-            "description": "Cheeseburger with lays cheddar and sour cream chips, some potato salad, 2 hot dogs and diet Mtn dew to drink at Gerard’s"
+            "description": "Cheeseburger with lays cheddar and sour cream chips, some potato salad, 2 hot dogs and diet Mtn dew to drink at Gerard\u2019s"
           }
         ]
       }
@@ -743,6 +743,53 @@
         }
       },
       "weight_lbs": 237
+    },
+    "2026-08-04": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "gym_session": {
+          "done": true
+        },
+        "steps_5000": {
+          "value": 8440
+        },
+        "social_media_cap": {
+          "value": 99
+        },
+        "phone_games_cap": {
+          "value": 36
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 30
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        }
+      }
+    },
+    "2026-08-05": {
+      "goals": {
+        "couple_prayer": {
+          "done": false
+        }
+      }
     }
   },
   "goal_weight_lbs": 200
