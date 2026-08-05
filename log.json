@@ -781,6 +781,9 @@
         },
         "sleep_11pm": {
           "done": true
+        },
+        "couple_prayer": {
+          "done": false
         }
       }
     },
