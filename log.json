@@ -862,6 +862,9 @@
         },
         "social_media_cap": {
           "value": 99
+        },
+        "couple_prayer": {
+          "done": false
         }
       }
     }
