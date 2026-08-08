@@ -890,6 +890,21 @@
         },
         "gym_session": {
           "done": true
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "phone_games_cap": {
+          "value": 23
+        },
+        "social_media_cap": {
+          "value": 50
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
         }
       },
       "weight_lbs": 236
