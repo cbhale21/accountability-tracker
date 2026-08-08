@@ -867,6 +867,32 @@
           "done": false
         }
       }
+    },
+    "2026-08-07": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 60
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 9000
+        },
+        "gym_session": {
+          "done": true
+        }
+      },
+      "weight_lbs": 236
     }
   },
   "goal_weight_lbs": 200
