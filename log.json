@@ -908,6 +908,28 @@
         }
       },
       "weight_lbs": 236
+    },
+    "2026-08-08": {
+      "goals": {
+        "morning_prayer": {
+          "done": false
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 45
+        },
+        "social_media_cap": {
+          "value": 107
+        },
+        "phone_games_cap": {
+          "value": 25
+        },
+        "steps_5000": {
+          "value": 3000
+        }
+      }
     }
   },
   "goal_weight_lbs": 200
