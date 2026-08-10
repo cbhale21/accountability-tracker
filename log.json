@@ -930,6 +930,28 @@
           "value": 3000
         }
       }
+    },
+    "2026-08-09": {
+      "goals": {
+        "morning_prayer": {
+          "done": false
+        },
+        "bom_reading": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": false
+        }
+      }
     }
   },
   "goal_weight_lbs": 200
