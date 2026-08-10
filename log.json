@@ -928,6 +928,18 @@
         },
         "steps_5000": {
           "value": 3000
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
         }
       }
     },
