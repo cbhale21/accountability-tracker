@@ -991,6 +991,24 @@
         },
         "read_20min": {
           "value": 20
+        },
+        "steps_5000": {
+          "value": 7769
+        },
+        "phone_games_cap": {
+          "value": 33
+        },
+        "social_media_cap": {
+          "value": 27
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": false
         }
       },
       "weight_lbs": 236.4
