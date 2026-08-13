@@ -1052,6 +1052,23 @@
           "done": true
         }
       }
+    },
+    "2026-08-12": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "steps_5000": {
+          "value": 5500
+        }
+      },
+      "weight_lbs": 237
     }
   },
   "goal_weight_lbs": 200
