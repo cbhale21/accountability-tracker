@@ -1066,6 +1066,30 @@
         },
         "steps_5000": {
           "value": 5500
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": false
+        },
+        "phone_games_cap": {
+          "value": 25
+        },
+        "social_media_cap": {
+          "value": 83
         }
       },
       "weight_lbs": 237
