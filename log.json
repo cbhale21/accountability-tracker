@@ -1128,6 +1128,9 @@
         },
         "sleep_11pm": {
           "done": false
+        },
+        "bom_reading": {
+          "done": false
         }
       },
       "weight_lbs": 236.5
