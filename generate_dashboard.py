@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Generate a self-contained, multi-section HTML site from goals.json + log.json + quote_of_day.json.
-Sections: Today's Quote/Tip, Daily & Weekday Goals, Weekly Goals, Nutrition (7 days),
-Habit Calendar (current month heatmap), Daily Log (full history table), Nutrition Log (full history).
+Sections: Today's Quote/Tip, Daily & Weekday Goals, Weekly Goals,
+Habit Calendar (current month heatmap), Daily Log (full history table).
 Run from this directory: python3 generate_dashboard.py
 Produces dashboard.html (no external dependencies, works fully offline).
 """
@@ -127,21 +127,6 @@ def weekly_count(goal, log, today):
     return count
 
 
-def nutrition_last_days(log, today, n=7):
-    out = []
-    d = today
-    for _ in range(n):
-        date_str = fmt_date(d)
-        day_entry = log["daily"].get(date_str, {})
-        nut = day_entry.get("nutrition")
-        # Today always renders (even with nothing logged yet) so the live
-        # add-meal/add-water controls always have a container to update.
-        if nut or d == today:
-            out.append((date_str, nut or {}))
-        d -= datetime.timedelta(days=1)
-    return out
-
-
 def esc(s):
     return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -262,70 +247,6 @@ def build_weekly_goals_section(goals, log, today):
     <h2>Weekly Goals</h2>
     <table><tr><th>Goal</th><th>This Week</th><th>Today</th></tr>{weekly_rows_html}</table>
     <p class="muted weekly-hint">Tap "log today" the day you go -- it counts toward this week's total right away.</p>
-  </div>'''
-
-
-def build_nutrition_water_section(log, today):
-    nutrition_days = nutrition_last_days(log, today, 7)
-    water_values = [n.get("water_oz") for _, n in nutrition_days if n.get("water_oz") is not None]
-    avg_water = round(sum(water_values) / len(water_values), 1) if water_values else None
-    today_str = fmt_date(today)
-
-    nutrition_html = ""
-    if nutrition_days:
-        for date_str, nut in nutrition_days:
-            is_today = date_str == today_str
-            meals = nut.get("meals", [])
-            water = nut.get("water_oz")
-            meal_lines = "".join(
-                f"<li><strong>{esc(m.get('time',''))}</strong> - {esc(m.get('description',''))}"
-                + (f"<div class='assessment'>{esc(m.get('assessment'))}</div>" if m.get('assessment') else "")
-                + "</li>"
-                for m in meals
-            )
-            ul_id = ' id="nut-meals-today"' if is_today else ""
-            empty_placeholder = '<li class="muted nut-empty">No meals logged</li>'
-            water_attrs = f' id="nut-water-today" data-water-oz="{water if water is not None else 0}"' if is_today else ""
-            water_display = esc(water) if water is not None else (0 if is_today else '-')
-            nutrition_html += f'''
-            <div class="nut-day">
-              <div class="nut-date">{esc(date_str)}{' (today)' if is_today else ''}</div>
-              <ul{ul_id}>{meal_lines or empty_placeholder}</ul>
-              <div class="water"{water_attrs}>Water: <span class="water-value">{water_display}</span> oz</div>
-            </div>'''
-    else:
-        nutrition_html = "<p class='muted'>No nutrition entries yet.</p>"
-
-    avg_html = f'<div class="avg-water">7-day avg water: {avg_water} oz</div>' if avg_water is not None else ""
-
-    add_form_html = '''
-    <div class="nut-add-form">
-      <div class="nut-add-row">
-        <select id="mealTimeSelect" class="meal-time-select">
-          <option value="morning">Morning</option>
-          <option value="lunch">Lunch</option>
-          <option value="afternoon">Afternoon</option>
-          <option value="dinner">Dinner</option>
-          <option value="snack">Snack</option>
-        </select>
-        <input type="text" id="mealDescInput" class="meal-desc-input" placeholder="What did you eat or drink?">
-        <button type="button" class="add-btn" onclick="addMeal()">Add</button>
-      </div>
-      <div class="nut-add-row water-add-row">
-        <span class="water-add-label">Add water:</span>
-        <button type="button" class="water-btn" onclick="addWater(8)">+8 oz</button>
-        <button type="button" class="water-btn" onclick="addWater(16)">+16 oz</button>
-        <button type="button" class="water-btn" onclick="addWater(20)">+20 oz</button>
-        <button type="button" class="water-btn" onclick="addWater(24)">+24 oz</button>
-      </div>
-    </div>'''
-
-    return f'''
-  <div class="card">
-    <h2>Nutrition &amp; Water (last 7 days)</h2>
-    {add_form_html}
-    {nutrition_html}
-    {avg_html}
   </div>'''
 
 
@@ -574,46 +495,6 @@ def build_weight_section(log, today):
   </div>'''
 
 
-# ---------------------------------------------------------------- Nutrition Log section
-
-def build_nutrition_log_section(log, today):
-    today_str = fmt_date(today)
-    dates = sorted(log["daily"].keys(), reverse=True)
-    if today_str not in dates:
-        dates = [today_str] + dates
-    rows_html = ""
-    for date_str in dates:
-        is_today = date_str == today_str
-        nut = log["daily"].get(date_str, {}).get("nutrition")
-        if not nut and not is_today:
-            continue
-        nut = nut or {}
-        meals = nut.get("meals", [])
-        meal_txt = "<br>".join(
-            f"<strong>{esc(m.get('time',''))}</strong>: {esc(m.get('description',''))} "
-            + (f"<span class='assessment'>({esc(m.get('assessment'))})</span>" if m.get('assessment') else "")
-            for m in meals
-        )
-        water = nut.get("water_oz")
-        row_id = ' id="nutlog-row-today"' if is_today else ""
-        cell_id = ' id="nutlog-cell-today"' if is_today else ""
-        water_id = ' id="nutlog-water-today"' if is_today else ""
-        meal_cell = meal_txt or ("-" if not is_today else "")
-        water_cell = esc(water) if water is not None else ("-" if not is_today else "0")
-        rows_html += f'<tr{row_id}><td class="cal-label">{esc(date_str)}</td><td class="nut-cell"{cell_id}>{meal_cell}</td><td{water_id}>{water_cell}</td></tr>'
-
-    if not rows_html:
-        rows_html = '<tr><td colspan="3" class="muted">No nutrition entries yet.</td></tr>'
-
-    return f'''
-  <div class="card">
-    <h2>Nutrition Log (full history)</h2>
-    <div class="cal-scroll">
-    <table class="cal-table"><tr><th>Date</th><th>Meals</th><th>Water (oz)</th></tr>{rows_html}</table>
-    </div>
-  </div>'''
-
-
 # ---------------------------------------------------------------- Vision board section
 
 # Chris's chosen layout: each inner list is one row, in the order he wants them to appear.
@@ -773,25 +654,7 @@ CSS = '''
   .weight-goal-label { font-size: 11px; fill: var(--gold); font-weight: 700; }
   .weight-point-label { font-size: 9px; fill: var(--ink); font-weight: 600; }
   .save-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .nut-day { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-  .nut-day:last-child { border-bottom: none; margin-bottom: 0; }
-  .nut-date { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
-  .nut-day ul { margin: 0 0 6px 0; padding-left: 18px; }
-  .nut-day li { font-size: 13px; margin-bottom: 4px; }
-  .assessment { color: var(--muted); font-size: 12px; }
-  .water { font-size: 12px; color: var(--muted); }
   .muted { color: var(--muted); }
-  .avg-water { font-size: 13px; color: var(--muted); margin-top: 4px; }
-  .nut-add-form { margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
-  .nut-add-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
-  .nut-add-row:last-child { margin-bottom: 0; }
-  .meal-time-select { padding: 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--ink); font-size: 13px; }
-  .meal-desc-input { flex: 1; min-width: 140px; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--ink); font-size: 13px; }
-  .add-btn { padding: 8px 16px; border-radius: 6px; border: none; background: var(--ok); color: #fff; font-size: 13px; font-weight: 600; cursor: pointer; }
-  .add-btn:active { opacity: 0.8; }
-  .water-add-label { font-size: 13px; color: var(--muted); margin-right: 2px; }
-  .water-btn { padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--ink); font-size: 13px; cursor: pointer; }
-  .water-btn:active { background: var(--ok-bg); }
   .cal-card { overflow: hidden; }
   .cal-legend { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
   .cal-scroll { overflow-x: auto; }
@@ -804,7 +667,6 @@ CSS = '''
   td.cal-na { background: #f1ede6; color: var(--muted); }
   td.cal-pending { background: var(--pending-bg); color: var(--pending); font-weight: 700; }
   td.cal-blank { background: transparent; }
-  td.nut-cell { text-align: left; font-size: 12px; white-space: normal; min-width: 260px; }
   table.log-table { table-layout: fixed; }
   table.log-table th, table.log-table td { width: 30px; padding: 4px 2px; font-size: 15px; }
   table.log-table th { font-size: 15px; cursor: help; }
@@ -823,11 +685,9 @@ def main():
     quote_section = build_quote_section(quote)
     daily_weekday_goals_section = build_daily_weekday_goals_section(goals, log, today)
     weekly_goals_section = build_weekly_goals_section(goals, log, today)
-    nutrition_water_section = build_nutrition_water_section(log, today)
     weight_section = build_weight_section(log, today)
     calendar_section = build_calendar_section(goals, log, today)
     daily_log_section = build_daily_log_section(goals, log, today)
-    nutrition_log_section = build_nutrition_log_section(log, today)
 
     goal_weight_for_js = log.get("goal_weight_lbs", 200)
     weight_entries_for_js = sorted(
@@ -864,7 +724,6 @@ def main():
     <a href="#today">Today</a>
     <a href="#daily-log">Daily Log</a>
     <a href="#calendar">Calendar</a>
-    <a href="#nutrition-log">Nutrition Log</a>
   </nav>
 
   {quote_section}
@@ -884,10 +743,6 @@ def main():
 
   <div id="calendar"></div>
   {calendar_section}
-
-  <div id="nutrition-log"></div>
-  {nutrition_log_section}
-  {nutrition_water_section}
 
   <div class="footer">This page regenerates each time you log something new and get a check-in. Reopen it any time to see your latest progress.</div>
 </div>
@@ -990,83 +845,10 @@ def main():
     td.innerHTML = text;
   }}
 
-  // ---- meal / water quick-add: logs instantly, no live assessment ----
-  // (assessments get backfilled later during chat check-ins per Chris's choice)
-
   function escapeHtml(s) {{
     var d = document.createElement('div');
     d.textContent = s == null ? '' : String(s);
     return d.innerHTML;
-  }}
-
-  function initMealTimeSelect() {{
-    var sel = document.getElementById('mealTimeSelect');
-    if (!sel) return;
-    var hour = new Date().getHours();
-    var bucket = 'snack';
-    if (hour >= 5 && hour < 10) bucket = 'morning';
-    else if (hour >= 10 && hour < 14) bucket = 'lunch';
-    else if (hour >= 14 && hour < 17) bucket = 'afternoon';
-    else if (hour >= 17 && hour < 21) bucket = 'dinner';
-    sel.value = bucket;
-  }}
-
-  function appendMealToDom(time, description) {{
-    var list = document.getElementById('nut-meals-today');
-    if (list) {{
-      var empty = list.querySelector('.nut-empty');
-      if (empty) empty.remove();
-      var li = document.createElement('li');
-      li.innerHTML = '<strong>' + escapeHtml(time) + '</strong> - ' + escapeHtml(description);
-      list.appendChild(li);
-    }}
-    var logCell = document.getElementById('nutlog-cell-today');
-    if (logCell) {{
-      var line = '<strong>' + escapeHtml(time) + '</strong>: ' + escapeHtml(description);
-      logCell.innerHTML = (logCell.innerHTML && logCell.innerHTML !== '-') ? (logCell.innerHTML + '<br>' + line) : line;
-    }}
-  }}
-
-  function addMeal() {{
-    var sel = document.getElementById('mealTimeSelect');
-    var input = document.getElementById('mealDescInput');
-    if (!input) return;
-    var description = input.value.trim();
-    if (!description) {{ showToast('Enter what you ate first'); return; }}
-    var time = sel ? sel.value : 'snack';
-    saveGoal(null, {{kind: 'meal_add', time: time, description: description}});
-    appendMealToDom(time, description);
-    input.value = '';
-    var cache = loadCache();
-    var meals = (cache.entries && cache.entries.meals_today) || [];
-    meals.push({{time: time, description: description}});
-    cacheSet('meals_today', meals);
-    showToast('Meal logged');
-  }}
-
-  function updateWaterDom(addOz) {{
-    var waterDiv = document.getElementById('nut-water-today');
-    if (waterDiv) {{
-      var current = parseFloat(waterDiv.getAttribute('data-water-oz')) || 0;
-      var updated = current + addOz;
-      waterDiv.setAttribute('data-water-oz', updated);
-      var span = waterDiv.querySelector('.water-value');
-      if (span) span.textContent = updated;
-    }}
-    var logWater = document.getElementById('nutlog-water-today');
-    if (logWater) {{
-      var lcur = parseFloat(logWater.textContent) || 0;
-      logWater.textContent = lcur + addOz;
-    }}
-  }}
-
-  function addWater(oz) {{
-    saveGoal(null, {{kind: 'water_add', numValue: oz}});
-    updateWaterDom(oz);
-    var cache = loadCache();
-    var prevTotal = (cache.entries && cache.entries.water_added_today && cache.entries.water_added_today.total) || 0;
-    cacheSet('water_added_today', {{total: prevTotal + oz}});
-    showToast('Added ' + oz + ' oz');
   }}
 
   function setBooleanCell(btn, state, save) {{
@@ -1316,15 +1098,10 @@ def main():
           var wbtn = document.querySelector('.cell-toggle[data-weekly="1"][data-goal-id="' + goalId + '"]');
           if (wbtn) setWeeklyCell(wbtn, entry.state, false);
         }}
-      }} else if (key === 'meals_today') {{
-        (entry || []).forEach(function(m) {{ appendMealToDom(m.time, m.description); }});
-      }} else if (key === 'water_added_today') {{
-        if (entry && entry.total) updateWaterDom(entry.total);
       }}
     }});
   }}
 
-  initMealTimeSelect();
   restoreFromCache();
 </script>
 </body>
