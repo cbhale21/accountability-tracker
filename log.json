@@ -1093,6 +1093,14 @@
         }
       },
       "weight_lbs": 237
+    },
+    "2026-08-13": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        }
+      },
+      "weight_lbs": 236.5
     }
   },
   "goal_weight_lbs": 200
