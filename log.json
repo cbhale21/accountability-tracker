@@ -1,245 +1,6 @@
 {
   "start_date": "2026-07-21",
   "daily": {
-    "2026-07-20": {
-      "goals": {
-        "gym_session": {
-          "done": true
-        }
-      }
-    },
-    "2026-07-21": {
-      "goals": {
-        "morning_prayer": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "couple_prayer": {
-          "done": true
-        },
-        "wake_6am": {
-          "done": false
-        },
-        "phone_games_cap": {
-          "value": 39
-        },
-        "social_media_cap": {
-          "value": 25
-        },
-        "steps_5000": {
-          "value": 4454
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 20
-        }
-      },
-      "weight_lbs": 242.2,
-      "nutrition": {
-        "water_oz": 68,
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Chocolate/peanut butter/banana protein shake (45g protein)",
-            "assessment": "Strong high-protein breakfast -- 45g protein supports satiety and muscle repair; likely ~350-450 kcal with the banana/PB carbs and fat. Solid start."
-          },
-          {
-            "time": "morning",
-            "description": "Acai Berry Energy Mio, 1 serving in water",
-            "assessment": "Adds ~90mg caffeine (roughly one cup of coffee's worth). Fine for a morning boost -- just worth cutting off caffeine by early-mid afternoon so it doesn't work against the 11:00 PM lights-out goal."
-          },
-          {
-            "time": "lunch",
-            "description": "Cafe Rio handheld burrito: white rice, black beans, sweet pork, cheese, pico de gallo, tomatillo ranch; 16 oz Coke Zero",
-            "assessment": "Solid protein from the pork, but this is a calorie-dense meal -- handheld burritos with rice, beans, cheese, and dressing commonly run 700-900+ kcal, plus sodium adds up fast between the meat, cheese, and dressing. Coke Zero adds caffeine but no sugar/calories."
-          },
-          {
-            "time": "afternoon",
-            "description": "Acai Berry Energy Mio again, 1 serving in water",
-            "assessment": "Second caffeinated serving today (~90mg on top of the morning one, ~180mg total) -- still generally fine, but worth watching the clock so it clears well before the 11:00 PM sleep goal."
-          },
-          {
-            "time": "dinner",
-            "description": "Grilled chicken, broccoli, potatoes",
-            "assessment": "Great balanced dinner -- lean protein from the grilled chicken, fiber and micronutrients from the broccoli, and complex carbs from the potatoes. Clean way to close out the day's eating."
-          }
-        ]
-      }
-    },
-    "2026-07-22": {
-      "goals": {
-        "wake_6am": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 60
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 6140
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "phone_games_cap": {
-          "value": 21
-        },
-        "social_media_cap": {
-          "value": 56
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "couple_prayer": {
-          "done": true
-        }
-      },
-      "nutrition": {
-        "water_oz": 72,
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Protein shake: strawberries and cream, creatine, chia seeds, 1 cup frozen strawberries",
-            "assessment": "Another strong protein start (~45g) -- chia seeds add fiber and omega-3s, and the creatine pairs well with your pushups/squats for strength support."
-          },
-          {
-            "time": "morning",
-            "description": "Acai Berry Energy Mio, 1 serving in water",
-            "assessment": "Adds ~90mg caffeine. Same as yesterday's pattern -- fine for a morning boost, just worth keeping an eye on total caffeine and cutting it off well before your 11:00 PM wind-down."
-          },
-          {
-            "time": "lunch",
-            "description": "Wendy's Biggie Bag (Double Stack, small) with 12 oz Coke Zero",
-            "assessment": "The Biggie Bag bundle (Double Stack, small fries, 4pc nuggets) typically runs 900-1100 kcal -- decent protein from the double burger and nuggets, but high sodium and saturated fat between the two patties, cheese, and fries. Coke Zero keeps it from adding sugar/calories on the drink side."
-          }
-        ]
-      }
-    },
-    "2026-07-23": {
-      "goals": {
-        "bom_reading": {
-          "done": true
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 5000
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 20
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "phone_games_cap": {
-          "value": 53
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "social_media_cap": {
-          "value": 29
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "pushups_30": {
-          "value": 30
-        }
-      },
-      "weight_lbs": 238.8,
-      "nutrition": {
-        "water_oz": 48,
-        "meals": [
-          {
-            "time": "lunch",
-            "description": "Two slices of mega meat pizza from Barros and small order of mozzarella sticks with a Pepsi Zero"
-          }
-        ]
-      }
-    },
-    "2026-07-24": {
-      "goals": {
-        "wake_6am": {
-          "done": true
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "read_20min": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 2824
-        },
-        "phone_games_cap": {
-          "value": 59
-        },
-        "social_media_cap": {
-          "value": 66
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "couple_prayer": {
-          "done": false
-        }
-      },
-      "weight_lbs": 240,
-      "nutrition": {
-        "water_oz": 24,
-        "meals": [
-          {
-            "time": "lunch",
-            "description": "Office bbq - pulled pork, beans, mashed potatoes, green beans, cornbread"
-          },
-          {
-            "time": "dinner",
-            "description": "Fleming\u2019s - ribeye cap with mashed potatoes, onion rings and Coke Zero. Carrot cake and twisterz for dessert"
-          }
-        ]
-      }
-    },
     "2026-07-25": {
       "goals": {
         "morning_prayer": {
@@ -278,345 +39,18 @@
         "couple_prayer": {
           "done": false
         }
-      },
-      "nutrition": {
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Chocolate chip pancakes and milk"
-          }
-        ]
       }
     },
-    "2026-07-26": {
+    "2026-08-09": {
       "goals": {
-        "read_20min": {
-          "value": 0
+        "morning_prayer": {
+          "done": false
         },
         "bom_reading": {
           "done": false
         },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 0
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "steps_5000": {
-          "value": 2001
-        },
-        "phone_games_cap": {
-          "value": 36
-        },
-        "social_media_cap": {
-          "value": 58
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "morning_prayer": {
-          "done": false
-        }
-      }
-    },
-    "2026-07-27": {
-      "goals": {
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "steps_5000": {
-          "value": 7294
-        },
-        "phone_games_cap": {
-          "value": 31
-        },
-        "social_media_cap": {
-          "value": 24
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "pushups_30": {
-          "value": 30
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "sleep_11pm": {
-          "done": false
-        },
         "read_20min": {
           "value": 0
-        },
-        "evening_prayer": {
-          "done": false
-        }
-      },
-      "weight_lbs": 238.8,
-      "nutrition": {
-        "water_oz": 20,
-        "meals": [
-          {
-            "time": "lunch",
-            "description": "Chocolate peanut butter protein shake"
-          },
-          {
-            "time": "morning",
-            "description": "Two eggs, potatoes, three slices of bacon"
-          }
-        ]
-      }
-    },
-    "2026-07-28": {
-      "goals": {
-        "wake_6am": {
-          "done": false
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 50
-        },
-        "squats_30": {
-          "value": 30
-        },
-        "steps_5000": {
-          "value": 6000
-        },
-        "gym_session": {
-          "done": true
-        },
-        "phone_games_cap": {
-          "value": 48
-        },
-        "social_media_cap": {
-          "value": 61
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 20
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "couple_prayer": {
-          "done": false
-        }
-      },
-      "weight_lbs": 239,
-      "nutrition": {
-        "water_oz": 96,
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Shakey special breakfast sandwich (two english muffins, egg, ham and cheese with some tapatio hot sauce) and a Diet Mtn Dew - 12 oz"
-          },
-          {
-            "time": "morning",
-            "description": "My water intake was an Energy infused Mio cup of water"
-          },
-          {
-            "time": "morning",
-            "description": "Shakey special breakfast sandwich (two English muffins, 1 fried egg, 1 slice cheddar cheese, 2 slices Black Forest ham)"
-          },
-          {
-            "time": "lunch",
-            "description": "Toasted ultimate Italian sandwich from Jimmy John\u2019s, BBQ chips and 16 oz blue powerade"
-          },
-          {
-            "time": "dinner",
-            "description": "Mini chicken chimi and 1 chicken taquito from Boca with a few chips and queso and a few bites of beans"
-          }
-        ]
-      }
-    },
-    "2026-07-29": {
-      "goals": {
-        "couple_prayer": {
-          "done": false
-        },
-        "sleep_11pm": {
-          "done": false
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "steps_5000": {
-          "value": 2243
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "social_media_cap": {
-          "value": 42
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "phone_games_cap": {
-          "value": 5
-        },
-        "morning_prayer": {
-          "done": false
-        },
-        "pushups_30": {
-          "value": 0
-        }
-      },
-      "nutrition": {
-        "water_oz": 40,
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Chocolate/peanut butter/banana protein shake",
-            "assessment": "Reliable high-protein start again -- good satiety base for the day, low effort to prep."
-          },
-          {
-            "time": "lunch",
-            "description": "In-N-Out Double-Double with fries and a Diet Coke",
-            "assessment": "Solid protein from the double patty, but this is a calorie-dense meal -- Double-Double with fries commonly runs 900-1000+ kcal, with a good amount of sodium and saturated fat between the two patties, cheese, and fries. Diet Coke keeps the drink itself calorie-free."
-          },
-          {
-            "time": "dinner",
-            "description": "A couple chicken salad sandwiches with a quarter cup of strawberries",
-            "assessment": "Good balance -- lean protein from the chicken salad, and the strawberries add a light, low-sugar finish. Watch the mayo content in chicken salad since that's where calories/fat tend to stack up."
-          }
-        ]
-      }
-    },
-    "2026-07-30": {
-      "goals": {
-        "wake_6am": {
-          "done": false
-        },
-        "social_media_cap": {
-          "value": 131
-        },
-        "phone_games_cap": {
-          "value": 0
-        },
-        "steps_5000": {
-          "value": 6349
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "morning_prayer": {
-          "done": false
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "pushups_30": {
-          "value": 0
-        },
-        "bom_reading": {
-          "done": true
-        }
-      },
-      "weight_lbs": 238,
-      "nutrition": {
-        "water_oz": 72,
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Two breakfast burritos (scrambled eggs, bacon, cheddar cheese in a standard tortilla) and 8 oz orange juice",
-            "assessment": "Good protein and fat from the eggs, bacon, and cheese to start the day, though two burritos with bacon and cheese add up in saturated fat and sodium. The OJ brings vitamin C but also a good amount of sugar for a morning drink -- tasty homemade start either way."
-          },
-          {
-            "time": "dinner",
-            "description": "Texas Roadhouse: mozzarella sticks, fried pickles, three rolls with honey butter, and two boneless BBQ wings with ranch as appetizers, then a bacon cheeseburger with french fries (didn't finish the fries) and a Coke Zero",
-            "assessment": "A lot going on here -- the appetizer spread alone (fried mozzarella, fried pickles, three honey-butter rolls, saucy boneless wings) likely covers a full day of calories and sodium before the burger even arrives. The bacon cheeseburger adds solid protein, but between the bacon, cheese, and bun it stacks more saturated fat and sodium on top. Not finishing the fries and going with Coke Zero were the two best moves on the table. Not an every-night plate, but one dinner out with the appetizers as the day's blowout is very recoverable -- just nothing more to add on top of it tonight."
-          }
-        ]
-      }
-    },
-    "2026-07-31": {
-      "goals": {
-        "wake_6am": {
-          "done": true
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 50
-        },
-        "squats_30": {
-          "value": 40
-        },
-        "gym_session": {
-          "done": true
-        },
-        "steps_5000": {
-          "value": 6286
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "social_media_cap": {
-          "value": 96
-        },
-        "phone_games_cap": {
-          "value": 0
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
-        }
-      },
-      "nutrition": {
-        "water_oz": 24,
-        "meals": [
-          {
-            "time": "morning",
-            "description": "3/4 of three egg omelette with bacon and cheddar cheese and 4 oz of OJ"
-          }
-        ]
-      }
-    },
-    "2026-08-01": {
-      "goals": {
-        "morning_prayer": {
-          "done": true
         },
         "evening_prayer": {
           "done": false
@@ -624,126 +58,16 @@
         "couple_prayer": {
           "done": false
         },
-        "bom_reading": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 0
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "steps_5000": {
-          "value": 3494
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "social_media_cap": {
-          "value": 167
-        },
-        "phone_games_cap": {
-          "value": 43
-        }
-      },
-      "nutrition": {
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Three fried eggs, one piece of white bread toast with jam"
-          },
-          {
-            "time": "snack",
-            "description": "44 oz Beach Babe with Diet Mtn Dew from Swig"
-          }
-        ]
-      }
-    },
-    "2026-08-02": {
-      "goals": {
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 30
-        },
-        "couple_prayer": {
-          "done": true
-        },
-        "evening_prayer": {
-          "done": true
-        },
-        "sleep_11pm": {
-          "done": true
-        },
-        "phone_games_cap": {
-          "value": 0
-        },
-        "social_media_cap": {
-          "value": 30
-        }
-      },
-      "nutrition": {
-        "water_oz": 24,
-        "meals": [
-          {
-            "time": "morning",
-            "description": "Fasting"
-          },
-          {
-            "time": "lunch",
-            "description": "Fasting"
-          },
-          {
-            "time": "dinner",
-            "description": "Cheeseburger with lays cheddar and sour cream chips, some potato salad, 2 hot dogs and diet Mtn dew to drink at Gerard\u2019s"
-          }
-        ]
-      }
-    },
-    "2026-08-03": {
-      "goals": {
-        "wake_6am": {
-          "done": true
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "pushups_30": {
-          "value": 0
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "phone_games_cap": {
-          "value": 76
-        },
-        "social_media_cap": {
-          "value": 70
-        },
-        "read_20min": {
-          "value": 20
-        },
-        "steps_5000": {
-          "value": 3714
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "evening_prayer": {
-          "done": false
-        },
         "sleep_11pm": {
           "done": false
+        },
+        "social_media_cap": {
+          "value": 77
+        },
+        "phone_games_cap": {
+          "value": 16
         }
-      },
-      "weight_lbs": 237
+      }
     },
     "2026-08-04": {
       "goals": {
@@ -788,17 +112,8 @@
         }
       }
     },
-    "2026-08-05": {
+    "2026-07-21": {
       "goals": {
-        "couple_prayer": {
-          "done": false
-        },
-        "wake_6am": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
         "morning_prayer": {
           "done": true
         },
@@ -808,26 +123,35 @@
         "squats_30": {
           "value": 30
         },
-        "social_media_cap": {
-          "value": 49
+        "bom_reading": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": true
+        },
+        "wake_6am": {
+          "done": false
         },
         "phone_games_cap": {
-          "value": 28
+          "value": 39
         },
-        "read_20min": {
-          "value": 20
+        "social_media_cap": {
+          "value": 25
         },
         "steps_5000": {
-          "value": 7000
+          "value": 4454
+        },
+        "sleep_11pm": {
+          "done": true
         },
         "evening_prayer": {
           "done": true
         },
-        "sleep_11pm": {
-          "done": true
+        "read_20min": {
+          "value": 20
         }
       },
-      "weight_lbs": 236.8
+      "weight_lbs": 242.2
     },
     "2026-08-06": {
       "goals": {
@@ -869,186 +193,111 @@
         }
       }
     },
-    "2026-08-07": {
+    "2026-08-01": {
       "goals": {
-        "wake_6am": {
+        "morning_prayer": {
           "done": true
         },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 3494
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 167
+        },
+        "phone_games_cap": {
+          "value": 43
+        }
+      }
+    },
+    "2026-08-02": {
+      "goals": {
         "morning_prayer": {
           "done": true
         },
         "bom_reading": {
           "done": true
         },
-        "pushups_30": {
-          "value": 60
-        },
-        "squats_30": {
+        "read_20min": {
           "value": 30
         },
-        "steps_5000": {
-          "value": 9000
+        "couple_prayer": {
+          "done": true
         },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 30
+        }
+      }
+    },
+    "2026-07-20": {
+      "goals": {
         "gym_session": {
           "done": true
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "phone_games_cap": {
-          "value": 23
-        },
-        "social_media_cap": {
-          "value": 50
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "couple_prayer": {
-          "done": false
-        }
-      },
-      "weight_lbs": 236
-    },
-    "2026-08-08": {
-      "goals": {
-        "morning_prayer": {
-          "done": false
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 45
-        },
-        "social_media_cap": {
-          "value": 107
-        },
-        "phone_games_cap": {
-          "value": 25
-        },
-        "steps_5000": {
-          "value": 3000
-        },
-        "pushups_30": {
-          "value": 0
-        },
-        "squats_30": {
-          "value": 0
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "couple_prayer": {
-          "done": false
         }
       }
-    },
-    "2026-08-09": {
-      "goals": {
-        "morning_prayer": {
-          "done": false
-        },
-        "bom_reading": {
-          "done": false
-        },
-        "read_20min": {
-          "value": 0
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "sleep_11pm": {
-          "done": false
-        },
-        "social_media_cap": {
-          "value": 77
-        },
-        "phone_games_cap": {
-          "value": 16
-        }
-      }
-    },
-    "2026-08-10": {
-      "goals": {
-        "wake_6am": {
-          "done": false
-        },
-        "pushups_30": {
-          "value": 50
-        },
-        "squats_30": {
-          "value": 50
-        },
-        "morning_prayer": {
-          "done": true
-        },
-        "bom_reading": {
-          "done": true
-        },
-        "read_20min": {
-          "value": 20
-        },
-        "steps_5000": {
-          "value": 7769
-        },
-        "phone_games_cap": {
-          "value": 33
-        },
-        "social_media_cap": {
-          "value": 27
-        },
-        "evening_prayer": {
-          "done": false
-        },
-        "couple_prayer": {
-          "done": false
-        },
-        "sleep_11pm": {
-          "done": false
-        }
-      },
-      "weight_lbs": 236.4
     },
     "2026-08-11": {
       "goals": {
+        "wake_6am": {
+          "done": false
+        },
         "morning_prayer": {
           "done": true
         },
-        "sleep_11pm": {
+        "bom_reading": {
           "done": true
-        },
-        "wake_6am": {
-          "done": false
         },
         "pushups_30": {
           "value": 0
         },
-        "social_media_cap": {
-          "value": 120
+        "squats_30": {
+          "value": 0
         },
         "steps_5000": {
           "value": 1750
         },
-        "bom_reading": {
-          "done": true
-        },
-        "squats_30": {
-          "value": 0
-        },
         "read_20min": {
           "value": 0
-        },
-        "evening_prayer": {
-          "done": true
         },
         "phone_games_cap": {
           "value": 45
         },
+        "social_media_cap": {
+          "value": 120
+        },
         "couple_prayer": {
+          "done": true
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
           "done": true
         }
       }
@@ -1094,6 +343,267 @@
       },
       "weight_lbs": 237
     },
+    "2026-08-03": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "phone_games_cap": {
+          "value": 76
+        },
+        "social_media_cap": {
+          "value": 70
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "steps_5000": {
+          "value": 3714
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": false
+        }
+      },
+      "weight_lbs": 237
+    },
+    "2026-07-28": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 50
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 6000
+        },
+        "gym_session": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 48
+        },
+        "social_media_cap": {
+          "value": 61
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        }
+      },
+      "weight_lbs": 239
+    },
+    "2026-08-05": {
+      "goals": {
+        "couple_prayer": {
+          "done": false
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "social_media_cap": {
+          "value": 49
+        },
+        "phone_games_cap": {
+          "value": 28
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "steps_5000": {
+          "value": 7000
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        }
+      },
+      "weight_lbs": 236.8
+    },
+    "2026-07-22": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 60
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 6140
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 21
+        },
+        "social_media_cap": {
+          "value": 56
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": true
+        }
+      }
+    },
+    "2026-07-31": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 50
+        },
+        "squats_30": {
+          "value": 40
+        },
+        "gym_session": {
+          "done": true
+        },
+        "steps_5000": {
+          "value": 6286
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 96
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        }
+      }
+    },
+    "2026-07-23": {
+      "goals": {
+        "bom_reading": {
+          "done": true
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 5000
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "phone_games_cap": {
+          "value": 53
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "social_media_cap": {
+          "value": 29
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "pushups_30": {
+          "value": 30
+        }
+      },
+      "weight_lbs": 238.8
+    },
+    "2026-08-14": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        }
+      },
+      "weight_lbs": 236.2
+    },
     "2026-08-13": {
       "goals": {
         "wake_6am": {
@@ -1134,6 +644,319 @@
         }
       },
       "weight_lbs": 236.5
+    },
+    "2026-07-30": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        },
+        "social_media_cap": {
+          "value": 131
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 6349
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "bom_reading": {
+          "done": true
+        }
+      },
+      "weight_lbs": 238
+    },
+    "2026-07-26": {
+      "goals": {
+        "read_20min": {
+          "value": 0
+        },
+        "bom_reading": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 2001
+        },
+        "phone_games_cap": {
+          "value": 36
+        },
+        "social_media_cap": {
+          "value": 58
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": false
+        }
+      }
+    },
+    "2026-07-29": {
+      "goals": {
+        "couple_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": false
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 2243
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 42
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "phone_games_cap": {
+          "value": 5
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "pushups_30": {
+          "value": 0
+        }
+      }
+    },
+    "2026-08-07": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 60
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 9000
+        },
+        "gym_session": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "phone_games_cap": {
+          "value": 23
+        },
+        "social_media_cap": {
+          "value": 50
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        }
+      },
+      "weight_lbs": 236
+    },
+    "2026-07-27": {
+      "goals": {
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "wake_6am": {
+          "done": true
+        },
+        "steps_5000": {
+          "value": 7294
+        },
+        "phone_games_cap": {
+          "value": 31
+        },
+        "social_media_cap": {
+          "value": 24
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "sleep_11pm": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": false
+        }
+      },
+      "weight_lbs": 238.8
+    },
+    "2026-07-24": {
+      "goals": {
+        "wake_6am": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "pushups_30": {
+          "value": 30
+        },
+        "squats_30": {
+          "value": 30
+        },
+        "read_20min": {
+          "value": 30
+        },
+        "steps_5000": {
+          "value": 2824
+        },
+        "phone_games_cap": {
+          "value": 59
+        },
+        "social_media_cap": {
+          "value": 66
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        }
+      },
+      "weight_lbs": 240
+    },
+    "2026-08-10": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        },
+        "pushups_30": {
+          "value": 50
+        },
+        "squats_30": {
+          "value": 50
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "steps_5000": {
+          "value": 7769
+        },
+        "phone_games_cap": {
+          "value": 33
+        },
+        "social_media_cap": {
+          "value": 27
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": false
+        }
+      },
+      "weight_lbs": 236.4
+    },
+    "2026-08-08": {
+      "goals": {
+        "morning_prayer": {
+          "done": false
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "read_20min": {
+          "value": 45
+        },
+        "social_media_cap": {
+          "value": 107
+        },
+        "phone_games_cap": {
+          "value": 25
+        },
+        "steps_5000": {
+          "value": 3000
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        }
+      }
     }
   },
   "goal_weight_lbs": 200
