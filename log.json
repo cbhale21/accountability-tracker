@@ -1015,6 +1015,40 @@
           "value": 1326
         }
       }
+    },
+    "2026-08-16": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        },
+        "bom_reading": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "steps_5000": {
+          "value": 2000
+        },
+        "read_20min": {
+          "value": 20
+        },
+        "social_media_cap": {
+          "value": 51
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": true
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "sleep_11pm": {
+          "done": true
+        }
+      }
     }
   },
   "goal_weight_lbs": 200
