@@ -621,6 +621,9 @@
         },
         "evening_prayer": {
           "done": false
+        },
+        "steps_5000": {
+          "value": 1706
         }
       },
       "weight_lbs": 236.2
@@ -1007,6 +1010,9 @@
         },
         "read_20min": {
           "value": 20
+        },
+        "steps_5000": {
+          "value": 1326
         }
       }
     }
