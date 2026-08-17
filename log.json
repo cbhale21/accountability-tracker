@@ -600,6 +600,27 @@
         },
         "bom_reading": {
           "done": true
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "social_media_cap": {
+          "value": 73
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
         }
       },
       "weight_lbs": 236.2
@@ -955,6 +976,37 @@
         },
         "couple_prayer": {
           "done": false
+        }
+      }
+    },
+    "2026-08-15": {
+      "goals": {
+        "pushups_30": {
+          "value": 0
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "bom_reading": {
+          "done": false
+        },
+        "social_media_cap": {
+          "value": 187
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "read_20min": {
+          "value": 20
         }
       }
     }
