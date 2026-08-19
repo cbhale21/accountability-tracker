@@ -1066,6 +1066,9 @@
         "morning_prayer": {
           "done": true
         },
+        "phone_games_cap": {
+          "value": 0
+        },
         "pushups_30": {
           "value": 60
         },
@@ -1075,11 +1078,54 @@
         "sleep_11pm": {
           "done": false
         },
+        "social_media_cap": {
+          "value": 50
+        },
         "squats_30": {
           "value": 30
         },
+        "steps_5000": {
+          "value": 8947
+        },
         "wake_6am": {
           "done": true
+        }
+      }
+    },
+    "2026-08-18": {
+      "goals": {
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "pushups_30": {
+          "value": 0
+        },
+        "read_20min": {
+          "value": 40
+        },
+        "sleep_11pm": {
+          "done": true
+        },
+        "social_media_cap": {
+          "value": 20
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 2090
+        },
+        "wake_6am": {
+          "done": false
         }
       }
     }
