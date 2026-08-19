@@ -1094,6 +1094,9 @@
     },
     "2026-08-18": {
       "goals": {
+        "bom_reading": {
+          "done": false
+        },
         "couple_prayer": {
           "done": false
         },
