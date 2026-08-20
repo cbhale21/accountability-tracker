@@ -1137,11 +1137,35 @@
         "bom_reading": {
           "done": true
         },
+        "couple_prayer": {
+          "done": false
+        },
+        "evening_prayer": {
+          "done": false
+        },
         "morning_prayer": {
           "done": true
         },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "pushups_30": {
+          "value": 0
+        },
         "read_20min": {
           "value": 30
+        },
+        "sleep_11pm": {
+          "done": false
+        },
+        "social_media_cap": {
+          "value": 60
+        },
+        "squats_30": {
+          "value": 0
+        },
+        "steps_5000": {
+          "value": 2495
         },
         "wake_6am": {
           "done": true
