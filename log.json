@@ -1172,6 +1172,50 @@
         }
       },
       "weight_lbs": 236.2
+    },
+    "2026-08-20": {
+      "goals": {
+        "bom_reading": {
+          "done": false
+        },
+        "couple_prayer": {
+          "done": false
+        },
+        "gym_session": {
+          "done": true
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "phone_games_cap": {
+          "value": 0
+        },
+        "pushups_30": {
+          "value": 60
+        },
+        "read_20min": {
+          "value": 0
+        },
+        "sleep_11pm": {
+          "done": false
+        },
+        "social_media_cap": {
+          "value": 92
+        },
+        "squats_30": {
+          "value": 55
+        },
+        "wake_6am": {
+          "done": false
+        }
+      }
+    },
+    "2026-08-21": {
+      "goals": {
+        "evening_prayer": {
+          "done": false
+        }
+      }
     }
   },
   "goal_weight_lbs": 200,
