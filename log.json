@@ -1181,6 +1181,9 @@
         "couple_prayer": {
           "done": false
         },
+        "evening_prayer": {
+          "done": false
+        },
         "gym_session": {
           "done": true
         },
@@ -1204,6 +1207,9 @@
         },
         "squats_30": {
           "value": 55
+        },
+        "steps_5000": {
+          "value": 7876
         },
         "wake_6am": {
           "done": false
