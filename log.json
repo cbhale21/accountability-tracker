@@ -1218,7 +1218,16 @@
     },
     "2026-08-21": {
       "goals": {
+        "bom_reading": {
+          "done": true
+        },
         "evening_prayer": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": false
+        },
+        "wake_6am": {
           "done": false
         }
       }
