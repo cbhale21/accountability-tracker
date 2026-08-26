@@ -1357,6 +1357,19 @@
           "done": true
         }
       }
+    },
+    "2026-08-25": {
+      "goals": {
+        "wake_6am": {
+          "done": false
+        },
+        "morning_prayer": {
+          "done": true
+        },
+        "bom_reading": {
+          "done": true
+        }
+      }
     }
   },
   "goal_weight_lbs": 200,
